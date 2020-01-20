@@ -1,3 +1,5 @@
+@import '../../../styles';
+
 :host {
     mat-sidenav-container {
         height: 100%;
@@ -14,5 +16,9 @@
 
     mat-expansion-panel {
         border-radius: 0;
+        background: mat-color($material-macros-accent);
+        & , ::ng-deep mat-expansion-panel-header span {
+            color: mat-color($material-macros-accent, 'accent-contrast');
+        }
     }
 }
