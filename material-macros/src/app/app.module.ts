@@ -14,6 +14,7 @@ import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -62,6 +63,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     MatSidenavModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatExpansionModule,
   ],
   providers: [
     AngularFireAuthGuard,
