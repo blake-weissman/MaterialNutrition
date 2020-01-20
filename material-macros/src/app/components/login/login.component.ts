@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,5 +8,5 @@ import { AngularFireAuth } from '@angular/fire/auth';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-
+  constructor (public router: Router) {}
 }
