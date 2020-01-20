@@ -2,4 +2,9 @@
     mat-sidenav-container {
         height: 100vh;
     }
+
+    mat-sidenav {
+        max-width: 264px;
+        width: 100%;
+    }
 }
