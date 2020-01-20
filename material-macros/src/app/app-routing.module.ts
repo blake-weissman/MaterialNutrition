@@ -16,10 +16,10 @@ const routes: Routes = [
     component: MainComponent,
     ...canActivate(redirectUnauthorizedTo(['login']))
   },
-  // { 
-  //   path: '**', 
-  //   component: PageNotFoundComponent 
-  // }
+  { 
+    path: '**', 
+    redirectTo: ''
+  }
 ];
 
 @NgModule({
