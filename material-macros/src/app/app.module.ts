@@ -10,6 +10,7 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
+import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -56,7 +57,9 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     FirebaseUIModule.forRoot(firebaseUiAuthConfig),
     MatToolbarModule,
   ],
-  providers: [],
+  providers: [
+    AngularFireAuthGuard,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
