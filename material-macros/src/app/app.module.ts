@@ -12,6 +12,8 @@ import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
 import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -58,6 +60,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     FirebaseUIModule.forRoot(firebaseUiAuthConfig),
     MatToolbarModule,
     MatSidenavModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [
     AngularFireAuthGuard,
