@@ -3,16 +3,21 @@
         <mat-calendar></mat-calendar>
     </mat-sidenav>
     <mat-sidenav-content>
-        <mat-expansion-panel hideToggle="true" expanded="true" disabled="true">
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Title
-                </mat-panel-title>
-                <!-- <mat-panel-description>
-                    Desc
-                </mat-panel-description> -->
-            </mat-expansion-panel-header>
-            <p>Test</p>
-        </mat-expansion-panel>
+        <cdk-virtual-scroll-viewport itemSize="10"> 
+            <mat-expansion-panel hideToggle="true" expanded="true" disabled="true">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Title
+                    </mat-panel-title>
+                    <!-- <mat-panel-description>
+                        Desc
+                    </mat-panel-description> -->
+                </mat-expansion-panel-header>
+                <p>Test</p>
+            </mat-expansion-panel>
+            <div cdkDropList (cdkDropListDropped)="drop($event)">
+                <div *cdkVirtualFor="let movie of movies;" style="border: 1px solid grey; background: white;" cdkDrag>{{movie}}</div>
+            </div>
+        </cdk-virtual-scroll-viewport>
     </mat-sidenav-content>
 </mat-sidenav-container>

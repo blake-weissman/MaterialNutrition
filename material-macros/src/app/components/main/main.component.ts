@@ -1,15 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit {
+export class MainComponent {
 
-  constructor() { }
+  public movies = [
+    'One',
+    'Two',
+    'Three',
+    'Four',
+  ];
 
-  ngOnInit() {
+  public drop(event: CdkDragDrop<string[]>) {
+    // debugger;
+    moveItemInArray(this.movies, event.previousIndex, event.currentIndex);
+    this.movies = [...this.movies];
   }
 
 }
