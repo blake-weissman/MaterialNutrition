@@ -5,12 +5,13 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
-import {FirebaseUIModule, firebase, firebaseui} from 'firebaseui-angular';
-import {AngularFireAuthModule} from '@angular/fire/auth';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { FirebaseUIModule, firebase, firebaseui } from 'firebaseui-angular';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { LoginComponent } from './components/login/login.component';
 import { MainComponent } from './components/main/main.component';
 import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -56,6 +57,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AngularFireAuthModule,
     FirebaseUIModule.forRoot(firebaseUiAuthConfig),
     MatToolbarModule,
+    MatSidenavModule,
   ],
   providers: [
     AngularFireAuthGuard,
