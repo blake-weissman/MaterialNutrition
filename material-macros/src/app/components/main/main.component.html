@@ -16,7 +16,13 @@
                 <p>Test</p>
             </mat-expansion-panel>
             <div cdkDropList (cdkDropListDropped)="drop($event)">
-                <div *cdkVirtualFor="let movie of movies;" style="border: 1px solid grey; background: white;" cdkDrag>{{movie}}</div>
+                <ng-container *cdkVirtualFor="let key of (meals | objectKeys);">
+                    <div *ngIf="key === 'other'; else meal">{{key}}</div>
+                    <ng-template #meal>
+                        {{key}}
+                    </ng-template>
+                    <!-- <div *ngFor="let mealItem of meals[key];" style="border: 1px solid grey; background: white;" cdkDrag>{{mealItem | json}}</div> -->
+                </ng-container>
             </div>
         </cdk-virtual-scroll-viewport>
     </mat-sidenav-content>
