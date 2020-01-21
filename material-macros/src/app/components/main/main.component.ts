@@ -10,38 +10,103 @@ export class MainComponent {
 
   // TODO create proper global model/keys
   // public OTHER_MEAL_ITEMS_KEY;
-  public meals = {
-    other: [
-      {
-        key: 'eggs',
-        quantity: 20,
-        type: 'food'
-      },
-      {
-        key: 'pizza',
-        quantity: 1,
-        type: 'recipie'
-      }
-    ],
-    breakfast: [
-      {
-        key: 'eggs',
-        quantity: 20,
-        type: 'food'
-      },
-      {
-        key: 'pizza',
-        quantity: 1,
-        type: 'recipie'
-      }
-    ]
-  };
+  // public meals = [
+  //     {
+  //       {
+  //         key: 'eggs',
+  //         quantity: 20,
+  //         type: 'food'
+  //       },
+  //       {
+  //         key: 'pizza',
+  //         quantity: 1,
+  //         type: 'recipie'
+  //       }
+  //     },
+  //     {
+  //       {
+  //         key: 'eggs',
+  //         quantity: 20,
+  //         type: 'food'
+  //       },
+  //       {
+  //         key: 'pizza',
+  //         quantity: 1,
+  //         type: 'recipie'
+  //       }
+  //     },
+  //   ]
+
+  public meals = [
+    {
+      name: 'Other',
+      mealItems: [
+        {
+          key: 'eggs',
+          quantity: 20,
+          type: 'food'
+        },
+        {
+          key: 'pizza',
+          quantity: 1,
+          type: 'recipie'
+        }
+      ]
+    },
+    {
+      name: 'Breakfast',
+      mealItems: [
+        {
+          key: 'eggs',
+          quantity: 20,
+          type: 'food'
+        },
+        {
+          key: 'pizza',
+          quantity: 1,
+          type: 'recipie'
+        }
+      ]
+    },
+    {
+      name: 'Lunch',
+      mealItems: [
+        {
+          key: 'eggs',
+          quantity: 20,
+          type: 'food'
+        },
+        {
+          key: 'pizza',
+          quantity: 1,
+          type: 'recipie'
+        }
+      ]
+    },
+    {
+      name: 'Dinner',
+      mealItems: [
+        {
+          key: 'eggs',
+          quantity: 20,
+          type: 'food'
+        },
+        {
+          key: 'pizza',
+          quantity: 1,
+          type: 'recipie'
+        }
+      ]
+    },
+  ]
+
+  public test(v) {
+    console.log(v);
+  }
 
   public drop(event: CdkDragDrop<string[]>) {
-    // debugger;
-    console.log(event);
-    // moveItemInArray(this.meals[key], event.previousIndex, event.currentIndex);
-    // this.meals[key] = [...this.meals[key]];
+    moveItemInArray(this.meals, event.previousIndex, event.currentIndex);
+    this.meals = [...this.meals];
   }
 
 }

@@ -3,7 +3,7 @@
         <mat-calendar></mat-calendar>
     </mat-sidenav>
     <mat-sidenav-content>
-        <cdk-virtual-scroll-viewport itemSize="10"> 
+        <cdk-virtual-scroll-viewport itemSize="100"> 
             <mat-expansion-panel hideToggle="true" expanded="true" disabled="true">
                 <mat-expansion-panel-header>
                     <mat-panel-title>
@@ -16,11 +16,35 @@
                 <p>Test</p>
             </mat-expansion-panel>
             <div cdkDropList (cdkDropListDropped)="drop($event)">
-                <ng-container *cdkVirtualFor="let key of (meals | objectKeys);">
-                    <div *ngIf="key === 'other'; else meal">{{key}}</div>
-                    <ng-template #meal>
-                        {{key}}
+                <ng-container *cdkVirtualFor="let meal of meals">
+                    <div *ngIf="meal.name === 'Other'; else mealDisplay" cdkDrag>{{meal.name}}</div>
+                    <ng-template #mealDisplay>
+                        <mat-expansion-panel cdkDrag>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    {{meal.name}}
+                                </mat-panel-title>
+                                <mat-panel-description>
+                                    The quick brown fox jumped over the lazy dogs.
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+                            hello
+                        </mat-expansion-panel>
                     </ng-template>
+                    <!-- <div *ngIf="meal.name === 'Other'" cdkDrag>{{meal | json}}</div>
+                    <ng-template #meal>
+                        <mat-expansion-panel cdkDrag>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    {{meal.name}}
+                                </mat-panel-title>
+                                <mat-panel-description>
+                                    The quick brown fox jumped over the lazy dogs.
+                                </mat-panel-description>
+                            </mat-expansion-panel-header>
+                            hello
+                        </mat-expansion-panel>
+                    </ng-template> -->
                     <!-- <div *ngFor="let mealItem of meals[key];" style="border: 1px solid grey; background: white;" cdkDrag>{{mealItem | json}}</div> -->
                 </ng-container>
             </div>
