@@ -17,6 +17,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ObjectKeysPipe } from './pipes/object-keys/object-keys.pipe';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -52,7 +53,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
   declarations: [
     AppComponent,
     LoginComponent,
-    MainComponent
+    MainComponent,
+    ObjectKeysPipe,
   ],
   imports: [
     BrowserModule,
