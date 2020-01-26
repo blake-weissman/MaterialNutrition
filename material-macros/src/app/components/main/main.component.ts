@@ -100,6 +100,33 @@ export class MainComponent {
     },
   ]
 
+  public userMealItems = {
+    food: {
+      eggs: {
+        label: 'Eggs',
+        grams: 20,
+        calories: 80,
+        fat: 4,
+        carbs: 46,
+        protien: 11 
+      },
+      oats: {
+        label: 'Oats',
+        grams: 45,
+        calories: 100,
+        fat: 14,
+        carbs: 16,
+        protien: 20 
+      }
+    },
+    recipie: {
+      pizza: {
+        label: 'Pizza',
+        foods: ['eggs', 'oats']
+      }
+    }
+  }
+
   public test(v) {
     console.log(v);
   }

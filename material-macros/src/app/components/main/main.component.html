@@ -3,7 +3,7 @@
         <mat-calendar></mat-calendar>
     </mat-sidenav>
     <mat-sidenav-content>
-        <cdk-virtual-scroll-viewport itemSize="100"> 
+        <cdk-virtual-scroll-viewport itemSize="50"> 
             <mat-expansion-panel hideToggle="true" expanded="true" disabled="true">
                 <mat-expansion-panel-header>
                     <mat-panel-title>
@@ -17,9 +17,47 @@
             </mat-expansion-panel>
             <div cdkDropList (cdkDropListDropped)="drop($event)">
                 <ng-container *cdkVirtualFor="let meal of meals">
-                    <div *ngIf="meal.name === 'Other'; else mealDisplay" cdkDrag>{{meal.name}}</div>
+                    <ng-container *ngIf="meal.name === 'Other'; else mealDisplay">
+                        <div class="item-com" cdkDrag cdkDragLockAxis="y" *ngFor='let mealItem of meal.mealItems' style="background: #fff;">                  
+                            <mat-icon cdkDragHandle>drag_handle</mat-icon>
+                            <div>
+                                <h2 class="mat-h2">{{userMealItems[mealItem.type][mealItem.key].label}}</h2>
+                                <table class="mat-h4">
+                                    <tr>
+                                        <th>Calories</th>
+                                        <th>Fat (g)</th>
+                                        <th>Carbs (g)</th>
+                                        <th>Protein (g)</th>
+                                        <th>Total Amount (selectedUnit)</th>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>3</td>
+                                        <td>4</td>
+                                        <td>100</td>
+                                    </tr>
+                                </table> 
+                                <div>   
+                                    <mat-form-field appearance="standard">
+                                        <mat-label>Servings</mat-label>
+                                        <input matInput>
+                                        <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
+                                    </mat-form-field>
+                                    <mat-form-field appearance="standard">
+                                        <mat-label>Units</mat-label>
+                                        <mat-select>
+                                            <mat-option>
+                                                Grams (g)
+                                            </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
                     <ng-template #mealDisplay>
-                        <mat-expansion-panel cdkDrag>
+                        <mat-expansion-panel cdkDrag cdkDragLockAxis="y">
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
                                     {{meal.name}}

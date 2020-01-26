@@ -18,6 +18,11 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ObjectKeysPipe } from './pipes/object-keys/object-keys.pipe';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -54,7 +59,6 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AppComponent,
     LoginComponent,
     MainComponent,
-    ObjectKeysPipe,
   ],
   imports: [
     BrowserModule,
@@ -70,6 +74,11 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     MatExpansionModule,
     ScrollingModule,
     DragDropModule,
+    MatCardModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule
   ],
   providers: [
     AngularFireAuthGuard,
