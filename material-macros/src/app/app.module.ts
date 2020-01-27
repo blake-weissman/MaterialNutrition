@@ -17,7 +17,6 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { ObjectKeysPipe } from './pipes/object-keys/object-keys.pipe';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -80,7 +79,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
   ],
   providers: [
     AngularFireAuthGuard,
