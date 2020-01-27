@@ -18,7 +18,9 @@
             <div cdkDropList (cdkDropListDropped)="drop($event)">
                 <ng-container *cdkVirtualFor="let meal of meals">
                     <ng-container *ngIf="meal.name === 'Other'; else mealDisplay">
-                        <div class="item-com" cdkDrag cdkDragLockAxis="y" *ngFor='let mealItem of meal.mealItems' style="background: #fff;">                  
+                        <app-meal-item *ngFor='let mealItem of meal.mealItems' cdkDrag cdkDragLockAxis="y" [item]='mealItem'>
+                        </app-meal-item>
+                        <!-- <div class="item-com" cdkDrag cdkDragLockAxis="y" *ngFor='let mealItem of meal.mealItems' style="background: #fff;">                  
                             <mat-icon cdkDragHandle>drag_handle</mat-icon>
                             <div>
                                 <h2 class="mat-h2">{{userMealItems[mealItem.type][mealItem.key].label}}</h2>
@@ -42,7 +44,6 @@
                                     <mat-form-field appearance="standard">
                                         <mat-label>Servings</mat-label>
                                         <input matInput>
-                                        <!-- <mat-icon matSuffix>sentiment_very_satisfied</mat-icon> -->
                                     </mat-form-field>
                                     <mat-form-field appearance="standard">
                                         <mat-label>Units</mat-label>
@@ -54,7 +55,7 @@
                                     </mat-form-field>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </ng-container>
                     <ng-template #mealDisplay>
                         <mat-expansion-panel cdkDrag cdkDragLockAxis="y">
