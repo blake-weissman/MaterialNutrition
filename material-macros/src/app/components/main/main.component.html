@@ -18,47 +18,11 @@
             <div cdkDropList (cdkDropListDropped)="drop($event)">
                 <ng-container *cdkVirtualFor="let meal of meals">
                     <ng-container *ngIf="meal.name === 'Other'; else mealDisplay">
-                        <app-meal-item *ngFor='let mealItem of meal.mealItems' cdkDrag cdkDragLockAxis="y" [item]='mealItem'>
+                        <app-meal-item *ngFor='let mealItem of meal.mealItems' cdkDrag [item]='mealItem'>
                         </app-meal-item>
-                        <!-- <div class="item-com" cdkDrag cdkDragLockAxis="y" *ngFor='let mealItem of meal.mealItems' style="background: #fff;">                  
-                            <mat-icon cdkDragHandle>drag_handle</mat-icon>
-                            <div>
-                                <h2 class="mat-h2">{{userMealItems[mealItem.type][mealItem.key].label}}</h2>
-                                <table class="mat-h4">
-                                    <tr>
-                                        <th>Calories</th>
-                                        <th>Fat (g)</th>
-                                        <th>Carbs (g)</th>
-                                        <th>Protein (g)</th>
-                                        <th>Total Amount (selectedUnit)</th>
-                                    </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>2</td>
-                                        <td>3</td>
-                                        <td>4</td>
-                                        <td>100</td>
-                                    </tr>
-                                </table> 
-                                <div>   
-                                    <mat-form-field appearance="standard">
-                                        <mat-label>Servings</mat-label>
-                                        <input matInput>
-                                    </mat-form-field>
-                                    <mat-form-field appearance="standard">
-                                        <mat-label>Units</mat-label>
-                                        <mat-select>
-                                            <mat-option>
-                                                Grams (g)
-                                            </mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
-                                </div>
-                            </div>
-                        </div> -->
                     </ng-container>
                     <ng-template #mealDisplay>
-                        <mat-expansion-panel cdkDrag cdkDragLockAxis="y">
+                        <mat-expansion-panel cdkDrag>
                             <mat-expansion-panel-header>
                                 <mat-panel-title>
                                     {{meal.name}}
@@ -67,7 +31,8 @@
                                     The quick brown fox jumped over the lazy dogs.
                                 </mat-panel-description>
                             </mat-expansion-panel-header>
-                            hello
+                            <app-meal-item *ngFor='let mealItem of meal.mealItems' cdkDrag [item]='mealItem'>
+                            </app-meal-item>
                         </mat-expansion-panel>
                     </ng-template>
                     <!-- <div *ngIf="meal.name === 'Other'" cdkDrag>{{meal | json}}</div>
