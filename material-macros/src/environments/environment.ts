@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  firebase:  {
+  firebase: {
     apiKey: "AIzaSyCxv8H_gopvTbCPDRdxhc_DQHFsZDGtZAk",
     authDomain: "material-macros-v1.firebaseapp.com",
     databaseURL: "https://material-macros-v1.firebaseio.com",
