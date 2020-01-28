@@ -8,14 +8,14 @@
                 <th>Fat (g)</th>
                 <th>Carbs (g)</th>
                 <th>Protein (g)</th>
-                <th>Total Amount (selectedUnit)</th>
+                <th>Total Amount ({{userMealItem.servingTypes[item.units].unit}})</th>
             </tr>
             <tr>
                 <td>{{userMealItem.calories}}</td>
                 <td>{{userMealItem.fat}}</td>
                 <td>{{userMealItem.carbs}}</td>
                 <td>{{userMealItem.protien}}</td>
-                <td>100</td>
+                <td>{{item.servings * userMealItem.servingTypes[item.units].servingSize}}</td>
             </tr>
         </table> 
         <div>   
