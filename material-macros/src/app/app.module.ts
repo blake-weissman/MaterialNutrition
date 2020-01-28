@@ -24,6 +24,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MealItemComponent } from './components/main/meal-item/meal-item.component';
 import { ObjectKeysPipe } from './pipes/objectKeys/object-keys.pipe';
+import { FormsModule } from '@angular/forms';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -82,6 +83,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    FormsModule,
   ],
   providers: [
     AngularFireAuthGuard,

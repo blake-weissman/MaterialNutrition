@@ -22,6 +22,11 @@ export class MealItemComponent {
             label: 'Grams',
             unit: 'g',
             servingSize: 20
+          },
+          eggs: {
+            label: 'Eggs',
+            unit: 'Eggs',
+            servingSize: 1
           }
         } 
       },

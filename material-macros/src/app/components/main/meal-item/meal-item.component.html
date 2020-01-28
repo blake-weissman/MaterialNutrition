@@ -1,3 +1,4 @@
+{{item | json}}
 <mat-card class="mat-elevation-z0">
     <mat-icon>drag_handle</mat-icon>
     <div  *ngIf="userMealItems[item.type][item.key]; let userMealItem">
@@ -21,17 +22,17 @@
         <div>   
             <mat-form-field appearance="standard">
                 <mat-label>Servings</mat-label>
-                <input matInput>
+                <input matInput [(ngModel)]="item.servings">
             </mat-form-field>
             <mat-form-field appearance="standard">
                 <mat-label>Units</mat-label>
-                <mat-select>
+                <mat-select [(ngModel)]="item.units">
                     <mat-option *ngFor="let servingTypeKey of (userMealItem.servingTypes | objectKeys)" [value]="servingTypeKey">
                         <ng-container *ngIf="userMealItem.servingTypes[servingTypeKey]; let servingType">
                             {{servingType.label}} ({{servingType.unit}})
                         </ng-container>
                     </mat-option>
-                </mat-select>
+                </mat-select >
             </mat-form-field>
         </div>
     </div>
