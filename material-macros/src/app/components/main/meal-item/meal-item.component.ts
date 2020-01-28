@@ -16,7 +16,14 @@ export class MealItemComponent {
         calories: 80,
         fat: 4,
         carbs: 46,
-        protien: 11 
+        protien: 11,
+        servingTypes:{
+          grams: {
+            label: 'Grams',
+            unit: 'g',
+            servingSize: 20
+          }
+        } 
       },
       oats: {
         label: 'Oats',
@@ -24,14 +31,21 @@ export class MealItemComponent {
         calories: 100,
         fat: 14,
         carbs: 16,
-        protien: 20 
+        protien: 20,
+        servingTypes:{
+          grams: {
+            label: 'Grams',
+            unit: 'g',
+            servingSize: 20
+          }
+        }
       }
     },
-    recipie: {
-      pizza: {
-        label: 'Pizza',
-        foods: ['eggs', 'oats']
-      }
-    }
+    // recipie: {
+    //   pizza: {
+    //     label: 'Pizza',
+    //     foods: ['eggs', 'oats']
+    //   }
+    // }
   }
 }
