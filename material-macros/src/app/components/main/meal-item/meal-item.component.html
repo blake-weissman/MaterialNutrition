@@ -1,7 +1,7 @@
 {{item | json}}
 <mat-card class="mat-elevation-z0">
-    <mat-icon>drag_handle</mat-icon>
-    <div  *ngIf="userMealItems[item.type][item.key]; let userMealItem">
+    <mat-icon cdkDragHandle>drag_handle</mat-icon>
+    <div *ngIf="userMealItems[item.type][item.key]; let userMealItem">
         <h2 class="mat-h2">{{userMealItem.label}}</h2>
         <table class="mat-h4">
             <tr>
