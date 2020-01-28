@@ -26,7 +26,7 @@
             <mat-form-field appearance="standard">
                 <mat-label>Units</mat-label>
                 <mat-select>
-                    <mat-option *ngFor="let servingTypeKey of (userMealItem.servingTypes | objectKeys)">
+                    <mat-option *ngFor="let servingTypeKey of (userMealItem.servingTypes | objectKeys)" [value]="servingTypeKey">
                         <ng-container *ngIf="userMealItem.servingTypes[servingTypeKey]; let servingType">
                             {{servingType.label}} ({{servingType.unit}})
                         </ng-container>
