@@ -13,7 +13,7 @@ $material-macros-palette: (
 $material-macros-primary: mat-palette($material-macros-palette, primary);
 $material-macros-accent: mat-palette($material-macros-palette, accent);
 $material-macros-warn: mat-palette($mat-red);
-$material-macros-theme: mat-light-theme($material-macros-primary, $material-macros-accent, $material-macros-warn);
+$material-macros-theme: mat-dark-theme($material-macros-primary, $material-macros-accent, $material-macros-warn);
 @include angular-material-theme($material-macros-theme);
 
 html, body { 
