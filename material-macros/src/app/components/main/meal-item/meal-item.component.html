@@ -13,13 +13,10 @@
                     </mat-icon>
                     <input matInput placeholder="Search">
                 </div>
-                <!--TODO: Replace with new objectValues pipe-->
-                <ng-container *ngFor="let mealItemCategoryKey of (userMealItems | objectKeys)">
-                    <ng-container *ngIf="userMealItems[mealItemCategoryKey]; let mealItemCategory">
-                        <mat-option [value]="mealItemKey" *ngFor="let mealItemKey of (mealItemCategory | objectKeys)">
-                            {{mealItemCategory[mealItemKey].label}}
-                        </mat-option>
-                    </ng-container>
+                <ng-container *ngFor="let mealItemCategory of (userMealItems | objectValues)">
+                    <mat-option [value]="mealItemKey" *ngFor="let mealItemKey of (mealItemCategory | objectKeys)">
+                        {{mealItemCategory[mealItemKey].label}}
+                    </mat-option>
                 </ng-container>
             </mat-select>
         </mat-form-field>
