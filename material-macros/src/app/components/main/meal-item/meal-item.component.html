@@ -1,8 +1,17 @@
-{{item | json}}
+<!-- {{item | json}} -->
 <mat-card class="mat-elevation-z0">
     <mat-icon cdkDragHandle>drag_handle</mat-icon>
     <div *ngIf="userMealItems[item.type][item.key]; let userMealItem">
-        <h2 class="mat-h2">{{userMealItem.label}}</h2>
+        <!-- <h2 class="mat-h2">{{userMealItem.label}}</h2> -->
+        <mat-form-field appearance="outline" floatLabel="always">
+            <mat-label>Food</mat-label>
+            <mat-select placeholder="Select food">
+                <input matInput placeholder="Search">
+                <mat-option>
+                    Test
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
         <table class="mat-h4">
             <tr>
                 <th>Calories</th>

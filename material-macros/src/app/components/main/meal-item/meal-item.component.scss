@@ -24,6 +24,9 @@ mat-card{
 
 mat-form-field {
     width: 50%;
+    &.mat-form-field-appearance-outline {
+        width: 100%;
+    }
 }
 
 ::ng-deep .mat-form-field-appearance-standard .mat-form-field-flex {
