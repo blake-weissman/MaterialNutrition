@@ -47,17 +47,30 @@ export class MainComponent {
           type: 'food',
           units: 'grams',
         },
-        // {
-        //   key: 'pizza',
-        //   servings: 1,
-        //   type: 'recipie',
-        //   units: 'grams',
-        // }
-      ]
-    },
-    {
-      name: 'Breakfast',
-      mealItems: [
+        {
+          key: 'eggs',
+          servings: 20,
+          type: 'food',
+          units: 'grams',
+        },
+        {
+          key: 'eggs',
+          servings: 20,
+          type: 'food',
+          units: 'grams',
+        },
+        {
+          key: 'eggs',
+          servings: 20,
+          type: 'food',
+          units: 'grams',
+        },
+        {
+          key: 'eggs',
+          servings: 20,
+          type: 'food',
+          units: 'grams',
+        },
         {
           key: 'eggs',
           servings: 20,
@@ -72,40 +85,57 @@ export class MainComponent {
         // }
       ]
     },
-    {
-      name: 'Lunch',
-      mealItems: [
-        {
-          key: 'eggs',
-          servings: 20,
-          type: 'food',
-          units: 'grams',
-        },
-        // {
-        //   key: 'pizza',
-        //   servings: 1,
-        //   type: 'recipie',
-        //   units: 'grams',
-        // }
-      ]
-    },
-    {
-      name: 'Dinner',
-      mealItems: [
-        {
-          key: 'eggs',
-          servings: 20,
-          type: 'food',
-          units: 'grams',
-        },
-        // {
-        //   key: 'pizza',
-        //   servings: 1,
-        //   type: 'recipie',
-        //   units: 'grams',
-        // }
-      ]
-    },
+    // {
+    //   name: 'Breakfast',
+    //   mealItems: [
+    //     {
+    //       key: 'eggs',
+    //       servings: 20,
+    //       type: 'food',
+    //       units: 'grams',
+    //     },
+    //     // {
+    //     //   key: 'pizza',
+    //     //   servings: 1,
+    //     //   type: 'recipie',
+    //     //   units: 'grams',
+    //     // }
+    //   ]
+    // },
+    // {
+    //   name: 'Lunch',
+    //   mealItems: [
+    //     {
+    //       key: 'eggs',
+    //       servings: 20,
+    //       type: 'food',
+    //       units: 'grams',
+    //     },
+    //     // {
+    //     //   key: 'pizza',
+    //     //   servings: 1,
+    //     //   type: 'recipie',
+    //     //   units: 'grams',
+    //     // }
+    //   ]
+    // },
+    // {
+    //   name: 'Dinner',
+    //   mealItems: [
+    //     {
+    //       key: 'eggs',
+    //       servings: 20,
+    //       type: 'food',
+    //       units: 'grams',
+    //     },
+    //     // {
+    //     //   key: 'pizza',
+    //     //   servings: 1,
+    //     //   type: 'recipie',
+    //     //   units: 'grams',
+    //     // }
+    //   ]
+    // },
   ]
 
   public test(v) {
