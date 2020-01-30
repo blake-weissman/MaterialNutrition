@@ -22,18 +22,18 @@
         </mat-form-field>
         <table class="mat-h4">
             <tr>
-                <th>Calories</th>
-                <th>Fat (g)</th>
-                <th>Carbs (g)</th>
-                <th>Protein (g)</th>
+                <th>Total Calories</th>
+                <th>Total Fat (g)</th>
+                <th>Total Carbs (g)</th>
+                <th>Total Protein (g)</th>
                 <th>Total Amount ({{selectedItem.servingTypes[item.units].unit}})</th>
             </tr>
-            <tr>
-                <td>{{selectedItem.calories}}</td>
-                <td>{{selectedItem.fat}}</td>
-                <td>{{selectedItem.carbs}}</td>
-                <td>{{selectedItem.protien}}</td>
-                <td>{{item.servings * selectedItem.servingTypes[item.units].servingSize}}</td>
+            <tr *ngIf="selectedItem.servingTypes[item.units].servingSize; let servingSize">
+                <td>{{selectedItem.calories * servingSize}}</td>
+                <td>{{selectedItem.fat * servingSize}}</td>
+                <td>{{selectedItem.carbs * servingSize}}</td>
+                <td>{{selectedItem.protien * servingSize}}</td>
+                <td>{{item.servings * servingSize}}</td>
             </tr>
         </table> 
         <div>   
