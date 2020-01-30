@@ -26,6 +26,7 @@ import { MealItemComponent } from './components/main/meal-item/meal-item.compone
 import { ObjectKeysPipe } from './pipes/objectKeys/object-keys.pipe';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { ObjectValuesPipe } from './pipes/objectValues/object-values.pipe';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -64,6 +65,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     MainComponent,
     MealItemComponent,
     ObjectKeysPipe,
+    ObjectValuesPipe,
   ],
   imports: [
     BrowserModule,
