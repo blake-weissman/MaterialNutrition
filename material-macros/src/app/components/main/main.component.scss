@@ -10,13 +10,16 @@
         width: 100%;
     }
 
-    // mat-expansion-panel {
-    //     border-radius: 0;
-    //     background: mat-color($material-macros-accent);
-    //     & , ::ng-deep mat-expansion-panel-header span {
-    //         color: mat-color($material-macros-accent, 'accent-contrast');
-    //     }
-    // }
+    mat-expansion-panel {
+        border-radius: 0;
+        background: mat-color($material-macros-accent);
+        position: fixed;
+        width: 100%;
+        z-index: 1;
+        & , ::ng-deep mat-expansion-panel-header span {
+            color: mat-color($material-macros-accent, 'accent-contrast');
+        }
+    }
 
     cdk-virtual-scroll-viewport {
         width: 100%;
@@ -31,14 +34,14 @@
         margin-right: auto;
     }
 
-    mat-expansion-panel {
-        box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12) !important;
-        border-width: 1px;
-        border-style: solid;
-        border-color: #e0e0e0;
-        margin-bottom: 20px;
-        border-radius: 4px;
-    }
+    // mat-expansion-panel {
+    //     box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12) !important;
+    //     border-width: 1px;
+    //     border-style: solid;
+    //     border-color: #e0e0e0;
+    //     margin-bottom: 20px;
+    //     border-radius: 4px;
+    // }
 
     [mat-fab] {
         position: fixed;

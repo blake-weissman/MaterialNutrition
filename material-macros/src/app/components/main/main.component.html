@@ -8,18 +8,18 @@
                 add
             </mat-icon>
         </button> 
+        <mat-expansion-panel hideToggle="true" expanded="true" disabled="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Title
+                </mat-panel-title>
+                <!-- <mat-panel-description>
+                    Desc
+                </mat-panel-description> -->
+            </mat-expansion-panel-header>
+            <p>Test</p>
+        </mat-expansion-panel>
         <cdk-virtual-scroll-viewport itemSize="50">
-            <mat-expansion-panel hideToggle="true" expanded="true" disabled="true">
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Title
-                    </mat-panel-title>
-                    <!-- <mat-panel-description>
-                        Desc
-                    </mat-panel-description> -->
-                </mat-expansion-panel-header>
-                <p>Test</p>
-            </mat-expansion-panel>
             <div cdkDropList (cdkDropListDropped)="drop($event)">
                 <ng-container *cdkVirtualFor="let meal of meals">
                     <ng-container *ngIf="meal.name === 'Other'; else mealDisplay">
