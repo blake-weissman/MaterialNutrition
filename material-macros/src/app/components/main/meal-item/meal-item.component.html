@@ -1,17 +1,33 @@
 <!-- {{item | json}} -->
 
 <ng-container *ngIf="userMealItems[item.type][item.key]; let selectedItem">
-    <mat-expansion-panel *ngIf="selectedItem.servingTypes[item.units].servingSize; let servingSize">
+    <mat-expansion-panel *ngIf="selectedItem.servingTypes[item.units].servingSize; let servingSize" class="mat-elevation-z0">
         <mat-expansion-panel-header>
             <mat-panel-title>
                 {{selectedItem.label}}
             </mat-panel-title>
-            <mat-panel-description >
+            <!-- <mat-panel-description >
                 {{selectedItem.calories * servingSize}} calories, {{item.servings * servingSize}} {{selectedItem.servingTypes[item.units].unit}}
-            </mat-panel-description >
+            </mat-panel-description > -->
         </mat-expansion-panel-header>
 
         <div>
+            <table class="mat-h4">
+                <tr>
+                    <th>Total Calories</th>
+                    <th>Total Fat (g)</th>
+                    <th>Total Carbs (g)</th>
+                    <th>Total Protein (g)</th>
+                    <th>Total Amount ({{selectedItem.servingTypes[item.units].unit}})</th>
+                </tr>
+                <tr>
+                    <td>{{selectedItem.calories * servingSize}}</td>
+                    <td>{{selectedItem.fat * servingSize}}</td>
+                    <td>{{selectedItem.carbs * servingSize}}</td>
+                    <td>{{selectedItem.protien * servingSize}}</td>
+                    <td>{{item.servings * servingSize}}</td>
+                </tr>
+            </table> 
             <mat-form-field appearance="outline" floatLabel="always">
                 <mat-label>Food</mat-label>
                 <!--TODO: Force select dropdown to always start with first item on top due to search bar-->
@@ -29,22 +45,6 @@
                     </ng-container>
                 </mat-select>
             </mat-form-field>
-            <table class="mat-h4">
-                <tr>
-                    <th>Total Calories</th>
-                    <th>Total Fat (g)</th>
-                    <th>Total Carbs (g)</th>
-                    <th>Total Protein (g)</th>
-                    <th>Total Amount ({{selectedItem.servingTypes[item.units].unit}})</th>
-                </tr>
-                <tr>
-                    <td>{{selectedItem.calories * servingSize}}</td>
-                    <td>{{selectedItem.fat * servingSize}}</td>
-                    <td>{{selectedItem.carbs * servingSize}}</td>
-                    <td>{{selectedItem.protien * servingSize}}</td>
-                    <td>{{item.servings * servingSize}}</td>
-                </tr>
-            </table> 
             <div>   
                 <mat-form-field appearance="standard">
                     <mat-label>Servings</mat-label>
