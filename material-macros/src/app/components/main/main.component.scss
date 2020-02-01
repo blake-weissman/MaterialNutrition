@@ -1,4 +1,5 @@
 @import '../../../styles';
+@import '~@angular/material/theming';
 
 :host {
     mat-sidenav-container {
@@ -10,15 +11,33 @@
         width: 100%;
     }
 
-    mat-expansion-panel {
+    #macro-display {
+        @include mat-elevation(2);
         border-radius: 0;
         background: mat-color($material-macros-accent);
         position: fixed;
         width: 100%;
         z-index: 1;
-        & , ::ng-deep mat-expansion-panel-header span {
-            color: mat-color($material-macros-accent, 'accent-contrast');
+        color: mat-color($material-macros-accent, 'accent-contrast');
+        padding-right: 264px;
+        div {
+          max-width: 700px;
+          margin: 0 auto;
+          padding: 24px;
         }
+        h1 {
+          margin: 0;
+          margin-bottom: 4px;
+        }
+        h3 {
+          line-height: 24px;
+          margin-bottom: 10px;
+        }
+    }
+
+    mat-expansion-panel-header {
+      max-width: 700px;
+      margin: 0 auto;
     }
 
     cdk-virtual-scroll-viewport {
@@ -29,9 +48,8 @@
     [cdkdroplist] {
         height: 100%;
         max-width: 700px;
-        padding: 20px;
-        margin-left: auto;
-        margin-right: auto;
+        padding: 24px;
+        margin: 0 auto;
     }
 
     // mat-expansion-panel {

@@ -8,17 +8,21 @@
                 add
             </mat-icon>
         </button> 
-        <mat-expansion-panel hideToggle="true" expanded="true" disabled="true">
-            <mat-expansion-panel-header>
-                <mat-panel-title>
-                    Title
-                </mat-panel-title>
-                <!-- <mat-panel-description>
-                    Desc
-                </mat-panel-description> -->
-            </mat-expansion-panel-header>
-            <p>Test</p>
-        </mat-expansion-panel>
+        <div id="macro-display">
+            <div>
+                <h1 class="mat-display-2">
+                    3000/3000 Cal
+                </h1>
+                <h3 class="mat-h3">
+                    Fat: 225/225g
+                    <br>
+                    Carbs: 225/225g
+                    <br>
+                    Protien: 225/225g
+                </h3>
+                <button mat-stroked-button>Edit</button>
+            </div>
+        </div>
         <cdk-virtual-scroll-viewport itemSize="50">
             <div cdkDropList (cdkDropListDropped)="drop($event)">
                 <ng-container *cdkVirtualFor="let meal of meals">
