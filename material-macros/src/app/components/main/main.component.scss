@@ -1,0 +1,60 @@
+@import '../../../styles';
+@import '~@angular/material/theming';
+
+mat-sidenav-container {
+  height: 100%;
+}
+
+mat-sidenav {
+  max-width: 264px;
+  width: 100%;
+}
+
+#macro-display {
+  @include mat-elevation(2);
+  border-radius: 0;
+  background: mat-color($material-macros-accent);
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  color: mat-color($material-macros-accent, 'accent-contrast');
+  padding-right: 264px;
+  div {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+  h1 {
+    margin: 0;
+    margin-bottom: 4px;
+  }
+  h3 {
+    line-height: 24px;
+    margin-bottom: 10px;
+  }
+}
+
+mat-expansion-panel-header {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+cdk-virtual-scroll-viewport {
+  width: 100%;
+  height: 100%;
+}
+
+[cdkdroplist] {
+  height: 100%;
+  max-width: 700px;
+  padding: 24px;
+  margin: 0 auto;
+  margin-top: 218px;
+}
+
+[mat-fab] {
+  position: fixed;
+  z-index: 1;
+  bottom: 20px;
+  right: 35px;
+}

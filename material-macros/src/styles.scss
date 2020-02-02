@@ -1,0 +1,27 @@
+
+
+@import '~@angular/material/theming';
+@include mat-core();
+$material-macros-palette: (
+    primary: #004d40,
+    accent: #39796b,
+    contrast: (
+        primary: #ffffff,
+        accent: #ffffff,
+    )
+);
+$material-macros-primary: mat-palette($material-macros-palette, primary);
+$material-macros-accent: mat-palette($material-macros-palette, accent);
+$material-macros-warn: mat-palette($mat-red);
+$material-macros-theme: mat-light-theme($material-macros-primary, $material-macros-accent, $material-macros-warn);
+@include angular-material-theme($material-macros-theme);
+
+html, body { 
+    height: 100%; 
+}
+body { 
+    margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
+* { 
+    box-sizing: border-box; 
+}
