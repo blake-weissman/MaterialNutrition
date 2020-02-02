@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-main',
@@ -7,35 +8,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
-
   // TODO create proper global model/keys
-  // public OTHER_MEAL_ITEMS_KEY;
-  // public meals = [
-  //     {
-  //       {
-  //         key: 'eggs',
-  //         quantity: 20,
-  //         type: 'food'
-  //       },
-  //       {
-  //         key: 'pizza',
-  //         quantity: 1,
-  //         type: 'recipie'
-  //       }
-  //     },
-  //     {
-  //       {
-  //         key: 'eggs',
-  //         quantity: 20,
-  //         type: 'food'
-  //       },
-  //       {
-  //         key: 'pizza',
-  //         quantity: 1,
-  //         type: 'recipie'
-  //       }
-  //     },
-  //   ]
 
   public meals = [
     {
@@ -138,13 +111,8 @@ export class MainComponent {
     // },
   ]
 
-  public test(v) {
-    console.log(v);
-  }
-
   public drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.meals, event.previousIndex, event.currentIndex);
     this.meals = [...this.meals];
   }
-
 }

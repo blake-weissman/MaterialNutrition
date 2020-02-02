@@ -1,66 +1,44 @@
 <mat-sidenav-container>
-    <mat-sidenav mode="side" opened>
-        <mat-calendar></mat-calendar>
-    </mat-sidenav>
-    <mat-sidenav-content>
-        <button mat-fab color="primary">
-            <mat-icon>
-                add
-            </mat-icon>
-        </button> 
-        <div id="macro-display">
-            <div>
-                <h1 class="mat-display-2">
-                    3000/3000 Cal
-                </h1>
-                <h3 class="mat-h3">
-                    Fat: 225/225g
-                    <br>
-                    Carbs: 225/225g
-                    <br>
-                    Protien: 225/225g
-                </h3>
-                <button mat-stroked-button>Edit Goals</button>
-            </div>
-        </div>
-        <cdk-virtual-scroll-viewport itemSize="50">
-            <div cdkDropList (cdkDropListDropped)="drop($event)">
-                <ng-container *cdkVirtualFor="let meal of meals">
-                    <ng-container *ngIf="meal.name === 'Other'; else mealDisplay">
-                        <app-meal-item *ngFor='let mealItem of meal.mealItems' cdkDrag [item]='mealItem'>
-                        </app-meal-item>
-                    </ng-container>
-                    <ng-template #mealDisplay>
-                        <mat-expansion-panel cdkDrag>
-                            <mat-expansion-panel-header>
-                                <mat-panel-title>
-                                    {{meal.name}}
-                                </mat-panel-title>
-                                <mat-panel-description>
-                                    The quick brown fox jumped over the lazy dogs.
-                                </mat-panel-description>
-                            </mat-expansion-panel-header>
-                            <app-meal-item *ngFor='let mealItem of meal.mealItems' cdkDrag [item]='mealItem'>
-                            </app-meal-item>
-                        </mat-expansion-panel>
-                    </ng-template>
-                    <!-- <div *ngIf="meal.name === 'Other'" cdkDrag>{{meal | json}}</div>
-                    <ng-template #meal>
-                        <mat-expansion-panel cdkDrag>
-                            <mat-expansion-panel-header>
-                                <mat-panel-title>
-                                    {{meal.name}}
-                                </mat-panel-title>
-                                <mat-panel-description>
-                                    The quick brown fox jumped over the lazy dogs.
-                                </mat-panel-description>
-                            </mat-expansion-panel-header>
-                            hello
-                        </mat-expansion-panel>
-                    </ng-template> -->
-                    <!-- <div *ngFor="let mealItem of meals[key];" style="border: 1px solid grey; background: white;" cdkDrag>{{mealItem | json}}</div> -->
-                </ng-container>
-            </div>
-        </cdk-virtual-scroll-viewport>
-    </mat-sidenav-content>
+  <mat-sidenav mode="side" opened>
+    <mat-calendar></mat-calendar>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <button mat-fab color="primary">
+      <mat-icon>
+        add
+      </mat-icon>
+    </button> 
+    <div id="macro-display">
+      <div>
+        <h1 class="mat-display-2">
+          3000/3000 Cal
+        </h1>
+        <h3 class="mat-h3">
+          Fat: 225/225g
+          <br>
+          Carbs: 225/225g
+          <br>
+          Protien: 225/225g
+        </h3>
+        <button mat-stroked-button>Edit Goals</button>
+      </div>
+    </div>
+    <cdk-virtual-scroll-viewport itemSize="50">
+      <div cdkDropList (cdkDropListDropped)="drop($event)">
+        <ng-container *cdkVirtualFor="let meal of meals">
+          <!--
+              In the future users will be able to catagorize foods into custom meals. 
+              For now users can only store foods into the "Other" meal, which just 
+              displays the list of foods without nesting them.
+          -->
+          <ng-container *ngIf="meal.name === 'Other'; else mealDisplay">
+              <app-meal-item *ngFor='let mealItem of meal.mealItems' cdkDrag [item]='mealItem'>
+              </app-meal-item>
+          </ng-container>
+          <ng-template #mealDisplay>
+          </ng-template>
+        </ng-container>
+      </div>
+    </cdk-virtual-scroll-viewport>
+  </mat-sidenav-content>
 </mat-sidenav-container>
