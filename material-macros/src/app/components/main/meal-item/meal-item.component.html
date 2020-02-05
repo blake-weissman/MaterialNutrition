@@ -1,11 +1,15 @@
 <!-- {{item | json}} -->
 
-<mat-icon>drag_handle</mat-icon>
-<div *ngIf="userMealItems[item.type][item.key]; let selectedItem">
+<ng-container *ngIf="userMealItems[item.type][item.key]; let selectedItem">
   <ng-container *ngIf="selectedItem.servingTypes[item.units].servingSize; let servingSize" class="mat-elevation-z0">
-    <h1 style="margin: 0; margin-bottom: 8px;" class="mat-h1">
-      {{selectedItem.label}}
-    </h1>
+    <div>
+      <h1 style="margin: 0; margin-bottom: 8px;" class="mat-h1">
+        {{selectedItem.label}}
+      </h1>
+      <mat-icon>
+        drag_handle
+      </mat-icon>
+    </div>
     <h3 class="mat-h3">
       Fat: 225/225g
       <br>
@@ -29,5 +33,6 @@
         </mat-select>
       </mat-form-field>
     </div>
+    <button mat-stroked-button color="warn">Remove</button>
   </ng-container>
-</div>
+</ng-container>
