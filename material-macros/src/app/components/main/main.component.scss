@@ -14,11 +14,8 @@ mat-sidenav {
   @include mat-elevation(2);
   border-radius: 0;
   background: mat-color($material-macros-accent);
-  position: fixed;
   width: 100%;
-  z-index: 1;
   color: mat-color($material-macros-accent, 'accent-contrast');
-  padding-right: 264px;
   div {
     max-width: 700px;
     margin: 0 auto;
@@ -49,7 +46,6 @@ cdk-virtual-scroll-viewport {
   max-width: 700px;
   padding: 24px;
   margin: 0 auto;
-  margin-top: 218px;
 }
 
 [mat-fab] {
