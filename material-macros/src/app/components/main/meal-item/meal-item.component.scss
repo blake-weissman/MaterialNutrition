@@ -33,7 +33,14 @@
 }
 
 h1 {
-    line-height: 0;
+    line-height: 1;
+    margin: 0;
+    margin-bottom: 12px;
+}
+
+h3 {
+    line-height: 26px;
+    margin: 0;
 }
 
 mat-form-field {
