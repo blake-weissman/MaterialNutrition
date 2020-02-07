@@ -11,11 +11,15 @@
       </mat-icon>
     </div>
     <h3 class="mat-h3">
-      Fat: 225/225g
+      Total: {{item.servings * servingSize}}{{selectedItem.servingTypes[item.units].unit}}
       <br>
-      Carbs: 225/225g
+      Calories: {{selectedItem.calories * servingSize}}
       <br>
-      Protien: 225/225g
+      Fat: {{selectedItem.fat * servingSize}}g
+      <br>
+      Carbs: {{selectedItem.carbs * servingSize}}g
+      <br>
+      Protien: {{selectedItem.protien * servingSize}}g
     </h3>
     <div>   
       <mat-form-field appearance="standard">
