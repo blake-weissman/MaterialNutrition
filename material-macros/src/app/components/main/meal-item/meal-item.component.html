@@ -1,15 +1,15 @@
 <!-- {{item | json}} -->
 
-<ng-container *ngIf="userMealItems[item.type][item.key]; let selectedItem">
-  <ng-container *ngIf="selectedItem.servingTypes[item.units].servingSize; let servingSize" class="mat-elevation-z0">
-    <div>
-      <h1 style="margin: 0; margin-bottom: 8px;" class="mat-h1">
-        {{selectedItem.label}}
-      </h1>
-      <mat-icon>
-        drag_handle
-      </mat-icon>
-    </div>
+<mat-expansion-panel *ngIf="userMealItems[item.type][item.key]; let selectedItem" [expanded]="true" hideToggle class="mat-elevation-z0">
+  <mat-expansion-panel-header>
+    <h1 style="margin: 0;" class="mat-h2">
+      {{selectedItem.label}}
+    </h1>
+    <mat-icon>
+      drag_handle
+    </mat-icon>
+  </mat-expansion-panel-header>
+  <div *ngIf="selectedItem.servingTypes[item.units].servingSize; let servingSize">
     <h3 class="mat-h3">
       Total: {{item.servings * servingSize}}{{selectedItem.servingTypes[item.units].unit}}
       <br>
@@ -37,6 +37,6 @@
         </mat-select>
       </mat-form-field>
     </div>
-    <button mat-stroked-button color="warn">Remove</button>
-  </ng-container>
-</ng-container>
+  </div>
+  <button mat-stroked-button color="warn">Remove</button>
+</mat-expansion-panel>
