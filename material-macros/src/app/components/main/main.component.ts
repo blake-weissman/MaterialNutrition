@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main',
@@ -8,8 +9,21 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
-  // TODO create proper global model/keys
 
+  constructor(
+    private router: Router,
+    ) {
+  }
+
+  onDateSelect(date: Date): void {
+    this.router.navigateByUrl('/' + date.getTime());
+  } 
+  
+  public days = {
+
+  }
+
+  // TODO create proper global model/keys
   public meals = [
     {
       name: 'Other',
