@@ -1,16 +1,16 @@
 <!-- {{item | json}} -->
 
-<mat-expansion-panel *ngIf="userMealItems[item.type][item.key]; let selectedItem" [expanded]="true" hideToggle class="mat-elevation-z0">
+<mat-expansion-panel *ngIf="userMealItems[item.type][item.key]; let selectedItem" [expanded]="true" hideToggle class="mat-typography">
   <mat-expansion-panel-header>
-    <h1 style="margin: 0;" class="mat-h2">
+    <h2>
       {{selectedItem.label}}
-    </h1>
+    </h2>
     <mat-icon>
       drag_handle
     </mat-icon>
   </mat-expansion-panel-header>
   <div *ngIf="selectedItem.servingTypes[item.units].servingSize; let servingSize">
-    <h3 class="mat-h3">
+    <h3>
       Total: {{item.servings * servingSize}}{{selectedItem.servingTypes[item.units].unit}}
       <br>
       Calories: {{selectedItem.calories * servingSize}}
