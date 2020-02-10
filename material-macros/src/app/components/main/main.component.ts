@@ -23,6 +23,7 @@ interface Meals {
 export class MainComponent implements OnInit, OnDestroy {
   private dateSubscription: Subscription;
   public meals: Meals[];
+  public selectedDate = new Date();
 
   constructor(
     private router: Router,
@@ -43,6 +44,7 @@ export class MainComponent implements OnInit, OnDestroy {
   }
 
   onDateSelect(date: Date): void {
+    this.selectedDate = date;
     this.router.navigateByUrl('/' + date.getTime());
   } 
   
