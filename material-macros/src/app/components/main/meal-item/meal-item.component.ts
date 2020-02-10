@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ItemType } from 'src/app/model/item-type';
 
 @Component({
   selector: 'app-meal-item',
@@ -6,10 +7,10 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./meal-item.component.scss']
 })
 export class MealItemComponent {
-  @Input() item: any;
+  @Input('mealItem') currentMealItem: any;
 
-  public userMealItems = {
-    food: {
+  public userItems = {
+    [ItemType.FOOD]: {
       eggs: {
         label: 'Eggs',
         grams: 20,
@@ -30,27 +31,6 @@ export class MealItemComponent {
           }
         } 
       },
-      oats: {
-        label: 'Oats',
-        grams: 45,
-        calories: 100,
-        fat: 14,
-        carbs: 16,
-        protien: 20,
-        servingTypes:{
-          grams: {
-            label: 'Grams',
-            unit: 'g',
-            servingSize: 20
-          }
-        }
-      }
     },
-    // recipie: {
-    //   pizza: {
-    //     label: 'Pizza',
-    //     foods: ['eggs', 'oats']
-    //   }
-    // }
   }
 }

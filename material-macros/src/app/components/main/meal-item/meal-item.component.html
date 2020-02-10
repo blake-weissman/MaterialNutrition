@@ -1,36 +1,36 @@
-<!-- {{item | json}} -->
 
-<mat-expansion-panel *ngIf="userMealItems[item.type][item.key]; let selectedItem" [expanded]="true" hideToggle class="mat-typography">
+
+<mat-expansion-panel *ngIf="userItems[currentMealItem.type][currentMealItem.key]; let item" [expanded]="true" hideToggle class="mat-typography">
   <mat-expansion-panel-header>
     <h2>
-      {{selectedItem.label}}
+      {{item.label}}
     </h2>
     <mat-icon>
       drag_handle
     </mat-icon>
   </mat-expansion-panel-header>
-  <div *ngIf="selectedItem.servingTypes[item.units].servingSize; let servingSize">
+  <div *ngIf="item.servingTypes[currentMealItem.units]?.servingSize; let servingSize">
     <h3>
-      Total: {{item.servings * servingSize}}{{selectedItem.servingTypes[item.units].unit}}
+      Total ({{item.servingTypes[currentMealItem.units].unit}}): {{currentMealItem.servings * servingSize}}
       <br>
-      Calories: {{selectedItem.calories * servingSize}}
+      Calories: {{item.calories * currentMealItem.servings * servingSize}}
       <br>
-      Fat: {{selectedItem.fat * servingSize}}g
+      Fat: {{item.fat  * currentMealItem.servings * servingSize}}g
       <br>
-      Carbs: {{selectedItem.carbs * servingSize}}g
+      Carbs: {{item.carbs  * currentMealItem.servings * servingSize}}g
       <br>
-      Protien: {{selectedItem.protien * servingSize}}g
+      Protien: {{item.protien  * currentMealItem.servings * servingSize}}g
     </h3>
     <div>   
       <mat-form-field appearance="standard">
         <mat-label>Servings</mat-label>
-        <input matInput [(ngModel)]="item.servings">
+        <input matInput [(ngModel)]="currentMealItem.servings">
       </mat-form-field>
       <mat-form-field appearance="standard">
         <mat-label>Units</mat-label>
-        <mat-select [(ngModel)]="item.units">
-          <mat-option *ngFor="let servingTypeKey of (selectedItem.servingTypes | objectKeys)" [value]="servingTypeKey">
-            <ng-container *ngIf="selectedItem.servingTypes[servingTypeKey]; let servingType">
+        <mat-select [(ngModel)]="currentMealItem.units">
+          <mat-option *ngFor="let servingTypeKey of (item.servingTypes | objectKeys)" [value]="servingTypeKey">
+            <ng-container *ngIf="item.servingTypes[servingTypeKey]; let servingType">
               {{servingType.label}} ({{servingType.unit}})
             </ng-container>
           </mat-option>

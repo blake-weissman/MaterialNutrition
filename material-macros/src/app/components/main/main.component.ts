@@ -3,18 +3,14 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatDialog } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-
-enum Type {
-  FOOD,
-  RECIPIE
-}
+import { ItemType } from 'src/app/model/item-type';
 
 interface Meals {
   name: string, 
   items: {
     key: string, 
     servings: number, 
-    type: Type, 
+    type: ItemType, 
     units: string
   }[]
 }
@@ -60,13 +56,13 @@ export class MainComponent implements OnInit, OnDestroy {
           {
             key: 'eggs',
             servings: 20,
-            type: Type.FOOD,
+            type: ItemType.FOOD,
             units: 'grams',
           },
           {
             key: 'eggs',
             servings: 20,
-            type: Type.FOOD,
+            type: ItemType.FOOD,
             units: 'grams',
           },
         ]

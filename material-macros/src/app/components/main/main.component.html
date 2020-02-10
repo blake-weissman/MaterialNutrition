@@ -8,7 +8,7 @@
       <mat-icon>
         add
       </mat-icon>
-    </button> 
+    </button>
     <cdk-virtual-scroll-viewport itemSize="50">
       <div id="macro-display">
         <div>
@@ -33,7 +33,7 @@
             displays the list of foods without nesting them.
           -->
           <ng-container *ngIf="meal.name === 'Other'; else mealDisplay">
-            <app-meal-item *ngFor='let mealItem of meal.mealItems' cdkDrag [item]='mealItem'>
+            <app-meal-item *ngFor='let item of meal.items' cdkDrag [mealItem]='item'>
             </app-meal-item>
           </ng-container>
           <ng-template #mealDisplay>
