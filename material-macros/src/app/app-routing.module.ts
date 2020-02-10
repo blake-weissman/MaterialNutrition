@@ -17,6 +17,12 @@ const routes: Routes = [
     ...canActivate(redirectUnauthorizedTo(['login']))
   },
   { 
+    path: '',
+    redirectTo: `${(new Date(new Date().setHours(0,0,0,0))).getTime()}`,
+    pathMatch: 'full',
+    ...canActivate(redirectUnauthorizedTo(['login']))
+  },
+  { 
     path: '**', 
     redirectTo: ''
   }
