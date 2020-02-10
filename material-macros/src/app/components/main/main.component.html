@@ -1,5 +1,6 @@
 <mat-sidenav-container>
   <mat-sidenav mode="side" opened>
+    {{selectedDate}}
     <mat-calendar [selected]="selectedDate" (selectedChange)="onDateSelect($event)">
     </mat-calendar>
   </mat-sidenav>

@@ -34,8 +34,8 @@ export class MainComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.dateSubscription = this.activatedRoute.params.subscribe(params => {
+      this.selectedDate = new Date(Number(params.date));
       this.meals = this.days[params.date];
-      // console.log(params['date']);
     });
   }
 
@@ -44,7 +44,6 @@ export class MainComponent implements OnInit, OnDestroy {
   }
 
   onDateSelect(date: Date): void {
-    this.selectedDate = date;
     this.router.navigateByUrl('/' + date.getTime());
   } 
   
