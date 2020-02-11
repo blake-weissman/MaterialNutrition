@@ -78,8 +78,7 @@ export class MainComponent implements OnInit, OnDestroy {
 }
 
 @Component({
-  selector: 'add-item-dialog',
-  templateUrl: 'add-item-dialog.html',
+  template: '',
 })
 export class AddItemDialogEntryComponent {
   constructor(
