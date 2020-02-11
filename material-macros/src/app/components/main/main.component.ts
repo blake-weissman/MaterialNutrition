@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { ItemType } from 'src/app/model/item-type';
@@ -27,9 +27,9 @@ export class MainComponent implements OnInit, OnDestroy {
 
   constructor(
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private dialog: MatDialog
     ) {
-
   }
 
   ngOnInit() {
@@ -76,3 +76,32 @@ export class MainComponent implements OnInit, OnDestroy {
   //   this.meals = [...this.meals];
   // }
 }
+
+@Component({
+  selector: 'add-item-dialog',
+  templateUrl: 'add-item-dialog.html',
+})
+export class AddItemDialogEntryComponent {
+  constructor(
+    public dialog: MatDialog, 
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    this.openDialog();
+  }
+  openDialog(): void {
+    console.log('2');
+    const dialogRef = this.dialog.open(AddItemDialogComponent, {
+      width: '250px'
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.router.navigate(['../'], { relativeTo: this.route });
+    });
+  }
+}
+
+@Component({
+  selector: 'add-item-dialog',
+  templateUrl: 'add-item-dialog.html',
+})
+export class AddItemDialogComponent {}

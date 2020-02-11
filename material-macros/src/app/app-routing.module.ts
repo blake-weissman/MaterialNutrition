@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
-import { MainComponent } from './components/main/main.component';
+import { MainComponent, AddItemDialogEntryComponent} from './components/main/main.component';
 
 //TODO Add redirect to current date if the route is blank.
 const routes: Routes = [
@@ -14,7 +14,13 @@ const routes: Routes = [
   { 
     path: ':date',
     component: MainComponent,
-    ...canActivate(redirectUnauthorizedTo(['login']))
+    ...canActivate(redirectUnauthorizedTo(['login'])),
+    children: [
+      {
+        path: 'add',
+        component: AddItemDialogEntryComponent
+      }
+    ]
   },
   { 
     path: '',
