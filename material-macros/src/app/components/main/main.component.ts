@@ -28,9 +28,7 @@ export class MainComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private dialog: MatDialog
-    ) {
-  }
+  ) {}
 
   ngOnInit() {
     this.dateSubscription = this.activatedRoute.params.subscribe(params => {
@@ -80,22 +78,24 @@ export class MainComponent implements OnInit, OnDestroy {
 @Component({
   template: '',
 })
-export class AddItemDialogEntryComponent {
+export class AddItemDialogEntryComponent implements OnDestroy {
+  private redirectWhenClosedSubscription: Subscription;
+
   constructor(
-    public dialog: MatDialog, 
+    public matDialog: MatDialog, 
     private router: Router,
     private route: ActivatedRoute
   ) {
-    this.openDialog();
-  }
-  openDialog(): void {
-    console.log('2');
-    const dialogRef = this.dialog.open(AddItemDialogComponent, {
+    const addItemDialog = this.matDialog.open(AddItemDialogComponent, {
       width: '250px'
     });
-    dialogRef.afterClosed().subscribe(result => {
+    this.redirectWhenClosedSubscription = addItemDialog.afterClosed().subscribe(() => {
       this.router.navigate(['../'], { relativeTo: this.route });
     });
+  }
+
+  ngOnDestroy() {
+    this.redirectWhenClosedSubscription.unsubscribe();
   }
 }
 
