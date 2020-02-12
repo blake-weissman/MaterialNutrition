@@ -28,6 +28,7 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { ObjectValuesPipe } from './pipes/objectValues/object-values.pipe';
 import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import { ItemStatsComponent } from './components/main/item-stats/item-stats.component';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -69,6 +70,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     ObjectValuesPipe,
     AddItemDialogComponent,
     AddItemDialogEntryComponent,
+    ItemStatsComponent,
   ],
   imports: [
     BrowserModule,
