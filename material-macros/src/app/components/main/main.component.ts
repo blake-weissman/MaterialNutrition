@@ -69,6 +69,31 @@ export class MainComponent implements OnInit, OnDestroy {
     ]
   }
 
+  public userItems = {
+    [ItemType.FOOD]: {
+      eggs: {
+        label: 'Eggs',
+        grams: 20,
+        calories: 80,
+        fat: 4,
+        carbs: 46,
+        protien: 11,
+        servingTypes:{
+          grams: {
+            label: 'Grams',
+            unit: 'g',
+            servingSize: 20
+          },
+          eggs: {
+            label: 'Eggs',
+            unit: 'Eggs',
+            servingSize: 1
+          }
+        } 
+      },
+    },
+  }
+
   // public drop(event: CdkDragDrop<string[]>) {
   //   moveItemInArray(this.meals, event.previousIndex, event.currentIndex);
   //   this.meals = [...this.meals];
@@ -87,7 +112,7 @@ export class AddItemDialogEntryComponent implements OnDestroy {
     private route: ActivatedRoute
   ) {
     const addItemDialog = this.matDialog.open(AddItemDialogComponent, {
-      width: '250px'
+      width: '700px'
     });
     this.redirectWhenClosedSubscription = addItemDialog.afterClosed().subscribe(() => {
       this.router.navigate(['../'], { relativeTo: this.route });
@@ -102,5 +127,6 @@ export class AddItemDialogEntryComponent implements OnDestroy {
 @Component({
   selector: 'add-item-dialog',
   templateUrl: 'add-item-dialog.html',
+  styleUrls: ['./add-item-dialog.scss']
 })
 export class AddItemDialogComponent {}

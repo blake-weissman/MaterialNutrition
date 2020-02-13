@@ -22,13 +22,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MealItemComponent } from './components/main/meal-item/meal-item.component';
 import { ObjectKeysPipe } from './pipes/objectKeys/object-keys.pipe';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { ObjectValuesPipe } from './pipes/objectValues/object-values.pipe';
 import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
-import { ItemStatsComponent } from './components/main/item-stats/item-stats.component';
+import { MealItemStatsComponent } from './components/main/meal-item-stats/meal-item-stats.component';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -65,12 +64,11 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AppComponent,
     LoginComponent,
     MainComponent,
-    MealItemComponent,
     ObjectKeysPipe,
     ObjectValuesPipe,
     AddItemDialogComponent,
     AddItemDialogEntryComponent,
-    ItemStatsComponent,
+    MealItemStatsComponent,
   ],
   imports: [
     BrowserModule,

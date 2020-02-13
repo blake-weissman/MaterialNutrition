@@ -35,8 +35,21 @@
             displays the list of foods without nesting them.
           -->
           <ng-container *ngIf="meal.name === 'Other'; else mealDisplay">
-            <app-meal-item *ngFor='let item of meal.items' cdkDrag [mealItem]='item'>
-            </app-meal-item>
+            <ng-container *ngFor='let mealItem of meal.items'>
+            <mat-expansion-panel *ngIf="userItems[mealItem.type][mealItem.key]; let userItem" [expanded]="true" hideToggle class="mat-typography">
+              <mat-expansion-panel-header>
+                <h2>
+                  {{userItem.label}}
+                </h2>
+                <mat-icon>
+                  drag_handle
+                </mat-icon>
+              </mat-expansion-panel-header>
+              <!--<app-meal-item-stats [item]="mealItem" [currentMealItem]="currentMealItem">
+              </app-meal-item-stats>-->
+              <button mat-stroked-button color="warn">Remove</button>
+            </mat-expansion-panel>
+            </ng-container>
           </ng-container>
           <ng-template #mealDisplay>
           </ng-template>

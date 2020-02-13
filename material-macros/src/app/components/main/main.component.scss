@@ -1,5 +1,6 @@
 @import '../../../styles';
 @import '~@angular/material/theming';
+@import '~@angular/material/theming';
 
 mat-sidenav-container {
   height: 100%;
@@ -54,4 +55,28 @@ cdk-virtual-scroll-viewport {
   z-index: 1;
   bottom: 20px;
   right: 35px;
+}
+
+mat-expansion-panel {
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0,0,0,.12) !important;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #e0e0e0;
+}
+
+mat-expansion-panel-header {
+    h2 {
+        margin: 0;
+    }
+}
+
+::ng-deep  {
+    &.mat-form-field-appearance-standard .mat-form-field-flex {
+        padding-top: 0;
+    }
+    &.mat-content {
+        justify-content: space-between;
+        align-items: center;
+    }
 }

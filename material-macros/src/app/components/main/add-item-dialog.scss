@@ -1,0 +1,18 @@
+.mat-form-field {
+  width: 100%;
+}
+::ng-deep  {
+  &.mat-select-panel-wrap {
+    #search {
+      display: flex;
+      align-items: center;
+      padding: 0.75em;
+    }
+    input {
+      margin-left: 0.25em;
+    }
+  }
+  &.mat-form-field-appearance-standard .mat-form-field-flex {
+    padding-top: 0;
+  }
+}

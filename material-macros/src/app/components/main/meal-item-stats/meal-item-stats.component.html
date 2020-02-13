@@ -1,0 +1,29 @@
+<ng-container *ngIf="userItem.servingTypes[mealItem.units]?.servingSize; let servingSize">
+  <h3>
+    Total ({{userItem.servingTypes[mealItem.units].unit}}): {{mealItem.servings * servingSize}}
+    <br>
+    Calories: {{userItem.calories * mealItem.servings * servingSize}}
+    <br>
+    Fat: {{userItem.fat  * mealItem.servings * servingSize}}g
+    <br>
+    Carbs: {{userItem.carbs  * mealItem.servings * servingSize}}g
+    <br>
+    Protien: {{userItem.protien  * mealItem.servings * servingSize}}g
+  </h3>
+  <div>   
+    <mat-form-field appearance="standard">
+      <mat-label>Servings</mat-label>
+      <input matInput [(ngModel)]="mealItem.servings">
+    </mat-form-field>
+    <mat-form-field appearance="standard">
+      <mat-label>Units</mat-label>
+      <mat-select [(ngModel)]="mealItem.units">
+      <mat-option *ngFor="let servingTypeKey of (userItem.servingTypes | objectKeys)" [value]="servingTypeKey">
+        <ng-container *ngIf="userItem.servingTypes[servingTypeKey]; let servingType">
+        {{servingType.label}} ({{servingType.unit}})
+        </ng-container>
+      </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</ng-container>
