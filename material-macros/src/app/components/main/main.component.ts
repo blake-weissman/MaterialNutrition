@@ -3,7 +3,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ItemsService, Meal } from 'src/app/services/items/items.service';
+import { ItemsService } from 'src/app/services/items/items.service';
 
 @Component({
   selector: 'app-main',
@@ -14,7 +14,6 @@ export class MainComponent implements OnInit, OnDestroy {
   private dateSubscription: Subscription;
   public selectedDate = new Date();
   public selectedEpoch: string;
-  // public meals: Meal[];
 
   constructor(
     private router: Router,
@@ -26,7 +25,6 @@ export class MainComponent implements OnInit, OnDestroy {
     this.dateSubscription = this.activatedRoute.params.subscribe(params => {
       this.selectedEpoch = params.date;
       this.selectedDate = new Date(Number(this.selectedEpoch));
-      // this.meals = this.itemsService.datesTracked[date];
     });
   }
 

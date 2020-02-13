@@ -7,11 +7,6 @@ export interface MealItem {
   units: string
 }
 
-export interface Meal {
-  name: string, 
-  items: MealItem[]
-}
-
 export interface UserItem {
   label: string,
   calories: number,
@@ -27,7 +22,7 @@ export interface UserItem {
   } 
 }
 
-export enum ItemType {
+enum ItemType {
   FOOD = "food",
   RECIPIE = "recipie"
 }
@@ -37,7 +32,10 @@ export enum ItemType {
 })
 export class ItemsService {
   public datesTracked: {
-    [key: number]: Meal[]
+    [key: number]: {
+      name: string, 
+      items: MealItem[]
+    }[]
   } = {
     1581224400000: [
       {
