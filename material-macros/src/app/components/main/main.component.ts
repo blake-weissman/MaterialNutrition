@@ -3,17 +3,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ItemType } from 'src/app/model/item-type';
-
-interface Meals {
-  name: string, 
-  items: {
-    key: string, 
-    servings: number, 
-    type: ItemType, 
-    units: string
-  }[]
-}
+import { ItemsService, Meal } from 'src/app/services/items/items.service';
 
 @Component({
   selector: 'app-main',
@@ -22,18 +12,21 @@ interface Meals {
 })
 export class MainComponent implements OnInit, OnDestroy {
   private dateSubscription: Subscription;
-  public meals: Meals[];
   public selectedDate = new Date();
+  public selectedEpoch: string;
+  // public meals: Meal[];
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    public itemsService: ItemsService,
   ) {}
 
   ngOnInit() {
     this.dateSubscription = this.activatedRoute.params.subscribe(params => {
-      this.selectedDate = new Date(Number(params.date));
-      this.meals = this.days[params.date];
+      this.selectedEpoch = params.date;
+      this.selectedDate = new Date(Number(this.selectedEpoch));
+      // this.meals = this.itemsService.datesTracked[date];
     });
   }
 
@@ -44,55 +37,6 @@ export class MainComponent implements OnInit, OnDestroy {
   onDateSelect(date: Date): void {
     this.router.navigateByUrl('/' + date.getTime());
   } 
-  
-  public days: {
-    [key: number]: Meals[]
-  } = {
-    1581224400000: [
-      {
-        name: 'Other',
-        items: [
-          {
-            key: 'eggs',
-            servings: 20,
-            type: ItemType.FOOD,
-            units: 'grams',
-          },
-          {
-            key: 'eggs',
-            servings: 20,
-            type: ItemType.FOOD,
-            units: 'grams',
-          },
-        ]
-      }
-    ]
-  }
-
-  public userItems = {
-    [ItemType.FOOD]: {
-      eggs: {
-        label: 'Eggs',
-        grams: 20,
-        calories: 80,
-        fat: 4,
-        carbs: 46,
-        protien: 11,
-        servingTypes:{
-          grams: {
-            label: 'Grams',
-            unit: 'g',
-            servingSize: 20
-          },
-          eggs: {
-            label: 'Eggs',
-            unit: 'Eggs',
-            servingSize: 1
-          }
-        } 
-      },
-    },
-  }
 
   // public drop(event: CdkDragDrop<string[]>) {
   //   moveItemInArray(this.meals, event.previousIndex, event.currentIndex);
