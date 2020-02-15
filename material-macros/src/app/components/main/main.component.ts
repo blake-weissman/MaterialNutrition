@@ -71,4 +71,8 @@ export class AddItemDialogEntryComponent implements OnDestroy {
   templateUrl: 'add-item-dialog.html',
   styleUrls: ['./add-item-dialog.scss']
 })
-export class AddItemDialogComponent {}
+export class AddItemDialogComponent {
+  constructor(
+    public itemsService: ItemsService,
+  ) {}
+}

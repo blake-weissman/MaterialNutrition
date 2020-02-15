@@ -22,7 +22,7 @@ export interface UserItem {
   } 
 }
 
-enum ItemType {
+export enum ItemType {
   FOOD = "food",
   RECIPIE = "recipie"
 }
