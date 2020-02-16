@@ -1,5 +1,10 @@
 @import '../../../styles';
 @import '~@angular/material/theming';
+@include mat-core();
+
+:host {
+  @extend .mat-typography;
+}
 
 mat-sidenav-container {
   height: 100%;
@@ -14,11 +19,8 @@ mat-sidenav {
   @include mat-elevation(2);
   border-radius: 0;
   background: mat-color($material-macros-accent);
-  position: fixed;
   width: 100%;
-  z-index: 1;
   color: mat-color($material-macros-accent, 'accent-contrast');
-  padding-right: 264px;
   div {
     max-width: 700px;
     margin: 0 auto;
@@ -46,10 +48,10 @@ cdk-virtual-scroll-viewport {
 
 [cdkdroplist] {
   height: 100%;
-  max-width: 700px;
+  //TODO Replace with something more cross-browser compatible
+  max-width: fit-content;
   padding: 24px;
   margin: 0 auto;
-  margin-top: 218px;
 }
 
 [mat-fab] {
@@ -57,4 +59,28 @@ cdk-virtual-scroll-viewport {
   z-index: 1;
   bottom: 20px;
   right: 35px;
+}
+
+mat-expansion-panel {
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0,0,0,.12) !important;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #e0e0e0;
+}
+
+mat-expansion-panel-header {
+    h2 {
+        margin: 0 !important;
+    }
+}
+
+::ng-deep  {
+    &.mat-form-field-appearance-standard .mat-form-field-flex {
+        padding-top: 0;
+    }
+    &.mat-content {
+        justify-content: space-between;
+        align-items: center;
+    }
 }

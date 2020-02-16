@@ -9,7 +9,7 @@ import { FirebaseUIModule, firebase, firebaseui } from 'firebaseui-angular';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { LoginComponent } from './components/login/login.component';
-import { MainComponent } from './components/main/main.component';
+import { MainComponent, AddItemDialogComponent, AddItemDialogEntryComponent } from './components/main/main.component';
 import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -22,11 +22,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
-import { MealItemComponent } from './components/main/meal-item/meal-item.component';
 import { ObjectKeysPipe } from './pipes/objectKeys/object-keys.pipe';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { ObjectValuesPipe } from './pipes/objectValues/object-values.pipe';
+import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import { MealItemStatsComponent } from './components/main/meal-item-stats/meal-item-stats.component';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -63,9 +64,11 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AppComponent,
     LoginComponent,
     MainComponent,
-    MealItemComponent,
     ObjectKeysPipe,
     ObjectValuesPipe,
+    AddItemDialogComponent,
+    AddItemDialogEntryComponent,
+    MealItemStatsComponent,
   ],
   imports: [
     BrowserModule,
@@ -88,9 +91,22 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     MatSelectModule,
     FormsModule,
     MatButtonModule,
+    MatDialogModule,
+    BrowserModule,
+    BrowserAnimationsModule
   ],
   providers: [
     AngularFireAuthGuard,
+    {
+      provide: MAT_DIALOG_DEFAULT_OPTIONS, 
+      useValue: {
+        hasBackdrop: true,
+        closeOnNavigation: true,
+      }
+    }
+  ],
+  entryComponents: [
+    AddItemDialogComponent,
   ],
   bootstrap: [AppComponent]
 })

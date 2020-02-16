@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>
+  Track New Item
+</h1>
+<mat-dialog-content>
+  <mat-form-field appearance="outline" floatLabel="always">
+    <mat-label>Item</mat-label>
+    <mat-select placeholder="Select item" [(ngModel)]="mealItem.key">
+      <div id="search">
+        <mat-icon>
+          search
+        </mat-icon>
+        <input matInput placeholder="Search">
+      </div>
+        <mat-option [value]="userItemKey" *ngFor="let userItemKey of (itemsService.userItems | objectKeys)">
+          {{itemsService.userItems[userItemKey].label}}
+        </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <app-meal-item-stats *ngIf="mealItem.key" [@userItemSelected] [userItem]="itemsService.userItems[mealItem.key]" [mealItem]="mealItem">
+  </app-meal-item-stats>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-stroked-button color="primary">Track</button>
+  <button mat-stroked-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>
