@@ -77,7 +77,7 @@ export class AddItemDialogEntryComponent implements OnDestroy {
         style({
           height: '0',
         }),
-        animate('250ms 75ms cubic-bezier(0.4, 0.0, 0.2, 1)', style({
+        animate('200ms 75ms cubic-bezier(0.4, 0.0, 0.2, 1)', style({
           height: '*', 
         }))
       ]),
