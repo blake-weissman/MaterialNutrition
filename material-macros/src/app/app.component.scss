@@ -11,3 +11,12 @@ div {
     padding-top: 56px;
   }
 }
+
+span {
+  font-family: 'Roboto Condensed', sans-serif;
+  display: flex;
+  align-items: center;
+  mat-icon {
+    margin-right: 5px;
+  }
+}
