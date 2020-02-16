@@ -4,5 +4,8 @@
 :host { 
   display: block;
   overflow: hidden;
-  @extend .mat-typography;
+}
+
+h3 {
+  @extend .mat-h3;
 }
