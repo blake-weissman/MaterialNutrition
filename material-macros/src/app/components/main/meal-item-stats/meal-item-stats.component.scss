@@ -1,4 +1,8 @@
-:host {
+@import '~@angular/material/theming';
+@include mat-core();
+
+:host { 
   display: block;
   overflow: hidden;
+  @extend .mat-typography;
 }

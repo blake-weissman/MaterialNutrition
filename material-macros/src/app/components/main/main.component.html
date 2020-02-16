@@ -14,10 +14,10 @@
     <cdk-virtual-scroll-viewport itemSize="50">
       <div id="macro-display">
         <div>
-          <h1 class="mat-display-2">
+          <h1>
             3000/3000 Cal
           </h1>
-          <h3 class="mat-h3">
+          <h3>
             Fat: 225/225g
             <br>
             Carbs: 225/225g
@@ -35,7 +35,7 @@
         -->
         <ng-container *cdkVirtualFor="let meal of itemsService.datesTracked[selectedEpoch]">
           <ng-container *ngFor='let mealItem of meal.items'>
-            <mat-expansion-panel *ngIf="itemsService.userItems[mealItem.key]; let userItem" [expanded]="true" hideToggle class="mat-typography">
+            <mat-expansion-panel *ngIf="itemsService.userItems[mealItem.key]; let userItem" [expanded]="true" hideToggle>
               <mat-expansion-panel-header>
                 <h2>
                   {{userItem.label}}
