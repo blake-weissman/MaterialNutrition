@@ -35,7 +35,7 @@
         -->
         <ng-container *cdkVirtualFor="let meal of itemsService.datesTracked[selectedEpoch]">
           <ng-container *ngFor='let mealItem of meal.items'>
-            <mat-expansion-panel *ngIf="itemsService.userItems[mealItem.type][mealItem.key]; let userItem" [expanded]="true" hideToggle class="mat-typography">
+            <mat-expansion-panel *ngIf="itemsService.userItems[mealItem.key]; let userItem" [expanded]="true" hideToggle class="mat-typography">
               <mat-expansion-panel-header>
                 <h2>
                   {{userItem.label}}

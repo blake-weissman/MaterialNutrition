@@ -13,6 +13,7 @@ export interface UserItem {
   fat: number,
   carbs: number,
   protien: number,
+  type: ItemType
   servingTypes: {
     [key: string] : {
       label: string,
@@ -59,30 +60,27 @@ export class ItemsService {
   }
 
   public userItems: {
-    [key: string]: {
-      [key: string]: UserItem
-    }
+    [key: string]: UserItem
   } = {
-    [ItemType.FOOD]: {
-      eggs: {
-        label: 'Eggs',
-        calories: 80,
-        fat: 4,
-        carbs: 46,
-        protien: 11,
-        servingTypes:{
-          grams: {
-            label: 'Grams',
-            unit: 'g',
-            servingSize: 20
-          },
-          eggs: {
-            label: 'Eggs',
-            unit: 'Eggs',
-            servingSize: 1
-          }
-        } 
-      },
+    eggs: {
+      label: 'Eggs',
+      calories: 80,
+      fat: 4,
+      carbs: 46,
+      protien: 11,
+      type: ItemType.FOOD,
+      servingTypes:{
+        grams: {
+          label: 'Grams',
+          unit: 'g',
+          servingSize: 20
+        },
+        eggs: {
+          label: 'Eggs',
+          unit: 'Eggs',
+          servingSize: 1
+        }
+      } 
     },
   }
 }

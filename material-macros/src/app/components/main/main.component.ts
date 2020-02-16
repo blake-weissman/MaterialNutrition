@@ -3,7 +3,8 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ItemsService } from 'src/app/services/items/items.service';
+import { ItemsService, UserItem } from 'src/app/services/items/items.service';
+import { trigger, state, transition, animate, style } from '@angular/animations';
 
 @Component({
   selector: 'app-main',
@@ -69,10 +70,31 @@ export class AddItemDialogEntryComponent implements OnDestroy {
 @Component({
   selector: 'add-item-dialog',
   templateUrl: 'add-item-dialog.html',
-  styleUrls: ['./add-item-dialog.scss']
+  styleUrls: ['./add-item-dialog.scss'],
+  animations: [
+    trigger('userItemSelected', [
+      // ...
+      transition(':enter', [   // :enter is alias to 'void => *'
+        style({
+          opacity:0
+        }),
+        animate(500, style({
+          opacity:1
+        })) 
+      ]),
+      transition(':leave', [   // :leave is alias to '* => void'
+        animate(500, style({
+          opacity:0
+        })) 
+      ])
+    ]),
+  ],
 })
 export class AddItemDialogComponent {
+  public selectedUserItemKey: string;
+
   constructor(
     public itemsService: ItemsService,
-  ) {}
+  ) 
+  {}
 }
