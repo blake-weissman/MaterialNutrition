@@ -54,9 +54,7 @@ export class AddItemDialogEntryComponent implements OnDestroy {
     private router: Router,
     private route: ActivatedRoute
   ) {
-    const addItemDialog = this.matDialog.open(AddItemDialogComponent, {
-      width: '700px'
-    });
+    const addItemDialog = this.matDialog.open(AddItemDialogComponent);
     this.redirectWhenClosedSubscription = addItemDialog.afterClosed().subscribe(() => {
       this.router.navigate(['../'], { relativeTo: this.route });
     });
@@ -71,6 +69,7 @@ export class AddItemDialogEntryComponent implements OnDestroy {
   selector: 'add-item-dialog',
   templateUrl: 'add-item-dialog.html',
   styleUrls: ['./add-item-dialog.scss'],
+  //TODO: Fix dialog width issues related to this aniamtion
   animations: [
     trigger('userItemSelected', [
       transition(':enter', [

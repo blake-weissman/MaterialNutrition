@@ -9,3 +9,9 @@
 h3 {
   @extend .mat-h3;
 }
+
+::ng-deep {
+  & .mat-form-field-appearance-standard .mat-form-field-flex {
+    padding-top: 5px !important;
+  }
+}
