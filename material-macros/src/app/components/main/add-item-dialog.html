@@ -1,6 +1,7 @@
 <h1 mat-dialog-title>
-  Track New Item
+  Add New Item
 </h1>
+{{itemsService.datesTracked[1581224400000][0].items | json}}
 <mat-dialog-content>
   <mat-form-field appearance="outline" floatLabel="always">
     <mat-label>Item</mat-label>
@@ -20,6 +21,7 @@
   </app-meal-item-stats>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-stroked-button color="primary">Track</button>
+  <!--TODO: ngVar-->
+  <button mat-stroked-button color="primary" mat-dialog-close (click)='addItem()'>Add</button>
   <button mat-stroked-button mat-dialog-close>Cancel</button>
 </mat-dialog-actions>

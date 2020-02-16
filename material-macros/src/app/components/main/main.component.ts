@@ -14,7 +14,6 @@ import { trigger, state, transition, animate, style } from '@angular/animations'
 export class MainComponent implements OnInit, OnDestroy {
   private dateSubscription: Subscription;
   public selectedDate = new Date();
-  public selectedEpoch: string;
 
   constructor(
     private router: Router,
@@ -24,8 +23,8 @@ export class MainComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.dateSubscription = this.activatedRoute.params.subscribe(params => {
-      this.selectedEpoch = params.date;
-      this.selectedDate = new Date(Number(this.selectedEpoch));
+      this.itemsService.selectedEpoch = params.date;
+      this.selectedDate = new Date(Number(this.itemsService.selectedEpoch));
     });
   }
 
@@ -92,6 +91,17 @@ export class AddItemDialogComponent {
 
   constructor(
     public itemsService: ItemsService,
-  ) 
-  {}
+  ) {}
+
+  public addItem(): void {
+    let currentDate = this.itemsService.datesTracked[this.itemsService.selectedEpoch];
+    if (currentDate) {
+      currentDate[0].items.push(this.mealItem);
+    } else {
+      this.itemsService.datesTracked[this.itemsService.selectedEpoch] = [{
+        name: 'Other',
+        items: [this.mealItem]
+      }]
+    }
+  }
 }

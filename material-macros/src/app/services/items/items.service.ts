@@ -31,6 +31,8 @@ export enum ItemType {
   providedIn: 'root'
 })
 export class ItemsService {
+  public selectedEpoch: string;
+
   public datesTracked: {
     [key: number]: {
       name: string, 
