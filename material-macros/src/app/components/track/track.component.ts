@@ -7,11 +7,11 @@ import { ItemsService, UserItem, MealItem } from 'src/app/services/items/items.s
 import { trigger, state, transition, animate, style } from '@angular/animations';
 
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  selector: 'app-track',
+  templateUrl: './track.component.html',
+  styleUrls: ['./track.component.scss']
 })
-export class MainComponent implements OnInit, OnDestroy {
+export class TrackComponent implements OnInit, OnDestroy {
   private dateSubscription: Subscription;
   public selectedDate = new Date();
 
