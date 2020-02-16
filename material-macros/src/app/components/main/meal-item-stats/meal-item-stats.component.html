@@ -1,26 +1,27 @@
-s
-<ng-container *ngIf="userItem.servingTypes[mealItem.units]?.servingSize; let servingSize">
-  <h3>
-    Total ({{userItem.servingTypes[mealItem.units].unit || 'Unknown'}}): {{(mealItem?.servings * servingSize) || null}}
-    <ng-container *ngFor="let userItemKey of ['calories', 'fat', 'carbs', 'protien']">
-      <br>
-      {{userItemKey | titlecase}}: {{userItem ? (userItem[userItemKey] * mealItem.servings * servingSize) + (userItemKey !== 'calories' ? 'g' : '') : ''}}
-    </ng-container>
-  </h3>
-  <div>   
-    <mat-form-field appearance="standard">
-      <mat-label>Servings</mat-label>
-      <input matInput [disabled]="true" [(ngModel)]="mealItem.servings">
-    </mat-form-field>
-    <mat-form-field appearance="standard">
-      <mat-label>Units</mat-label>
-      <mat-select [(ngModel)]="mealItem.units" [disabled]="true">
-        <mat-option *ngFor="let servingTypeKey of (userItem.servingTypes | objectKeys)" [value]="servingTypeKey">
-          <ng-container *ngIf="userItem.servingTypes[servingTypeKey]; let servingType">
-          {{servingType.label}} ({{servingType.unit}})
-          </ng-container>
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
+<ng-container *ngIf="mealItem.units ? mealItem.units : (userItem.servingTypes | objectKeys)[0]; let userItemUnitsKey">
+  <ng-container *ngIf="userItem.servingTypes[userItemUnitsKey].servingSize; let servingSize">
+    <h3>
+      Total ({{userItem.servingTypes[userItemUnitsKey].unit || 'Unknown'}}): {{(mealItem.servings * servingSize) || null}}
+      <ng-container *ngFor="let userItemKey of ['calories', 'fat', 'carbs', 'protien']">
+        <br>
+        {{userItemKey | titlecase}}: {{userItem[userItemKey] * mealItem.servings * servingSize}}
+      </ng-container>
+    </h3>
+    <div>   
+      <mat-form-field appearance="standard">
+        <mat-label>Servings</mat-label>
+        <input matInput [(ngModel)]="mealItem.servings">
+      </mat-form-field>
+      <mat-form-field appearance="standard">
+        <mat-label>Units</mat-label>
+        <mat-select [(ngModel)]="mealItem.units">
+          <mat-option *ngFor="let servingTypeKey of (userItem.servingTypes | objectKeys)" [value]="servingTypeKey">
+            <ng-container *ngIf="userItem.servingTypes[servingTypeKey]; let servingType">
+            {{servingType.label}} ({{servingType.unit}})
+            </ng-container>
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </ng-container>
 </ng-container>

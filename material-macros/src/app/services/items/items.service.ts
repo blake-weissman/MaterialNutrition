@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 
 export interface MealItem {
   key: string, 
-  servings: number, 
-  type: ItemType, 
+  servings: number,
   units: string
 }
 
@@ -45,13 +44,11 @@ export class ItemsService {
           {
             key: 'eggs',
             servings: 20,
-            type: ItemType.FOOD,
             units: 'grams',
           },
           {
             key: 'eggs',
             servings: 20,
-            type: ItemType.FOOD,
             units: 'grams',
           },
         ]

@@ -3,7 +3,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ItemsService, UserItem } from 'src/app/services/items/items.service';
+import { ItemsService, UserItem, MealItem } from 'src/app/services/items/items.service';
 import { trigger, state, transition, animate, style } from '@angular/animations';
 
 @Component({
@@ -74,7 +74,7 @@ export class AddItemDialogEntryComponent implements OnDestroy {
   animations: [
     trigger('userItemSelected', [
       // ...
-      transition(':enter', [   // :enter is alias to 'void => *'
+      transition(':enter', [
         style({
           opacity:0
         }),
@@ -82,7 +82,7 @@ export class AddItemDialogEntryComponent implements OnDestroy {
           opacity:1
         })) 
       ]),
-      transition(':leave', [   // :leave is alias to '* => void'
+      transition(':leave', [
         animate(500, style({
           opacity:0
         })) 
@@ -91,7 +91,11 @@ export class AddItemDialogEntryComponent implements OnDestroy {
   ],
 })
 export class AddItemDialogComponent {
-  public selectedUserItemKey: string;
+  public mealItem: MealItem = {
+    key: null, 
+    servings: 1,
+    units: null
+  }
 
   constructor(
     public itemsService: ItemsService,
