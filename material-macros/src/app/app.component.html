@@ -5,8 +5,13 @@
     </mat-icon>
     Material Macros
   </span>
-  <a (click)='auth.signOut()' style="margin-left: auto;"><i>Logout</i></a>
+  <a (click)='logout()' style="margin-left: auto;">
+    <i>
+      Logout
+    </i>
+  </a>
 </mat-toolbar>
 <div>
-  <router-outlet></router-outlet>
+  <router-outlet>
+  </router-outlet>
 </div>

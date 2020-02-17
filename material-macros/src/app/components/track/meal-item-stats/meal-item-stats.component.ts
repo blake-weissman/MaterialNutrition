@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { UserItem, MealItem } from 'src/app/services/items/items.service';
+import { UserItem, MealItem } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-meal-item-stats',

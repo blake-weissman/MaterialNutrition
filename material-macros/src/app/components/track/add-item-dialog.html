@@ -11,12 +11,12 @@
         </mat-icon>
         <input matInput placeholder="Search">
       </div>
-        <mat-option [value]="userItemKey" *ngFor="let userItemKey of (itemsService.userItems | objectKeys)">
-          {{itemsService.userItems[userItemKey].label}}
+        <mat-option [value]="userItemKey" *ngFor="let userItemKey of (userService.user.items | objectKeys)">
+          {{userService.user.items[userItemKey].label}}
         </mat-option>
     </mat-select>
   </mat-form-field>
-  <app-meal-item-stats *ngIf="mealItem.key" [@userItemSelected] [userItem]="itemsService.userItems[mealItem.key]" [mealItem]="mealItem">
+  <app-meal-item-stats *ngIf="mealItem.key" [@userItemSelected] [userItem]="userService.user.items[mealItem.key]" [mealItem]="mealItem">
   </app-meal-item-stats>
 </mat-dialog-content>
 <mat-dialog-actions>

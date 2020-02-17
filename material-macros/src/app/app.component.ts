@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { AuthService } from './services/auth/auth.service';
+import { UserService } from './services/user/user.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +9,14 @@ import { AuthService } from './services/auth/auth.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(public auth: AuthService) {
+  constructor(
+    public userService: UserService,
+    private angularFireAuth: AngularFireAuth,
+    private router: Router,
+  ) {}
+
+  public async logout(): Promise<void> {
+    await this.angularFireAuth.auth.signOut();
+    this.router.navigate(['login']);
   }
 }

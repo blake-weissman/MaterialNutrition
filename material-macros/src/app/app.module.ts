@@ -28,6 +28,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { ObjectValuesPipe } from './pipes/objectValues/object-values.pipe';
 import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { MealItemStatsComponent } from './components/track/meal-item-stats/meal-item-stats.component';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -93,7 +94,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     MatButtonModule,
     MatDialogModule,
     BrowserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AngularFirestoreModule,
   ],
   providers: [
     AngularFireAuthGuard,

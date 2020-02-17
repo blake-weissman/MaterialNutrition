@@ -3,7 +3,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ItemsService, UserItem, MealItem } from 'src/app/services/items/items.service';
+import { UserService, UserItem, MealItem } from 'src/app/services/user/user.service';
 import { trigger, state, transition, animate, style } from '@angular/animations';
 
 @Component({
@@ -18,13 +18,13 @@ export class TrackComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    public itemsService: ItemsService,
+    public userService: UserService,
   ) {}
 
   ngOnInit() {
     this.dateSubscription = this.activatedRoute.params.subscribe(params => {
-      this.itemsService.selectedEpoch = params.date;
-      this.selectedDate = new Date(Number(this.itemsService.selectedEpoch));
+      this.userService.selectedEpoch = params.date;
+      this.selectedDate = new Date(Number(this.userService.selectedEpoch));
     });
   }
 
@@ -90,15 +90,15 @@ export class AddItemDialogComponent {
   }
 
   constructor(
-    public itemsService: ItemsService,
+    public userService: UserService,
   ) {}
 
   public addItem(): void {
-    let currentDate = this.itemsService.datesTracked[this.itemsService.selectedEpoch];
+    let currentDate = this.userService.user.log[this.userService.selectedEpoch];
     if (currentDate) {
       currentDate[0].items.push(this.mealItem);
     } else {
-      this.itemsService.datesTracked[this.itemsService.selectedEpoch] = [{
+      this.userService.user.log[this.userService.selectedEpoch] = [{
         name: 'Other',
         items: [this.mealItem]
       }]

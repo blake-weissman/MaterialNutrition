@@ -33,9 +33,9 @@
           For now users can only store foods into the "Other" meal, which just 
           displays the list of foods without nesting them.
         -->
-        <ng-container *cdkVirtualFor="let meal of itemsService.datesTracked[itemsService.selectedEpoch]">
+        <ng-container *cdkVirtualFor="let meal of userService.user.log[userService.selectedEpoch]">
           <ng-container *ngFor='let mealItem of meal.items'>
-            <mat-expansion-panel *ngIf="itemsService.userItems[mealItem.key]; let userItem" [expanded]="true" hideToggle>
+            <mat-expansion-panel *ngIf="userService.user.items[mealItem.key]; let userItem" [expanded]="true" hideToggle>
               <mat-expansion-panel-header>
                 <h2>
                   {{userItem.label}}
