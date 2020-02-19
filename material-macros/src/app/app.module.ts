@@ -9,7 +9,7 @@ import { FirebaseUIModule, firebase, firebaseui } from 'firebaseui-angular';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { LoginComponent } from './components/login/login.component';
-import { TrackComponent, AddItemDialogComponent, AddItemDialogEntryComponent } from './components/track/track.component';
+import { TrackComponent } from './components/track/track.component';
 import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -27,8 +27,9 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { ObjectValuesPipe } from './pipes/objectValues/object-values.pipe';
 import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
-import { MealItemStatsComponent } from './components/track/meal-item-stats/meal-item-stats.component';
+import { LogItemStatsComponent } from './components/track/log-item-stats/log-item-stats.component';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AddItemDialogComponent, AddItemDialogEntryComponent } from './components/track/add-item-dialog/add-item-dialog.component';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -50,7 +51,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     ObjectValuesPipe,
     AddItemDialogComponent,
     AddItemDialogEntryComponent,
-    MealItemStatsComponent,
+    LogItemStatsComponent,
   ],
   imports: [
     BrowserModule,

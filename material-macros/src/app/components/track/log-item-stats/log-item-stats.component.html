@@ -1,20 +1,20 @@
-<ng-container *ngIf="mealItem.units ? mealItem.units : (userItem.servingTypes | objectKeys)[0]; let userItemUnitsKey">
+<ng-container *ngIf="logItem.units ? logItem.units : (userItem.servingTypes | objectKeys)[0]; let userItemUnitsKey">
   <ng-container *ngIf="userItem.servingTypes[userItemUnitsKey].servingSize; let servingSize">
     <h3>
-      Total ({{userItem.servingTypes[userItemUnitsKey].unit || 'Unknown'}}): {{(mealItem.servings * servingSize) || null}}
+      Total ({{userItem.servingTypes[userItemUnitsKey].unit || 'Unknown'}}): {{(logItem.servings * servingSize) || null}}
       <ng-container *ngFor="let userItemKey of ['calories', 'fat', 'carbs', 'protien']">
         <br>
-        {{userItemKey | titlecase}}: {{userItem[userItemKey] * mealItem.servings * servingSize}}
+        {{userItemKey | titlecase}}: {{userItem[userItemKey] * logItem.servings * servingSize}}
       </ng-container>
     </h3>
     <div>   
       <mat-form-field appearance="standard">
         <mat-label>Servings</mat-label>
-        <input matInput [(ngModel)]="mealItem.servings">
+        <input matInput [(ngModel)]="logItem.servings">
       </mat-form-field>
       <mat-form-field appearance="standard">
         <mat-label>Units</mat-label>
-        <mat-select [ngModel]="userItemUnitsKey" (selectionChange)="mealItem.units = $event.value">
+        <mat-select [ngModel]="userItemUnitsKey" (selectionChange)="logItem.units = $event.value">
           <mat-option *ngFor="let servingTypeKey of (userItem.servingTypes | objectKeys)" [value]="servingTypeKey">
             <ng-container *ngIf="userItem.servingTypes[servingTypeKey]; let servingType">
             {{servingType.label}} ({{servingType.unit}})

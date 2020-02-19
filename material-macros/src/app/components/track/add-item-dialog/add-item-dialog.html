@@ -4,7 +4,7 @@
 <mat-dialog-content>
   <mat-form-field appearance="outline" floatLabel="always">
     <mat-label>Item</mat-label>
-    <mat-select placeholder="Select item" [(ngModel)]="mealItem.key">
+    <mat-select placeholder="Select item" [(ngModel)]="logItem.key">
       <div id="search">
         <mat-icon>
           search
@@ -16,8 +16,8 @@
         </mat-option>
     </mat-select>
   </mat-form-field>
-  <app-meal-item-stats *ngIf="mealItem.key" [@userItemSelected] [userItem]="userService.user.items[mealItem.key]" [mealItem]="mealItem">
-  </app-meal-item-stats>
+  <app-log-item-stats *ngIf="logItem.key" [@userItemSelected] [userItem]="userService.user.items[logItem.key]" [logItem]="logItem">
+  </app-log-item-stats>
 </mat-dialog-content>
 <mat-dialog-actions>
   <!--TODO: ngVar-->

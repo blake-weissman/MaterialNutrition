@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
-import { TrackComponent, AddItemDialogEntryComponent} from './components/track/track.component';
+import { TrackComponent } from './components/track/track.component';
+import { AddItemDialogEntryComponent } from './components/track/add-item-dialog/add-item-dialog.component';
 
 //TODO Add redirect to current date if the route is blank.
 const routes: Routes = [

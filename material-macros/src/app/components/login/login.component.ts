@@ -1,8 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { UserService, User } from 'src/app/services/user/user.service';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-login',

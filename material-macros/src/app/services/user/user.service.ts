@@ -1,44 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-
-export interface MealItem {
-  key: string, 
-  servings: number,
-  units: string
-}
-
-export interface UserItem {
-  label: string,
-  calories: number,
-  fat: number,
-  carbs: number,
-  protien: number,
-  type: ItemType
-  servingTypes: {
-    [key: string] : {
-      label: string,
-      unit: string,
-      servingSize: number
-    }
-  } 
-}
-
-export enum ItemType {
-  FOOD = "food",
-  RECIPIE = "recipie"
-}
-
-export interface User {
-  log: {
-    [key: number]: {
-      name: string, 
-      items: MealItem[]
-    }[]
-  }
-  items: {
-    [key: string]: UserItem
-  }
-}
+import { User } from 'src/app/model/user';
 
 @Injectable({
   providedIn: 'root'
