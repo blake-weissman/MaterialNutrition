@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { UserService, UserItem, MealItem } from 'src/app/services/user/user.service';
 import { trigger, state, transition, animate, style } from '@angular/animations';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-track',
@@ -12,29 +13,36 @@ import { trigger, state, transition, animate, style } from '@angular/animations'
   styleUrls: ['./track.component.scss']
 })
 export class TrackComponent implements OnInit, OnDestroy {
-  private dateSubscription: Subscription;
+  private subscriptions: Subscription[];
   public selectedDate = new Date();
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
     public userService: UserService,
+    private angualrFireAuth: AngularFireAuth,
   ) {}
 
-  ngOnInit() {
-    this.dateSubscription = this.activatedRoute.params.subscribe(params => {
-      this.userService.selectedEpoch = params.date;
-      this.selectedDate = new Date(Number(this.userService.selectedEpoch));
-    });
-  }
-
-  ngOnDestroy() {
-    this.dateSubscription.unsubscribe();
+  ngOnInit() { 
+    this.subscriptions = [
+      this.activatedRoute.params.subscribe(params => {
+        this.userService.selectedEpoch = params.date;
+        this.selectedDate = new Date(Number(this.userService.selectedEpoch));
+      }),
+      this.userService.getUserFirestoreDocument(this.angualrFireAuth.auth.currentUser.uid).valueChanges().subscribe(value => {
+        console.log('set');
+        this.userService.user = value;
+      })
+    ];
   }
 
   onDateSelect(date: Date): void {
     this.router.navigateByUrl('/' + date.getTime());
   } 
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(subscription => subscription.unsubscribe());
+  }
 
   // public drop(event: CdkDragDrop<string[]>) {
   //   moveItemInArray(this.meals, event.previousIndex, event.currentIndex);
@@ -91,7 +99,9 @@ export class AddItemDialogComponent {
 
   constructor(
     public userService: UserService,
-  ) {}
+  ) {
+
+  }
 
   public addItem(): void {
     let currentDate = this.userService.user.log[this.userService.selectedEpoch];

@@ -11,25 +11,23 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class LoginComponent {
   constructor (
-    private angularFirestore: AngularFirestore,
     private router: Router,
-    private userService: UserService,
+    public userService: UserService,
   ) {}
 
   public signInSuccessWithAuthResult(event: any): void {
-    let userFirestoreDocument = this.angularFirestore.doc<User>(`users/${event.authResult.user.uid}`);
+    const userFirestoreDocument = this.userService.getUserFirestoreDocument(event.authResult.user.uid);
     userFirestoreDocument.get().subscribe(response => {
-      if (response.exists) {
-        this.userService.user = response.data();
-      } else {
-        this.userService.user = {
-          id: event.authResult.user.uid,
+      if (!response.exists) {
+        userFirestoreDocument.set({
           log: {},
           items: {},
-        };
-        userFirestoreDocument.set(this.userService.user);
+        }).then(() => {
+          this.router.navigate(['/']);
+        });
+      } else {
+        this.router.navigate(['/']);
       }
-      this.router.navigate(['/']);
-    })
+    });
   }
 }

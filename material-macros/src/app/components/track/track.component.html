@@ -1,4 +1,4 @@
-<mat-sidenav-container>
+<mat-sidenav-container *ngIf="userService.user">
   <mat-sidenav mode="side" opened>
     <mat-calendar [selected]="selectedDate" (selectedChange)="onDateSelect($event)">
     </mat-calendar>
@@ -17,6 +17,8 @@
           <h1>
             3000/3000 Cal
           </h1>
+          
+  {{userService.user | json}}
           <h3>
             Fat: 225/225g
             <br>
