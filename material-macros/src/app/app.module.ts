@@ -77,6 +77,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     BrowserModule,
     BrowserAnimationsModule,
     AngularFirestoreModule,
+    AngularFirestoreModule.enablePersistence(),
   ],
   providers: [
     AngularFireAuthGuard,
