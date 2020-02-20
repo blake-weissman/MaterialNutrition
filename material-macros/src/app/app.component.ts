@@ -15,7 +15,7 @@ export class AppComponent {
     private router: Router,
   ) {}
 
-  public async logout(): Promise<void> {
+  public async signOut(): Promise<void> {
     await this.angularFireAuth.auth.signOut();
     this.router.navigate(['login']);
   }

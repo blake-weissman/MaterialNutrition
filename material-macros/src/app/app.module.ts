@@ -30,6 +30,7 @@ import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/d
 import { LogItemStatsComponent } from './components/track/log-item-stats/log-item-stats.component';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AddItemDialogComponent, AddItemDialogEntryComponent } from './components/track/add-item-dialog/add-item-dialog.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -79,6 +80,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     BrowserAnimationsModule,
     AngularFirestoreModule,
     AngularFirestoreModule.enablePersistence(),
+    MatMenuModule,
   ],
   providers: [
     AngularFireAuthGuard,

@@ -4,7 +4,7 @@ mat-toolbar {
   position: fixed;
 }
 
-div {
+main {
   padding-top: 64px;
   height: 100vh;
   @media (max-width: 599px) {
@@ -12,11 +12,16 @@ div {
   }
 }
 
-span {
+#logo {
   font-family: 'Roboto Condensed', sans-serif;
   display: flex;
   align-items: center;
   mat-icon {
     margin-right: 5px;
   }
+}
+
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
 }

@@ -1,17 +1,42 @@
 <mat-toolbar color="primary">
-  <span>
+  <span id="logo">
     <mat-icon>
       layers
     </mat-icon>
     Material Macros
   </span>
-  <a (click)='logout()' style="margin-left: auto;">
-    <i>
-      Logout
-    </i>
-  </a>
+  <div>
+    <button mat-icon-button>
+      <mat-icon>
+        calendar_today
+      </mat-icon>
+    </button>
+    <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="angularFireAuth.auth.currentUser">
+      <mat-icon>
+        more_vert
+      </mat-icon>
+    </button>
+  </div>
 </mat-toolbar>
-<div>
+<main>
   <router-outlet>
   </router-outlet>
-</div>
+</main>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>
+      brightness_medium
+    </mat-icon>
+    <span>
+      Toggle dark theme
+    </span>
+  </button>
+  <button mat-menu-item (click)='signOut()'>
+    <mat-icon>
+      exit_to_app
+    </mat-icon>
+    <span>
+      Sign out
+    </span>
+  </button>
+</mat-menu>
