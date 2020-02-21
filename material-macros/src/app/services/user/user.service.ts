@@ -16,6 +16,6 @@ export class UserService {
   ) {}
 
   public getUserFirestoreDocument(id: string = this.angularFireAuth.auth.currentUser.uid): AngularFirestoreDocument<User> {
-    return this.angularFirestore.doc<User>(`users/${id}`);
+    return this.angularFirestore.doc<User>('users/' + id);
   }
 }
