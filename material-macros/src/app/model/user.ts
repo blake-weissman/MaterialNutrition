@@ -9,5 +9,6 @@ export interface User {
   }
   items: {
     [key: string]: UserItem
-  }
+  },
+  darkTheme: boolean
 }

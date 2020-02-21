@@ -18,9 +18,9 @@ mat-sidenav {
 #macro-display {
   @include mat-elevation(2);
   border-radius: 0;
-  background: mat-color($material-macros-accent);
+  background: mat-color($accent);
   width: 100%;
-  color: mat-color($material-macros-accent, 'accent-contrast');
+  color: mat-color($accent, 'accent-contrast');
   div {
     max-width: 700px;
     margin: 0 auto;

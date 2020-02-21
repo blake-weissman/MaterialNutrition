@@ -20,6 +20,7 @@ export class LoginComponent {
         userFirestoreDocument.set({
           log: {},
           items: {},
+          darkTheme: false
         }).then(() => {
           this.router.navigate(['/']);
         });

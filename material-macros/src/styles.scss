@@ -2,7 +2,7 @@
 
 @import '~@angular/material/theming';
 @include mat-core();
-$material-macros-palette: (
+$palette: (
   primary: #004d40,
   accent: #39796b,
   contrast: (
@@ -10,11 +10,19 @@ $material-macros-palette: (
     accent: #ffffff,
   )
 );
-$material-macros-primary: mat-palette($material-macros-palette, primary);
-$material-macros-accent: mat-palette($material-macros-palette, accent);
-$material-macros-warn: mat-palette($mat-red);
-$material-macros-theme: mat-light-theme($material-macros-primary, $material-macros-accent, $material-macros-warn);
-@include angular-material-theme($material-macros-theme);
+$primary: mat-palette($palette, primary);
+$accent: mat-palette($palette, accent);
+$warn: mat-palette($mat-red);
+
+.light-theme {
+  $light-theme: mat-light-theme($primary, $accent, $warn);
+  @include angular-material-theme($light-theme);
+}
+
+.dark-theme {
+  $dark-theme: mat-dark-theme($primary, $accent, $warn);
+  @include angular-material-theme($dark-theme);
+}
 
 html, body { 
   height: 100%; 

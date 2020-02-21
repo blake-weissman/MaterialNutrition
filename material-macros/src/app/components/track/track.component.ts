@@ -21,7 +21,6 @@ export class TrackComponent implements OnInit, OnDestroy {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     public userService: UserService,
-    private angualrFireAuth: AngularFireAuth,
   ) {}
 
   ngOnInit() { 
@@ -30,7 +29,7 @@ export class TrackComponent implements OnInit, OnDestroy {
         this.userService.selectedEpoch = params.date;
         this.selectedDate = new Date(Number(this.userService.selectedEpoch));
       }),
-      this.userService.getUserFirestoreDocument(this.angualrFireAuth.auth.currentUser.uid).valueChanges().subscribe(value => {
+      this.userService.getUserFirestoreDocument().valueChanges().subscribe(value => {
         this.userService.user = value;
       })
     ];

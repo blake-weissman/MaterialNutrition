@@ -8,10 +8,10 @@
   <div>
     <button mat-icon-button>
       <mat-icon>
-        calendar_today
+        today
       </mat-icon>
     </button>
-    <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="angularFireAuth.auth.currentUser">
+    <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="userService.angularFireAuth.auth.currentUser">
       <mat-icon>
         more_vert
       </mat-icon>
@@ -23,7 +23,7 @@
   </router-outlet>
 </main>
 <mat-menu #menu="matMenu">
-  <button mat-menu-item>
+  <button mat-menu-item (click)="toggleDarkTheme()">
     <mat-icon>
       brightness_medium
     </mat-icon>
@@ -31,7 +31,7 @@
       Toggle dark theme
     </span>
   </button>
-  <button mat-menu-item (click)='signOut()'>
+  <button mat-menu-item (click)="signOut()">
     <mat-icon>
       exit_to_app
     </mat-icon>
