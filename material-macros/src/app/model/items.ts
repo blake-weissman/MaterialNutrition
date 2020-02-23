@@ -10,7 +10,6 @@ export interface UserItem {
   fat: number,
   carbs: number,
   protien: number,
-  type: ItemType
   servingTypes: {
     [key: string] : {
       label: string,
@@ -20,7 +19,7 @@ export interface UserItem {
   } 
 }
 
-export enum ItemType {
+export enum UserItemType {
   FOOD = "food",
-  RECIPIE = "recipie"
+  RECIPE = "recipe"
 }

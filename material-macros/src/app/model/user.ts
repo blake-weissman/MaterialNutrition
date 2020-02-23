@@ -11,13 +11,12 @@ export class User {
     [key in UserItemType]: UserItem[]
   };
   darkTheme: boolean;
-  
+
   constructor() {
     this.log = {};
-    this.items = {
-      [UserItemType.FOOD]: [],
-      [UserItemType.RECIPIE]: []
-    };
     this.darkTheme = false;
+    Object.values(UserItemType).forEach(userItemTypeKey => {
+      this.items[userItemTypeKey] = [];
+    });
   }
 }
