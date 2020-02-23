@@ -23,8 +23,10 @@
   </router-outlet>
 </main>
 <mat-menu #navigationCalendar="matMenu">
-  <mat-calendar [selected]="selectedDate" (selectedChange)="onDateSelect($event)">
-  </mat-calendar>  
+  <div (click)="$event.stopPropagation();">
+    <mat-calendar [selected]="selectedDate" (selectedChange)="onDateSelect($event)">
+    </mat-calendar>  
+  </div>
 </mat-menu>
 <mat-menu #mainMenu="matMenu">
   <button mat-menu-item (click)="toggleDarkTheme()">

@@ -1,10 +1,11 @@
-import { Component, HostBinding, Directive } from '@angular/core';
+import { Component, HostBinding, Directive, ViewChild } from '@angular/core';
 import { UserService } from './services/user/user.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { OverlayContainer} from '@angular/cdk/overlay';
 import { User } from './model/user';
 import { MatDialog } from '@angular/material/dialog';
+import { MatMenuTrigger } from '@angular/material/menu';
 
 @Component({
   selector: 'body',
@@ -12,6 +13,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  @ViewChild(MatMenuTrigger, {static: false}) matMenuTrigger: MatMenuTrigger;
   @HostBinding('class') get currentTheme() {
     const user: User = this.userService.user;
     return user && user.darkTheme ? 'dark-theme' : 'light-theme';
@@ -34,6 +36,7 @@ export class AppComponent {
   }
 
   public onDateSelect(date: Date): void {
+    this.matMenuTrigger.closeMenu();
     this.router.navigateByUrl('/' + date.getTime());
-  } 
+  }
 }
