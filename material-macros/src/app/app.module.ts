@@ -32,6 +32,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AddItemDialogComponent, AddItemDialogEntryComponent } from './components/track/add-item-dialog/add-item-dialog.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatMenuModule } from '@angular/material/menu';
+import {MatTableModule} from '@angular/material/table';
+import { ItemsDialogComponent, ItemsDialogEntryComponent } from './components/track/items/items.component';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -54,6 +56,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AddItemDialogComponent,
     AddItemDialogEntryComponent,
     LogItemStatsComponent,
+    ItemsDialogComponent,
+    ItemsDialogEntryComponent,
   ],
   imports: [
     BrowserModule,
@@ -96,6 +100,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
   ],
   entryComponents: [
     AddItemDialogComponent,
+    ItemsDialogComponent,
   ],
   bootstrap: [AppComponent]
 })

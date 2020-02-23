@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
 import { TrackComponent } from './components/track/track.component';
 import { AddItemDialogEntryComponent } from './components/track/add-item-dialog/add-item-dialog.component';
+import { ItemsDialogEntryComponent } from './components/track/items/items.component';
 
 //TODO Add redirect to current date if the route is blank.
 const routes: Routes = [
@@ -20,6 +21,10 @@ const routes: Routes = [
       {
         path: 'add',
         component: AddItemDialogEntryComponent
+      },
+      {
+        path: 'items',
+        component: ItemsDialogEntryComponent
       }
     ]
   },
