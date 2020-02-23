@@ -1,10 +1,10 @@
 export interface LogItem {
-  key: string, 
+  userFoodItem: UserFoodItem, 
   servings: number,
   units: string
 }
 
-export interface UserItem {
+export interface UserFoodItem {
   label: string,
   calories: number,
   fat: number,
@@ -17,6 +17,11 @@ export interface UserItem {
       servingSize: number
     }
   } 
+}
+
+export interface UserRecipeItem {
+  label: string,
+  foods: UserFoodItem[] 
 }
 
 export enum UserItemType {

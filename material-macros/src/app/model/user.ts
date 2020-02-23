@@ -1,14 +1,15 @@
-import { LogItem, UserItem, UserItemType } from './items';
+import { LogItem, UserFoodItem, UserItemType, UserRecipeItem } from './items';
 
 type UserItems = {
-  [key in UserItemType]: UserItem[]
+  [UserItemType.FOOD]: UserFoodItem[];
+  [UserItemType.RECIPE]: UserRecipeItem[];
 }
 
 export class User {
   log: {
     [key: number]: {
-      name: string, 
-      items: LogItem[]
+      name: string;
+      items: LogItem[];
     }[]
   };
   items: UserItems;
