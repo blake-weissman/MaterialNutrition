@@ -14,15 +14,15 @@
       <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
         <mat-chip>
           <mat-icon>
-            edit
+            bar_chart
           </mat-icon>
-          Edit Goals
+          Change goals
         </mat-chip>
         <mat-chip>
           <mat-icon>
-            add
+            edit
           </mat-icon>
-          Create New Food
+          Edit items
         </mat-chip>
       </mat-chip-list>
     </div>
@@ -35,13 +35,15 @@
         add
       </mat-icon>
     </button>
-    <cdk-virtual-scroll-viewport itemSize="50">
+    <!-- {{userService.user.log[userService.selectedEpoch][0].items | json}} -->
+    <!-- <table mat-table [dataSource]="userService.user.log[userService.selectedEpoch]">
+    </table>     -->
+    <!-- <cdk-virtual-scroll-viewport itemSize="50">
       <div cdkDropList (cdkDropListDropped)="drop($event)">
         <!--
           TODO: In the future users will be able to catagorize foods into custom 
           meals. For now users can only store foods into the "Other" meal, which 
           just displays the list of foods without nesting them.
-        -->
         <ng-container *cdkVirtualFor="let meal of userService.user.log[userService.selectedEpoch]">
           <ng-container *ngFor='let logItem of meal.items'>
             <mat-expansion-panel *ngIf="userService.user.items[logItem.key]; let userItem" [expanded]="true" hideToggle>
@@ -60,6 +62,6 @@
           </ng-container>
         </ng-container>
       </div>
-    </cdk-virtual-scroll-viewport>
+    </cdk-virtual-scroll-viewport> -->
   </mat-sidenav-content>
 </mat-sidenav-container>
