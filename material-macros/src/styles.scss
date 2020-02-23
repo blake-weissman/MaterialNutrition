@@ -22,6 +22,9 @@ $warn: mat-palette($mat-red);
 .dark-theme {
   $dark-theme: mat-dark-theme($primary, $accent, $warn);
   @include angular-material-theme($dark-theme);
+  .mat-button-wrapper, .mat-icon-button {
+    color: #ffffff;
+  }
 }
 
 html, body { 
