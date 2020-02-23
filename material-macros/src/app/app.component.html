@@ -5,13 +5,13 @@
     </mat-icon>
     Material Macros
   </span>
-  <div>
+  <div *ngIf="userService.angularFireAuth.auth.currentUser">
     <button mat-icon-button [matMenuTriggerFor]="navigationCalendar">
       <mat-icon>
         today   
       </mat-icon>
     </button>
-    <button mat-icon-button [matMenuTriggerFor]="mainMenu" *ngIf="userService.angularFireAuth.auth.currentUser">
+    <button mat-icon-button [matMenuTriggerFor]="mainMenu">
       <mat-icon>
         more_vert
       </mat-icon>
