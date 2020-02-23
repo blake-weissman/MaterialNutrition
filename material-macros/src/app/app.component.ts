@@ -4,6 +4,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { OverlayContainer} from '@angular/cdk/overlay';
 import { User } from './model/user';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'body',
@@ -31,4 +32,8 @@ export class AppComponent {
       darkTheme: !this.userService.user.darkTheme
     });
   }
+
+  public onDateSelect(date: Date): void {
+    this.router.navigateByUrl('/' + date.getTime());
+  } 
 }

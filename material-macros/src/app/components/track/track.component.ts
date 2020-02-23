@@ -35,10 +35,6 @@ export class TrackComponent implements OnInit, OnDestroy {
     ];
   }
 
-  onDateSelect(date: Date): void {
-    this.router.navigateByUrl('/' + date.getTime());
-  } 
-
   ngOnDestroy() {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }

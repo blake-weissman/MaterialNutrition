@@ -6,12 +6,12 @@
     Material Macros
   </span>
   <div>
-    <button mat-icon-button>
+    <button mat-icon-button [matMenuTriggerFor]="navigationCalendar">
       <mat-icon>
-        today
+        today   
       </mat-icon>
     </button>
-    <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="userService.angularFireAuth.auth.currentUser">
+    <button mat-icon-button [matMenuTriggerFor]="mainMenu" *ngIf="userService.angularFireAuth.auth.currentUser">
       <mat-icon>
         more_vert
       </mat-icon>
@@ -22,7 +22,11 @@
   <router-outlet>
   </router-outlet>
 </main>
-<mat-menu #menu="matMenu">
+<mat-menu #navigationCalendar="matMenu">
+  <mat-calendar [selected]="selectedDate" (selectedChange)="onDateSelect($event)">
+  </mat-calendar>  
+</mat-menu>
+<mat-menu #mainMenu="matMenu">
   <button mat-menu-item (click)="toggleDarkTheme()">
     <mat-icon>
       brightness_medium

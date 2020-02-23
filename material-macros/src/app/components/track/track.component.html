@@ -1,7 +1,31 @@
 <mat-sidenav-container *ngIf="userService.user">
   <mat-sidenav mode="side" opened>
-    <mat-calendar [selected]="selectedDate" (selectedChange)="onDateSelect($event)">
-    </mat-calendar>
+    <div id="macro-display">
+      <h1>
+        3000/3000 Cal
+      </h1>
+      <h4>
+        Fat: 225/225g
+        <br>
+        Carbs: 225/225g
+        <br>
+        Protien: 225/225g
+      </h4>
+      <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
+        <mat-chip>
+          <mat-icon>
+            edit
+          </mat-icon>
+          Edit Goals
+        </mat-chip>
+        <mat-chip>
+          <mat-icon>
+            add
+          </mat-icon>
+          Create New Food
+        </mat-chip>
+      </mat-chip-list>
+    </div>
   </mat-sidenav>
   <mat-sidenav-content>
     <router-outlet>
@@ -12,26 +36,6 @@
       </mat-icon>
     </button>
     <cdk-virtual-scroll-viewport itemSize="50">
-      <div id="macro-display">
-        <div>
-          <h1>
-            3000/3000 Cal
-          </h1>
-          <h3>
-            Fat: 225/225g
-            <br>
-            Carbs: 225/225g
-            <br>
-            Protien: 225/225g
-          </h3>
-          <button mat-stroked-button>
-            Edit Goals
-          </button>
-          <button mat-stroked-button>
-            Create New Food
-          </button>
-        </div>
-      </div>
       <div cdkDropList (cdkDropListDropped)="drop($event)">
         <!--
           TODO: In the future users will be able to catagorize foods into custom 
