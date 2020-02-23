@@ -1,5 +1,9 @@
 import { LogItem, UserItem, UserItemType } from './items';
 
+type UserItems = {
+  [key in UserItemType]: UserItem[]
+}
+
 export class User {
   log: {
     [key: number]: {
@@ -7,14 +11,16 @@ export class User {
       items: LogItem[]
     }[]
   };
-  items: {
-    [key in UserItemType]: UserItem[]
-  };
+  items: UserItems;
   darkTheme: boolean;
 
   constructor() {
     this.log = {};
     this.darkTheme = false;
+    this.items = Object.values(UserItemType).reduce((result, userItemTypeKey) => {
+      result[userItemTypeKey] = [];
+      return result;
+    }, {}) as UserItems;
     Object.values(UserItemType).forEach(userItemTypeKey => {
       this.items[userItemTypeKey] = [];
     });

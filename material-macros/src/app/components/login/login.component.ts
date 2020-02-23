@@ -18,7 +18,7 @@ export class LoginComponent {
     const userFirestoreDocument = this.userService.getUserFirestoreDocument(event.authResult.user.uid);
     userFirestoreDocument.get().subscribe(response => {
       if (!response.exists) {
-        userFirestoreDocument.set(new User()).then(() => {
+        userFirestoreDocument.set(Object.assign({}, new User())).then(() => {
           this.router.navigate(['/']);
         });
       } else {
