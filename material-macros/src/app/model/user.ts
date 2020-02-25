@@ -1,8 +1,8 @@
 import { LogItem, UserFoodItem, UserItemType, UserRecipeItem } from './items';
 
 type UserItems = {
-  [UserItemType.FOOD]: UserFoodItem[];
-  [UserItemType.RECIPE]: UserRecipeItem[];
+  [UserItemType.FOOD]: UserFoodItem[],
+  [UserItemType.RECIPE]: UserRecipeItem[],
 }
 
 export class User {
@@ -22,8 +22,5 @@ export class User {
       result[userItemTypeKey] = [];
       return result;
     }, {}) as UserItems;
-    Object.values(UserItemType).forEach(userItemTypeKey => {
-      this.items[userItemTypeKey] = [];
-    });
   }
 }
