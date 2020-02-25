@@ -12,16 +12,10 @@ import { User } from 'src/app/model/user';
   styleUrls: ['./items.component.scss']
 })
 export class ItemsDialogComponent {
-  // public userItems = this.userService.user.items;
-  public UserItemType = UserItemType;
-
-  constructor(public userService: UserService) {
-  }
-
-  public filterItems(event) {
-    event.stopPropagation();
-    console.log(event);
-  }
+  public selectedItem: {
+    type: UserItemType,
+    index: number
+  };
 }
 
 @Component({

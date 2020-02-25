@@ -5,6 +5,8 @@ import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angula
 import { TrackComponent } from './components/track/track.component';
 import { AddItemDialogEntryComponent } from './components/track/add-item-dialog/add-item-dialog.component';
 import { ItemsDialogEntryComponent } from './components/track/items/items.component';
+import { CreateItemComponent } from './components/track/items/create-item/create-item.component';
+import { EditItemComponent } from './components/track/items/edit-item/edit-item.component';
 
 //TODO Add redirect to current date if the route is blank.
 const routes: Routes = [
@@ -24,7 +26,7 @@ const routes: Routes = [
       },
       {
         path: 'items',
-        component: ItemsDialogEntryComponent
+        component: ItemsDialogEntryComponent,
       }
     ]
   },
@@ -37,6 +39,16 @@ const routes: Routes = [
   { 
     path: '**', 
     redirectTo: ''
+  },
+  {
+    path: 'create',
+    component: CreateItemComponent,
+    outlet: 'items',
+  }, 
+  {
+    path: '',
+    component: EditItemComponent,
+    outlet: 'items',
   }
 ];
 

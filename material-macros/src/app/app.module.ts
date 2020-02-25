@@ -34,6 +34,8 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatTableModule} from '@angular/material/table';
 import { ItemsDialogComponent, ItemsDialogEntryComponent } from './components/track/items/items.component';
+import { CreateItemComponent } from './components/track/items/create-item/create-item.component';
+import { EditItemComponent } from './components/track/items/edit-item/edit-item.component';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -58,6 +60,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     LogItemStatsComponent,
     ItemsDialogComponent,
     ItemsDialogEntryComponent,
+    CreateItemComponent,
+    EditItemComponent,
   ],
   imports: [
     BrowserModule,
