@@ -27,11 +27,10 @@ export class ItemsDialogEntryComponent implements OnDestroy {
   constructor(
     public matDialog: MatDialog, 
     private router: Router,
-    private route: ActivatedRoute
   ) {
     const itemsDialog = this.matDialog.open(ItemsDialogComponent);
     this.redirectWhenClosedSubscription = itemsDialog.afterClosed().subscribe(() => {
-      this.router.navigate(['../'], { relativeTo: this.route });
+      this.router.navigate(['../']);
     });
   }
 
