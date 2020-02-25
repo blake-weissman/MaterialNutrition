@@ -33,7 +33,7 @@ import { AddItemDialogComponent, AddItemDialogEntryComponent } from './component
 import { MatChipsModule } from '@angular/material/chips';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatTableModule} from '@angular/material/table';
-import { ItemsDialogComponent, ItemsDialogEntryComponent } from './components/track/items/items.component';
+import { ItemsDialogComponent, ItemsDialogEntryComponent } from './components/track/items/items-dialog.component';
 import { CreateItemComponent } from './components/track/items/create-item/create-item.component';
 import { EditItemComponent } from './components/track/items/edit-item/edit-item.component';
 

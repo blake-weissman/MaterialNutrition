@@ -4,7 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
 import { TrackComponent } from './components/track/track.component';
 import { AddItemDialogEntryComponent } from './components/track/add-item-dialog/add-item-dialog.component';
-import { ItemsDialogEntryComponent } from './components/track/items/items.component';
+import { ItemsDialogEntryComponent } from './components/track/items/items-dialog.component';
 import { CreateItemComponent } from './components/track/items/create-item/create-item.component';
 import { EditItemComponent } from './components/track/items/edit-item/edit-item.component';
 

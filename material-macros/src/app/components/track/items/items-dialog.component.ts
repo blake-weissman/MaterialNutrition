@@ -7,9 +7,9 @@ import { UserService } from 'src/app/services/user/user.service';
 import { User } from 'src/app/model/user';
 
 @Component({
-  selector: 'app-items',
-  templateUrl: './items.component.html',
-  styleUrls: ['./items.component.scss']
+  selector: 'app-items-dialog',
+  templateUrl: './items-dialog.component.html',
+  styleUrls: ['./items-dialog.component.scss']
 })
 export class ItemsDialogComponent {
   public selectedItem: {
