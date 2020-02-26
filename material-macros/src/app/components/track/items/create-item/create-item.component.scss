@@ -1,0 +1,22 @@
+div {
+  display: flex;
+  mat-form-field:not(:first-of-type) {
+    margin-left: 24px;
+  }
+}
+
+#main {
+  justify-content: space-between;
+}
+
+#macros {
+
+}
+
+#units {
+
+}
+
+mat-form-field { 
+  flex-grow: 1;
+}

@@ -12,10 +12,6 @@ import { User } from 'src/app/model/user';
   styleUrls: ['./items-dialog.component.scss']
 })
 export class ItemsDialogComponent {
-  public selectedItem: {
-    type: UserItemType,
-    index: number
-  };
 }
 
 @Component({
@@ -28,7 +24,9 @@ export class ItemsDialogEntryComponent implements OnDestroy {
     public matDialog: MatDialog, 
     private router: Router,
   ) {
-    const itemsDialog = this.matDialog.open(ItemsDialogComponent);
+    const itemsDialog = this.matDialog.open(ItemsDialogComponent, {
+      maxWidth: '400px',
+    });
     this.redirectWhenClosedSubscription = itemsDialog.afterClosed().subscribe(() => {
       this.router.navigate(['../']);
     });
