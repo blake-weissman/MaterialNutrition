@@ -4,19 +4,19 @@ export interface LogItem {
   units: string
 }
 
-export interface UserFoodItem {
-  label: string,
-  calories: number,
-  fat: number,
-  carbs: number,
-  protien: number,
+export class UserFoodItem {
+  label: string = null;
+  calories: number = null;
+  fat: number = null;
+  carbs: number = null;
+  protien: number = null;
   servingTypes: {
     [key: string] : {
       label: string,
       unit: string,
       servingSize: number
     }
-  } 
+  } = {};
 }
 
 export interface UserRecipeItem {
