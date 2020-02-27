@@ -1,4 +1,3 @@
-
 <ng-container *ngIf="'Please enter the required field.'; let requiredErrorMessage">
   <ng-container *ngIf="'^(([0-9]{1}(\d+)?)(\.\d+)?)|([0]\.(\d+)?([0-9]{1})(\d+)?)$'; let numberRegex">
     <div>
@@ -6,7 +5,7 @@
         <mat-label>
           Name
         </mat-label>
-        <input matInput ngModel required>
+        <input matInput [(ngModel)]="userFoodItem.name" required>
         <mat-error>
           {{requiredErrorMessage}}
         </mat-error>
@@ -15,9 +14,9 @@
         <mat-label>
           Calories
         </mat-label>
-        <input matInput [pattern]="numberRegex" ngModel required #calories="ngModel">
+        <input matInput [pattern]="numberRegex" [(ngModel)]="userFoodItem.calories" required #calories="ngModel">
         <mat-error>
-          {{calories.errors.pattern ? 'Please enter a valid number.' : requiredErrorMessage}}
+          {{calories.errors?.pattern ? 'Please enter a valid number.' : requiredErrorMessage}}
         </mat-error>
       </mat-form-field>
     </div>
@@ -26,19 +25,19 @@
         <mat-label>
           Fat (g)
         </mat-label>
-        <input matInput [pattern]="numberRegex" ngModel required #fat="ngModel">
+        <input matInput [pattern]="numberRegex" [(ngModel)]="userFoodItem.fat" required #fat="ngModel">
       </mat-form-field>
       <mat-form-field floatLabel="always">
         <mat-label>
-          Carbs (g)
+          Carbohydrates (g)
         </mat-label>
-        <input matInput [pattern]="numberRegex" ngModel required #carbs="ngModel">
+        <input matInput [pattern]="numberRegex" [(ngModel)]="userFoodItem.carbohydrates" required #carbohydrates="ngModel">
       </mat-form-field>
       <mat-form-field floatLabel="always">
         <mat-label>
           Protien (g)
         </mat-label>
-        <input matInput [pattern]="numberRegex" ngModel required #protien="ngModel">
+        <input matInput [pattern]="numberRegex" [(ngModel)]="userFoodItem.protien" required #protien="ngModel">
       </mat-form-field>
     </div>
     <!--<div>
