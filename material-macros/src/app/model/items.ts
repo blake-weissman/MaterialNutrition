@@ -5,14 +5,14 @@ export interface LogItem {
 }
 
 export class UserFoodItem {
-  label: string = null;
+  name: string = null;
   calories: number = null;
   fat: number = null;
   carbs: number = null;
   protien: number = null;
   servingTypes: {
     [key: string] : {
-      label: string,
+      name: string,
       unit: string,
       servingSize: number
     }
@@ -20,7 +20,7 @@ export class UserFoodItem {
 }
 
 export interface UserRecipeItem {
-  label: string,
+  name: string,
   foods: UserFoodItem[] 
 }
 

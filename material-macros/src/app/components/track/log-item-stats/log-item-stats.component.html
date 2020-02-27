@@ -17,7 +17,7 @@
         <mat-select [ngModel]="userItemUnitsKey" (selectionChange)="logItem.units = $event.value">
           <mat-option *ngFor="let servingTypeKey of (userItem.servingTypes | objectKeys)" [value]="servingTypeKey">
             <ng-container *ngIf="userItem.servingTypes[servingTypeKey]; let servingType">
-            {{servingType.label}} ({{servingType.unit}})
+            {{servingType.name}} ({{servingType.unit}})
             </ng-container>
           </mat-option>
         </mat-select>
