@@ -8,7 +8,7 @@ export class UserFoodItem {
   name: string = null;
   calories: number = null;
   fat: number = null;
-  carbs: number = null;
+  carbohydrates: number = null;
   protien: number = null;
   servingTypes: {
     [key: string] : {
