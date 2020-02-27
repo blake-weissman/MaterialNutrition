@@ -78,18 +78,6 @@ mat-expansion-panel-header {
     }
 }
 
-mat-chip {
-  cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  mat-icon {
-    $size: 20px;
-    font-size: $size;
-    width: $size;
-    height: $size;
-    margin-right: 5px;
-  }
-}
-
 h4 {
   margin-bottom: 10px !important;
 }
@@ -101,12 +89,5 @@ h4 {
   &.mat-content {
     justify-content: space-between;
     align-items: center;
-  }
-  &.mat-chip-list-wrapper {
-    margin: 0 !important;
-    .mat-standard-chip {
-      margin: 0 !important;
-      margin-bottom: 10px !important;
-    }
   }
 }

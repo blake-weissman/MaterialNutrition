@@ -40,6 +40,26 @@ body {
   box-sizing: border-box; 
 }
 
+mat-chip {
+  //TODO: !important cursor?
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  mat-icon {
+    $size: 20px;
+    font-size: $size !important;
+    width: $size !important;
+    height: $size !important;
+  }
+}
+
+.mat-chip-list-wrapper {
+  margin: 0 !important;
+  .mat-standard-chip {
+    margin: 0 !important;
+    margin-bottom: 10px !important;
+  }
+}
+
 ::ng-deep {
   & h3 {
     line-height: 24px !important;
@@ -49,4 +69,8 @@ body {
 
 app-items-dialog .mat-form-field-infix {
   width: auto;
+}
+
+app-track mat-chip mat-icon {
+  margin-right: 5px;
 }

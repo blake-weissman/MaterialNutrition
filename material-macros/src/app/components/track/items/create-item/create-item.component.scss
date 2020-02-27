@@ -3,9 +3,20 @@ div {
   mat-form-field:not(:first-of-type) {
     margin-left: 24px;
   }
+  mat-form-field { 
+    flex-grow: 1;
+    margin-bottom: 12px;
+  }
 }
 
-mat-form-field { 
-  flex-grow: 1;
-  margin-bottom: 12px;
+#units {
+  flex-direction: column;
+}
+
+span {
+  margin-bottom: 8px;
+}
+
+.mat-chip {
+  margin-right: 8px !important;
 }

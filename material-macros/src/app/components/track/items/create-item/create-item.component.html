@@ -40,17 +40,23 @@
         <input matInput [pattern]="numberRegex" [(ngModel)]="userFoodItem.protien" required #protien="ngModel">
       </mat-form-field>
     </div>
-    <!--<div>
-      <mat-form-field floatLabel="always">
-        <mat-label>
-          Unit Types
-        </mat-label>
-        <mat-select placeholder="Select unit type to edit" ngModel required>
-          <mat-option>
-            Option
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>-->
+    <div id="units">
+      <span>
+        Units
+      </span>
+      <mat-chip-list>
+        <mat-chip>
+          Grams
+        </mat-chip>
+        <mat-chip>
+          Eggs
+        </mat-chip>
+        <mat-chip id="add">
+          <mat-icon>
+            add
+          </mat-icon>
+        </mat-chip>
+      </mat-chip-list>
+    </div>
   </ng-container>
 </ng-container>
