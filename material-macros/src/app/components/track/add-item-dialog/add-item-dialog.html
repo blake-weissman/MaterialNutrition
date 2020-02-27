@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>
+<!-- <h1 mat-dialog-title>
   Add New Item
 </h1>
 <mat-dialog-content>
@@ -16,11 +16,10 @@
         </mat-option>
     </mat-select>
   </mat-form-field>
-  <app-log-item-stats *ngIf="logItem.key" [@userItemSelected] [userItem]="userService.user.items[logItem.key]" [logItem]="logItem">
+  app-log-item-stats *ngIf="logItem.key" [@userItemSelected] [userItem]="userService.user.items[logItem.key]" [logItem]="logItem">
   </app-log-item-stats>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <!--TODO: ngVar-->
   <button mat-stroked-button color="primary" mat-dialog-close (click)='addItem()'>Add</button>
   <button mat-stroked-button mat-dialog-close>Cancel</button>
-</mat-dialog-actions>
+</mat-dialog-actions> -->

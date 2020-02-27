@@ -27,25 +27,25 @@ import { LogItem } from 'src/app/model/items';
   ],
 })
 export class AddItemDialogComponent {
-  public logItem: LogItem = {
-    key: null, 
-    servings: 1,
-    units: null
-  }
+  // public logItem: LogItem = {
+  //   key: null, 
+  //   servings: 1,
+  //   units: null
+  // }
 
-  constructor(public userService: UserService) {}
+  // constructor(public userService: UserService) {}
 
-  public addItem(): void {
-    let currentDate = this.userService.user.log[this.userService.selectedEpoch];
-    if (currentDate) {
-      currentDate[0].items.push(this.logItem);
-    } else {
-      this.userService.user.log[this.userService.selectedEpoch] = [{
-        name: 'Other',
-        items: [this.logItem]
-      }]
-    }
-  }
+  // public addItem(): void {
+  //   let currentDate = this.userService.user.log[this.userService.selectedEpoch];
+  //   if (currentDate) {
+  //     currentDate[0].items.push(this.logItem);
+  //   } else {
+  //     this.userService.user.log[this.userService.selectedEpoch] = [{
+  //       name: 'Other',
+  //       items: [this.logItem]
+  //     }]
+  //   }
+  // }
 }
 
 @Component({
