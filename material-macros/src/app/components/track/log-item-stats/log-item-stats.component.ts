@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { LogItem, UserItem } from 'src/app/model/items';
+import { LogItem } from 'src/app/model/items';
 
 @Component({
   selector: 'app-log-item-stats',
@@ -7,6 +7,6 @@ import { LogItem, UserItem } from 'src/app/model/items';
   styleUrls: ['./log-item-stats.component.scss'],
 })
 export class LogItemStatsComponent {
-  @Input() logItem: LogItem;
-  @Input() userItem: UserItem;
+  // @Input() logItem: LogItem;
+  // @Input() userItem: UserItem;
 }
