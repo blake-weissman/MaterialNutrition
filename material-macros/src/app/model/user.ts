@@ -11,13 +11,11 @@ export class User {
       name: string;
       items: LogItem[];
     }[]
-  };
+  } = {};
   items: UserItems;
-  darkTheme: boolean;
+  darkTheme: boolean = false;
 
   constructor() {
-    this.log = {};
-    this.darkTheme = false;
     this.items = Object.values(UserItemType).reduce((result, userItemTypeKey) => {
       result[userItemTypeKey] = [];
       return result;
