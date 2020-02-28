@@ -51,12 +51,37 @@
         <mat-chip>
           Eggs
         </mat-chip>
-        <mat-chip id="add">
+        <mat-chip id="add" (click)="addNewUnit()">
           <mat-icon>
             add
           </mat-icon>
         </mat-chip>
       </mat-chip-list>
     </div>
+
+    <ng-container>
+      <div>
+        <mat-form-field floatLabel="always">
+          <mat-label>
+            Unit Name
+          </mat-label>
+          <input matInput required>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field floatLabel="always">
+          <mat-label>
+            Prefix
+          </mat-label>
+          <input matInput required>
+        </mat-form-field>
+        <mat-form-field floatLabel="always">
+          <mat-label>
+            Serving Size
+          </mat-label>
+          <input matInput required>
+        </mat-form-field>
+      </div>
+    </ng-container>
   </ng-container>
 </ng-container>
