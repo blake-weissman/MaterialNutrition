@@ -10,10 +10,10 @@ export class UserFoodItem {
   fat: number = null;
   carbs: number = null;
   protien: number = null;
-  servingTypes: {
+  units: {
     [key: string] : {
       name: string,
-      unit: string,
+      prefix: string,
       servingSize: number
     }
   } = {};
