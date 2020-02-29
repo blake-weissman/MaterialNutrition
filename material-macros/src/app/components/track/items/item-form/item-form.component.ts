@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { UserFoodItem } from 'src/app/model/items';
 
 @Component({
@@ -7,5 +7,5 @@ import { UserFoodItem } from 'src/app/model/items';
   styleUrls: ['./item-form.component.scss']
 })
 export class ItemFormComponent {
-  public userFoodItem: UserFoodItem = new UserFoodItem(); 
+  @Input() public userFoodItem: UserFoodItem;
 }
