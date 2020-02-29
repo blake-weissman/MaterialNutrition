@@ -10,13 +10,8 @@ export class UserFoodItem {
   fat: number = null;
   carbs: number = null;
   protien: number = null;
-  units: {
-    [key: string] : {
-      name: string,
-      prefix: string,
-      servingSize: number
-    }
-  } = {};
+  servingUnitName: string = null;
+  amountPerServing: number = null;
 }
 
 export interface UserRecipeItem {
