@@ -36,6 +36,7 @@ import {MatTableModule} from '@angular/material/table';
 import { ItemsDialogComponent, ItemsDialogEntryComponent } from './components/track/items/items-dialog.component';
 import { CreateItemComponent } from './components/track/items/create-item/create-item.component';
 import { EditItemComponent } from './components/track/items/edit-item/edit-item.component';
+import { ItemFormComponent } from './components/track/items/item-form/item-form.component';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -62,6 +63,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     ItemsDialogEntryComponent,
     CreateItemComponent,
     EditItemComponent,
+    ItemFormComponent,
   ],
   imports: [
     BrowserModule,
