@@ -9,6 +9,7 @@ import { UserItemType } from 'src/app/model/items';
 })
 export class EditItemComponent {
   public UserItemType = UserItemType;
+  public selectedUserFoodItemIndex: number;
 
   constructor(public userService: UserService) {}
 
