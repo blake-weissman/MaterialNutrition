@@ -1,9 +1,6 @@
-:host div:first-of-type {
-  margin-bottom: 12px;
-}
-
 div {
   display: flex;
+  margin-bottom: 12px;
   mat-form-field:not(:first-of-type) {
     margin-left: 24px;
   }
@@ -12,16 +9,6 @@ div {
   }
 }
 
-#units {
-  flex-direction: column;
-  margin-top: 5px;
-  margin-bottom: 10px;
-}
-
 span {
   margin-bottom: 8px;
-}
-
-.mat-chip {
-  margin-right: 8px !important;
 }
