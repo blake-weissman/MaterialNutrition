@@ -1,24 +1,31 @@
-<mat-form-field appearance="outline" floatLabel="always">
-  <mat-label>Items</mat-label>
-  <mat-select placeholder="Select an item">
-    <div id="search">
-      <mat-icon>
-        search
-      </mat-icon>
-      <input matInput placeholder="Search" (keydown)="filterItems($event)">
-    </div>
-    <mat-option [routerLink]="[{ outlets: { items: ['create']}}]">
-      <mat-icon>
-        add
-      </mat-icon>
-      Create a new item
-    </mat-option>
-    <ng-container *ngFor="let userItemTypeKey of UserItemType | objectValues">
-      <mat-optgroup *ngIf="userService.user.items[userItemTypeKey].length; let userItemType" [label]="(userItemTypeKey | titlecase) + 's'">
-        <mat-option *ngFor="let item of userItemType; let index = index;" [value]="index">
-          {{item.label}}
-        </mat-option>
-      </mat-optgroup>
-    </ng-container>
-  </mat-select>
-</mat-form-field>
+<mat-dialog-content>
+  <mat-form-field appearance="outline" floatLabel="always">
+    <mat-label>Items</mat-label>
+    <mat-select placeholder="Select an item" [(ngModel)]="selectedUserFoodItemIndex">
+      <div id="search">
+        <mat-icon>
+          search
+        </mat-icon>
+        <input matInput placeholder="Search" (keydown)="filterItems($event)">
+      </div>
+      <mat-option [routerLink]="[{ outlets: { items: ['create']}}]">
+        <mat-icon>
+          add
+        </mat-icon>
+        Create a new item
+      </mat-option>
+      <ng-container *ngFor="let userItemTypeKey of UserItemType | objectValues">
+        <mat-optgroup *ngIf="userService.user.items[userItemTypeKey].length; let userItemType" [label]="(userItemTypeKey | titlecase) + 's'">
+          <mat-option *ngFor="let item of userItemType; let index = index;" [value]="index">
+            {{item.label}}
+          </mat-option>
+        </mat-optgroup>
+      </ng-container>
+    </mat-select>
+    <app-item-form [userFoodItem]="">
+    </app-item-form>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-stroked-button mat-dialog-close [disabled]="true">Save</button>
+</mat-dialog-actions>
