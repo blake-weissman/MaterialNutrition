@@ -10,7 +10,7 @@ export class UserFoodItem {
   fat: number = null;
   carbs: number = null;
   protien: number = null;
-  servingUnitName: string = null;
+  servingUnit: string = null;
   amountPerServing: number = null;
 }
 
