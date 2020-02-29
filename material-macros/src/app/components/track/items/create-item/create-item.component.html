@@ -45,13 +45,13 @@
         <mat-label>
           Serving Unit
         </mat-label>
-        <input matInput ngModel required #servingUnit="ngModel">
+        <input matInput [(ngModel)]="userFoodItem.servingUnit" required #servingUnit="ngModel">
       </mat-form-field>
       <mat-form-field floatLabel="always">
         <mat-label>
           Amount Per Serving
         </mat-label>
-        <input matInput [pattern]="numberRegex" ngModel required #amountPerServing="ngModel">
+        <input matInput [pattern]="numberRegex" [(ngModel)]="userFoodItem.amountPerServing" required #amountPerServing="ngModel">
       </mat-form-field>
     </div>
   </ng-container>
