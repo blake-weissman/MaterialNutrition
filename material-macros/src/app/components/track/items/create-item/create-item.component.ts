@@ -20,7 +20,8 @@ export class CreateItemComponent {
   public createFoodItem(): void {
     this.userService.getUserFirestoreDocument().update(this.appService.convertCustomObjectToObject({
       items: {
-        [UserItemType.FOOD]: [...this.userService.user.items[UserItemType.FOOD], this.appService.convertCustomObjectToObject(this.userFoodItem)]
+        [UserItemType.FOOD]: [...this.userService.user.items[UserItemType.FOOD], this.appService.convertCustomObjectToObject(this.userFoodItem)],
+        [UserItemType.RECIPE]: this.userService.user.items[UserItemType.RECIPE],
       }
     }));
   }
