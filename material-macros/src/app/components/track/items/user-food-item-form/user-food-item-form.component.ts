@@ -4,11 +4,11 @@ import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-item-form',
-  templateUrl: './item-form.component.html',
-  styleUrls: ['./item-form.component.scss']
+  selector: 'app-user-food-item-form',
+  templateUrl: './user-food-item-form.component.html',
+  styleUrls: ['./user-food-item-form.component.scss']
 })
-export class ItemFormComponent implements AfterViewInit {
+export class UserFoodItemFormComponent implements AfterViewInit {
   @ViewChild('form', {static: false}) private form: NgForm;
   @Input() public userFoodItem: UserFoodItem;
   @Output() private formInvalidityChanged = new EventEmitter<boolean>();

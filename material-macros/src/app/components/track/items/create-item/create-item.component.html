@@ -1,6 +1,6 @@
 <mat-dialog-content>
-  <app-item-form [userFoodItem]="userFoodItem" (formInvalidityChanged)="isFormInvalid = $event">
-  </app-item-form>
+  <app-user-food-item-form [userFoodItem]="userFoodItem" (formInvalidityChanged)="isFormInvalid = $event">
+  </app-user-food-item-form>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-stroked-button [disabled]="isFormInvalid" (click)="createFoodItem()">Create</button>
