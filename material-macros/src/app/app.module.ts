@@ -37,6 +37,7 @@ import { ItemsDialogComponent, ItemsDialogEntryComponent } from './components/tr
 import { CreateItemComponent } from './components/track/items/create-item/create-item.component';
 import { EditItemComponent } from './components/track/items/edit-item/edit-item.component';
 import { ItemFormComponent } from './components/track/items/item-form/item-form.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -92,7 +93,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AngularFirestoreModule,
     AngularFirestoreModule.enablePersistence(),
     MatMenuModule,
-    MatChipsModule
+    MatChipsModule,
+    MatSnackBarModule
   ],
   providers: [
     AngularFireAuthGuard,
