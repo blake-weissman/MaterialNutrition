@@ -15,6 +15,10 @@ $warn: mat-palette($mat-red);
 .light-theme {
   $light-theme: mat-light-theme($primary, $accent, $warn);
   @include angular-material-theme($light-theme);
+  .mat-snack-bar-container {
+    color: rgba(0, 0, 0, 0.87);
+    background: #fafafa;
+  }
 }
 
 .dark-theme {
@@ -22,6 +26,10 @@ $warn: mat-palette($mat-red);
   @include angular-material-theme($dark-theme);
   .mat-button-wrapper, .mat-icon-button {
     color: #ffffff;
+  }
+  .mat-snack-bar-container {
+    color: rgba(255, 255, 255, 0.7);
+    background: #323232;
   }
 }
 
@@ -63,6 +71,16 @@ mat-dialog-actions {
   padding: 0 !important;
   margin-bottom: 0 !important;
 }
+
+// .light-theme .mat-snack-bar-container {
+//   color: rgba(0, 0, 0, 0.87);
+//   background: #fafafa;
+// }
+
+// .dark-theme .mat-snack-bar-container {
+//   color: rgba(255, 255, 255, 0.7);
+//   background: #323232;
+// }
 
 ::ng-deep {
   & h3 {
