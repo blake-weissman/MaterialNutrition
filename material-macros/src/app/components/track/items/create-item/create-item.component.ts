@@ -8,4 +8,5 @@ import { UserFoodItem } from 'src/app/model/items';
 })
 export class CreateItemComponent {
   public userFoodItem: UserFoodItem = new UserFoodItem(); 
+  public isFormInvalid: boolean;
 }
