@@ -1,7 +1,7 @@
 <form #form="ngForm">
   <ng-container *ngIf="userFoodItem">
     <ng-container *ngIf="'Please enter the required field.'; let requiredErrorMessage">
-      <ng-container *ngIf="'^(([0-9]{1}(\d+)?)(\.\d+)?)|([0]\.(\d+)?([0-9]{1})(\d+)?)$'; let numberRegex">
+      <ng-container *ngIf="'[0-9]{1,9}(?:\.[0-9]{1,2})?$'; let numberRegex">
         <div>
           <mat-form-field floatLabel="always">
             <mat-label>
