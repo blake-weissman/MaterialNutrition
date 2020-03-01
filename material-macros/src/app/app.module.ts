@@ -38,6 +38,7 @@ import { UserItemsDialogComponent, UserItemsDialogEntryComponent } from './compo
 import { CreateUserItemComponent } from './components/track/user-items-dialog/create-user-item/create-user-item.component';
 import { EditUserItemsComponent } from './components/track/user-items-dialog/edit-user-items/edit-user-items.component';
 import { UserFoodItemFormComponent } from './components/track/user-items-dialog/user-food-item-form/user-food-item-form.component';
+import { DynamicPipe } from './pipes/dynamic/dynamic.pipe';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -65,6 +66,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     CreateUserItemComponent,
     EditUserItemsComponent,
     UserFoodItemFormComponent,
+    DynamicPipe,
   ],
   imports: [
     BrowserModule,
