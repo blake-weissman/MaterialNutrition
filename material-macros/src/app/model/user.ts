@@ -1,4 +1,5 @@
 import { LogItem, UserFoodItem, UserItemType, UserRecipeItem } from './items';
+import { AppService } from '../services/app/app.service';
 
 class UserItems {
   [UserItemType.FOOD]: UserFoodItem[] = [];
@@ -12,6 +13,8 @@ export class User {
       items: LogItem[];
     }[]
   } = {};
-  items: UserItems = Object.assign({}, new UserItems());
+  items: UserItems = this.appService.convertCustomObjectToObject(new UserItems());
   darkTheme: boolean = false;
+
+  constructor(private appService?: AppService) {}
 }

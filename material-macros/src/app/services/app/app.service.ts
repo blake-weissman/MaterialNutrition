@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class AppService {
   constructor() {}
 
-  public convertCustomObjectToObject(object: object): object {
+  public convertCustomObjectToObject(object: any): any {
     return Object.assign({}, object);
   }
 }

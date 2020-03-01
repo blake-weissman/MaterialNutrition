@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserFoodItem, UserItemType } from 'src/app/model/items';
 import { UserService } from 'src/app/services/user/user.service';
-import { User } from 'src/app/model/user';
+import { AppService } from 'src/app/services/app/app.service';
 
 @Component({
   selector: 'app-create-item',
@@ -14,13 +14,14 @@ export class CreateItemComponent {
 
   constructor(
     private userService: UserService,
+    private appService: AppService,
   ) {}
 
   public createFoodItem(): void {
-    this.userService.getUserFirestoreDocument().update(Object.assign({}, {
+    this.userService.getUserFirestoreDocument().update(this.appService.convertCustomObjectToObject({
       items: {
-        [UserItemType.FOOD]: [...this.userService.user.items[UserItemType.FOOD], Object.assign({}, this.userFoodItem)]
+        [UserItemType.FOOD]: [...this.userService.user.items[UserItemType.FOOD], this.appService.convertCustomObjectToObject(this.userFoodItem)]
       }
-    }) as User);
+    }));
   }
 }
