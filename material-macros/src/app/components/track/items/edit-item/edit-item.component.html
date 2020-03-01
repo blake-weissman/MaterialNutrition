@@ -15,11 +15,13 @@
         Create a new item
       </mat-option>
       <ng-container *ngFor="let userItemTypeKey of UserItemType | objectValues">
-        <mat-optgroup *ngIf="userService.user.items[userItemTypeKey].length; let userItemType" [label]="(userItemTypeKey | titlecase) + 's'">
-          <mat-option *ngFor="let item of userItemType; let index = index;" [value]="index">
-            {{item.label}}
-          </mat-option>
-        </mat-optgroup>
+        <ng-container *ngIf="userService.user.items[userItemTypeKey]; let userItemType">
+          <mat-optgroup *ngIf="userItemType.length;" [label]="(userItemTypeKey | titlecase) + 's'">
+            <mat-option *ngFor="let item of userItemType; let index = index;" [value]="index">
+              {{item.name}}
+            </mat-option>
+          </mat-optgroup>
+        </ng-container>
       </ng-container>
     </mat-select>
     <app-item-form [userFoodItem]="">
