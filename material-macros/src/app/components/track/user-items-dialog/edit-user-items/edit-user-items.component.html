@@ -24,7 +24,7 @@
         </ng-container>
       </ng-container>
     </mat-select>
-    <app-user-food-item-form [userFoodItem]="">
+    <app-user-food-item-form [userFoodItem]="selectedUserFoodItem" *ngIf="selectedUserFoodItem">
     </app-user-food-item-form>
   </mat-form-field>
 </mat-dialog-content>
