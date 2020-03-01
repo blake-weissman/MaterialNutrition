@@ -1,5 +1,6 @@
 import { LogItem, UserFoodItem, UserItemType, UserRecipeItem } from './items';
 import { AppService } from '../services/app/app.service';
+import { Inject, Injectable, Injector } from '@angular/core';
 
 class UserItems {
   [UserItemType.FOOD]: UserFoodItem[] = [];
@@ -13,8 +14,6 @@ export class User {
       items: LogItem[];
     }[]
   } = {};
-  items: UserItems = this.appService.convertCustomObjectToObject(new UserItems());
+  items: UserItems = AppService.prototype.convertCustomObjectToObject(new UserItems());
   darkTheme: boolean = false;
-
-  constructor(private appService?: AppService) {}
 }
