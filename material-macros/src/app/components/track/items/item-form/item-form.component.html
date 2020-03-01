@@ -1,4 +1,4 @@
-<form *ngIf="userFoodItem" #userFoodItemForm="ngForm">
+<form *ngIf="userFoodItem" #form="ngForm">
   <ng-container *ngIf="'Please enter the required field.'; let requiredErrorMessage">
     <ng-container *ngIf="'^(([0-9]{1}(\d+)?)(\.\d+)?)|([0]\.(\d+)?([0-9]{1})(\d+)?)$'; let numberRegex">
       <div>
