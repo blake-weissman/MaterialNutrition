@@ -1,8 +1,8 @@
 import { LogItem, UserFoodItem, UserItemType, UserRecipeItem } from './items';
 
-type UserItems = {
-  [UserItemType.FOOD]: UserFoodItem[],
-  [UserItemType.RECIPE]: UserRecipeItem[],
+class UserItems {
+  [UserItemType.FOOD]: UserFoodItem[] = [];
+  [UserItemType.RECIPE]: UserRecipeItem[] = [];
 }
 
 export class User {
@@ -12,13 +12,6 @@ export class User {
       items: LogItem[];
     }[]
   } = {};
-  items: UserItems;
+  items: UserItems = Object.assign({}, new UserItems());
   darkTheme: boolean = false;
-
-  constructor() {
-    this.items = Object.values(UserItemType).reduce((result, userItemTypeKey) => {
-      result[userItemTypeKey] = [];
-      return result;
-    }, {}) as UserItems;
-  }
 }
