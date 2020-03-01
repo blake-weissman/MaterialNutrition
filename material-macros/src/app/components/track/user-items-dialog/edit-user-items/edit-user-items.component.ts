@@ -3,11 +3,11 @@ import { UserService } from 'src/app/services/user/user.service';
 import { UserItemType, UserFoodItem, UserRecipeItem } from 'src/app/model/items';
 
 @Component({
-  selector: 'app-edit-item',
-  templateUrl: './edit-item.component.html',
-  styleUrls: ['./edit-item.component.scss']
+  selector: 'app-edit-user-items',
+  templateUrl: './edit-user-items.component.html',
+  styleUrls: ['./edit-user-items.component.scss']
 })
-export class EditItemComponent {
+export class EditUserItemsComponent {
   public UserItemType = UserItemType;
   public selectedUserItemIndex: number;
   public selectedUserFoodItem: UserFoodItem;

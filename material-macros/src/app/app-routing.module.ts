@@ -4,9 +4,9 @@ import { LoginComponent } from './components/login/login.component';
 import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
 import { TrackComponent } from './components/track/track.component';
 import { AddItemDialogEntryComponent } from './components/track/add-item-dialog/add-item-dialog.component';
-import { ItemsDialogEntryComponent } from './components/track/items/items-dialog.component';
-import { CreateItemComponent } from './components/track/items/create-item/create-item.component';
-import { EditItemComponent } from './components/track/items/edit-item/edit-item.component';
+import { UserItemsDialogEntryComponent } from './components/track/user-items-dialog/user-items-dialog.component';
+import { CreateUserItemComponent } from './components/track/user-items-dialog/create-user-item/create-user-item.component';
+import { EditUserItemsComponent } from './components/track/user-items-dialog/edit-user-items/edit-user-items.component';
 
 //TODO Add redirect to current date if the route is blank.
 const routes: Routes = [
@@ -26,7 +26,7 @@ const routes: Routes = [
       },
       {
         path: 'items',
-        component: ItemsDialogEntryComponent,
+        component: UserItemsDialogEntryComponent,
       }
     ]
   },
@@ -42,12 +42,12 @@ const routes: Routes = [
   },
   {
     path: 'create',
-    component: CreateItemComponent,
+    component: CreateUserItemComponent,
     outlet: 'items',
   }, 
   {
     path: '',
-    component: EditItemComponent,
+    component: EditUserItemsComponent,
     outlet: 'items',
   }
 ];

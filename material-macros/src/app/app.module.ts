@@ -33,11 +33,11 @@ import { AddItemDialogComponent, AddItemDialogEntryComponent } from './component
 import { MatChipsModule } from '@angular/material/chips';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatTableModule} from '@angular/material/table';
-import { ItemsDialogComponent, ItemsDialogEntryComponent } from './components/track/items/items-dialog.component';
-import { CreateItemComponent } from './components/track/items/create-item/create-item.component';
-import { EditItemComponent } from './components/track/items/edit-item/edit-item.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { UserFoodItemFormComponent } from './components/track/items/user-food-item-form/user-food-item-form.component';
+import { UserItemsDialogComponent, UserItemsDialogEntryComponent } from './components/track/user-items-dialog/user-items-dialog.component';
+import { CreateUserItemComponent } from './components/track/user-items-dialog/create-user-item/create-user-item.component';
+import { EditUserItemsComponent } from './components/track/user-items-dialog/edit-user-items/edit-user-items.component';
+import { UserFoodItemFormComponent } from './components/track/user-items-dialog/user-food-item-form/user-food-item-form.component';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -60,10 +60,10 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AddItemDialogComponent,
     AddItemDialogEntryComponent,
     LogItemStatsComponent,
-    ItemsDialogComponent,
-    ItemsDialogEntryComponent,
-    CreateItemComponent,
-    EditItemComponent,
+    UserItemsDialogComponent,
+    UserItemsDialogEntryComponent,
+    CreateUserItemComponent,
+    EditUserItemsComponent,
     UserFoodItemFormComponent,
   ],
   imports: [
@@ -108,7 +108,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
   ],
   entryComponents: [
     AddItemDialogComponent,
-    ItemsDialogComponent,
+    UserItemsDialogComponent,
   ],
   bootstrap: [AppComponent]
 })

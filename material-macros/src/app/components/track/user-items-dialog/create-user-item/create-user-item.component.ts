@@ -5,11 +5,11 @@ import { AppService } from 'src/app/services/app/app.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-create-item',
-  templateUrl: './create-item.component.html',
-  styleUrls: ['./create-item.component.scss']
+  selector: 'app-create-user-item',
+  templateUrl: './create-user-item.component.html',
+  styleUrls: ['./create-user-item.component.scss']
 })
-export class CreateItemComponent {
+export class CreateUserItemComponent {
   public userFoodItem: UserFoodItem = new UserFoodItem(); 
   public isFormInvalid: boolean;
 

@@ -7,24 +7,24 @@ import { UserService } from 'src/app/services/user/user.service';
 import { User } from 'src/app/model/user';
 
 @Component({
-  selector: 'app-items-dialog',
-  templateUrl: './items-dialog.component.html',
-  styleUrls: ['./items-dialog.component.scss']
+  selector: 'app-user-items-dialog',
+  templateUrl: './user-items-dialog.component.html',
+  styleUrls: ['./user-items-dialog.component.scss']
 })
-export class ItemsDialogComponent {
+export class UserItemsDialogComponent {
 }
 
 @Component({
   template: '',
 })
-export class ItemsDialogEntryComponent implements OnDestroy {
+export class UserItemsDialogEntryComponent implements OnDestroy {
   private redirectWhenClosedSubscription: Subscription;
 
   constructor(
     public matDialog: MatDialog, 
     private router: Router,
   ) {
-    const itemsDialog = this.matDialog.open(ItemsDialogComponent, {
+    const itemsDialog = this.matDialog.open(UserItemsDialogComponent, {
       maxWidth: '400px',
     });
     this.redirectWhenClosedSubscription = itemsDialog.afterClosed().subscribe(() => {
