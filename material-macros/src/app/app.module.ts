@@ -38,6 +38,7 @@ import { EditUserItemsComponent } from './components/track/user-items-dialog/edi
 import { UserFoodItemFormComponent } from './components/track/user-items-dialog/user-food-item-form/user-food-item-form.component';
 import { DynamicPipe } from './pipes/dynamic/dynamic.pipe';
 import { AddLogItemDialogComponent, AddLogItemDialogEntryComponent } from './components/track/add-log-item-dialog/add-log-item-dialog.component';
+import { UserItemsSelectionComponent } from './components/track/user-items-selection/user-items-selection.component';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -65,6 +66,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     DynamicPipe,
     AddLogItemDialogComponent,
     AddLogItemDialogEntryComponent,
+    UserItemsSelectionComponent,
   ],
   imports: [
     BrowserModule,
@@ -91,7 +93,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     BrowserModule,
     BrowserAnimationsModule,
     AngularFirestoreModule,
-    AngularFirestoreModule.enablePersistence(),
+    // AngularFirestoreModule.enablePersistence(),
     MatMenuModule,
     MatChipsModule,
     MatSnackBarModule

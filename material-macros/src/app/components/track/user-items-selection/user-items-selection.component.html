@@ -1,6 +1,6 @@
 <mat-form-field appearance="outline" floatLabel="always">
   <mat-label>Items</mat-label>
-  <mat-select placeholder="Select an item" [(ngModel)]="selectedUserItemIndex">
+  <mat-select placeholder="Select an item" [ngModel]="selectedUserItemIndex" (ngModelChange)="selectedUserItemIndexChange.emit($event)">
     <div id="search">
       <mat-icon>
         search
@@ -16,8 +16,11 @@
     <ng-container *ngFor="let userItemTypeKey of UserItemType | objectValues">
       <ng-container *ngIf="userService.user.items[userItemTypeKey]; let userItemType">
         <mat-optgroup *ngIf="userItemType.length;" [label]="(userItemTypeKey | titlecase) + 's'">
-          <mat-option *ngFor="let item of userItemType; let index = index;" [value]="index" (click)="selectUserItem(item, userItemTypeKey)">
-            {{item.name}}
+          <mat-option *ngFor="let userItem of userItemType; let index = index;" [value]="index" (click)="userItemSelected.emit({
+            userItem: userItem, 
+            userItemType: userItemTypeKey
+          })">
+            {{userItem.name}}
           </mat-option>
         </mat-optgroup>
       </ng-container>

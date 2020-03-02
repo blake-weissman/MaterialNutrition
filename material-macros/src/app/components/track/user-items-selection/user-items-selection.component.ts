@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { UserService } from 'src/app/services/user/user.service';
-import { UserItemType } from 'src/app/model/items';
+import { UserItemType, UserItem } from 'src/app/model/items';
 
 @Component({
   selector: 'app-user-items-selection',
@@ -8,6 +8,13 @@ import { UserItemType } from 'src/app/model/items';
   styleUrls: ['./user-items-selection.component.scss']
 })
 export class UserItemsSelectionComponent {
+  @Input() public selectedUserItemIndex: number;
+  @Output() public selectedUserItemIndexChange = new EventEmitter<number>();
+  @Output() public userItemSelected = new EventEmitter<{
+    userItem: UserItem,
+    userItemType: UserItemType,
+  }>();
+  
   public UserItemType = UserItemType;
 
   constructor(public userService: UserService) {}

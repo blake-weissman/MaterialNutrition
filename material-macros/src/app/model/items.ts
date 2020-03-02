@@ -23,3 +23,5 @@ export enum UserItemType {
   FOOD = "food",
   RECIPE = "recipe"
 }
+
+export type UserItem = UserFoodItem | UserRecipeItem;
