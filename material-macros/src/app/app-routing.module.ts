@@ -6,6 +6,7 @@ import { TrackComponent } from './components/track/track.component';
 import { UserItemsDialogEntryComponent } from './components/track/user-items-dialog/user-items-dialog.component';
 import { CreateUserItemComponent } from './components/track/user-items-dialog/create-user-item/create-user-item.component';
 import { EditUserItemsComponent } from './components/track/user-items-dialog/edit-user-items/edit-user-items.component';
+import { AddLogItemDialogEntryComponent } from './components/track/add-log-item-dialog/add-log-item-dialog.component';
 
 //TODO Add redirect to current date if the route is blank.
 const routes: Routes = [
@@ -19,10 +20,10 @@ const routes: Routes = [
     component: TrackComponent,
     ...canActivate(redirectUnauthorizedTo(['login'])),
     children: [
-      // {
-      //   path: 'add',
-      //   component: AddItemDialogEntryComponent
-      // },
+      {
+        path: 'add',
+        component: AddLogItemDialogEntryComponent
+      },
       {
         path: 'items',
         component: UserItemsDialogEntryComponent,
