@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
 import { TrackComponent } from './components/track/track.component';
-import { AddItemDialogEntryComponent } from './components/track/add-item-dialog/add-item-dialog.component';
 import { UserItemsDialogEntryComponent } from './components/track/user-items-dialog/user-items-dialog.component';
 import { CreateUserItemComponent } from './components/track/user-items-dialog/create-user-item/create-user-item.component';
 import { EditUserItemsComponent } from './components/track/user-items-dialog/edit-user-items/edit-user-items.component';
@@ -20,10 +19,10 @@ const routes: Routes = [
     component: TrackComponent,
     ...canActivate(redirectUnauthorizedTo(['login'])),
     children: [
-      {
-        path: 'add',
-        component: AddItemDialogEntryComponent
-      },
+      // {
+      //   path: 'add',
+      //   component: AddItemDialogEntryComponent
+      // },
       {
         path: 'items',
         component: UserItemsDialogEntryComponent,

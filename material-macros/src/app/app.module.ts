@@ -27,9 +27,7 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { ObjectValuesPipe } from './pipes/objectValues/object-values.pipe';
 import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
-import { LogItemStatsComponent } from './components/track/log-item-stats/log-item-stats.component';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AddItemDialogComponent, AddItemDialogEntryComponent } from './components/track/add-item-dialog/add-item-dialog.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatMenuModule } from '@angular/material/menu';
 import {MatTableModule} from '@angular/material/table';
@@ -58,9 +56,6 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     TrackComponent,
     ObjectKeysPipe,
     ObjectValuesPipe,
-    AddItemDialogComponent,
-    AddItemDialogEntryComponent,
-    LogItemStatsComponent,
     UserItemsDialogComponent,
     UserItemsDialogEntryComponent,
     CreateUserItemComponent,
@@ -109,7 +104,6 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     }
   ],
   entryComponents: [
-    AddItemDialogComponent,
     UserItemsDialogComponent,
   ],
   bootstrap: [AppComponent]
