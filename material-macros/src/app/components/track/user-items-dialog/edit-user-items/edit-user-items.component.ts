@@ -13,8 +13,8 @@ type UserItem = UserFoodItem | UserRecipeItem;
 export class EditUserItemsComponent {
   public UserItemType = UserItemType;
   public selectedUserItemIndex: number;
-  public selectedUserFoodItem: UserFoodItem;
-  public selectedUserRecipeItem: UserRecipeItem;
+  public selectedUserItem: UserItem;
+  public selectedUserItemType: UserItemType;
   public isFormInvalid: boolean;
   public currentUserItem: UserItem;
   
@@ -28,14 +28,8 @@ export class EditUserItemsComponent {
     console.log(event);
   }
 
-  public selectUserItem(item: UserItem, type: UserItemType) {
-    if (type === UserItemType.FOOD) {
-      this.selectedUserFoodItem = this.appService.deepCopy<UserFoodItem>(item as UserFoodItem);
-      this.selectedUserRecipeItem = null;
-    } else {
-      this.selectedUserRecipeItem = this.appService.deepCopy<UserRecipeItem>(item as UserRecipeItem);
-      this.selectedUserFoodItem = null;
-    }
-    this.currentUserItem = this.appService.deepCopy<UserItem>(item);
+  public selectUserItem(userItem: UserItem, userItemType: UserItemType): void {
+    this.selectedUserItemType = userItemType;
+    ["currentUserItem", "selectedUserItem"].forEach((property) => this[property] = this.appService.deepCopy<UserItem>(userItem));
   }
 }
