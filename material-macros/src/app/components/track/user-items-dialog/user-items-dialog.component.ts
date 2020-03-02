@@ -11,8 +11,7 @@ import { User } from 'src/app/model/user';
   templateUrl: './user-items-dialog.component.html',
   styleUrls: ['./user-items-dialog.component.scss']
 })
-export class UserItemsDialogComponent {
-}
+export class UserItemsDialogComponent {}
 
 @Component({
   template: '',
