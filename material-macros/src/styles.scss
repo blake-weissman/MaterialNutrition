@@ -72,6 +72,10 @@ mat-dialog-actions {
   margin-bottom: 0 !important;
 }
 
+.mat-dialog-title {
+  margin-bottom: 0;
+}
+
 ::ng-deep {
   & h3 {
     line-height: 24px !important;
