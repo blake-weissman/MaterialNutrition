@@ -6,6 +6,6 @@
   </app-user-items-selection>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-stroked-button [disabled]="true">Add</button>
+  <button mat-stroked-button mat-dialog-close (click)="addNewLogItem()">Add</button>
   <button mat-stroked-button mat-dialog-close>Cancel</button>
 </mat-dialog-actions>
