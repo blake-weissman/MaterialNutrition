@@ -30,7 +30,7 @@ import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/d
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatMenuModule } from '@angular/material/menu';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { UserItemsDialogComponent, UserItemsDialogEntryComponent } from './components/track/user-items-dialog/user-items-dialog.component';
 import { CreateUserItemComponent } from './components/track/user-items-dialog/create-user-item/create-user-item.component';
@@ -93,10 +93,10 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     BrowserModule,
     BrowserAnimationsModule,
     AngularFirestoreModule,
-    // AngularFirestoreModule.enablePersistence(),
     MatMenuModule,
     MatChipsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTableModule
   ],
   providers: [
     AngularFireAuthGuard,

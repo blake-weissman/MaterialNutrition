@@ -6,7 +6,9 @@ import { Subscription } from 'rxjs';
 import { UserService } from 'src/app/services/user/user.service';
 import { trigger, state, transition, animate, style } from '@angular/animations';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { LogItem } from 'src/app/model/items';
+import { LogItem, UserFoodItem } from 'src/app/model/items';
+import { MatTableDataSource } from '@angular/material/table';
+import { UserLog } from 'src/app/model/user';
 
 @Component({
   selector: 'app-track',
@@ -16,9 +18,10 @@ import { LogItem } from 'src/app/model/items';
 export class TrackComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[];
   public selectedDate = new Date();
+  public dataSource = new MatTableDataSource<UserLog>();
+  public displayedColumns: string[] = Object.keys(new UserFoodItem());
 
   constructor(
-    private router: Router,
     private activatedRoute: ActivatedRoute,
     public userService: UserService,
   ) {}
@@ -28,9 +31,13 @@ export class TrackComponent implements OnInit, OnDestroy {
       this.activatedRoute.params.subscribe(params => {
         this.userService.selectedEpoch = params.date;
         this.selectedDate = new Date(Number(this.userService.selectedEpoch));
+        if (this.userService.user) {
+          this.setDataSource();
+        }
       }),
       this.userService.getUserFirestoreDocument().valueChanges().subscribe(value => {
         this.userService.user = value;
+        this.setDataSource();
       })
     ];
   }
@@ -39,8 +46,7 @@ export class TrackComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());
   }
 
-  // public drop(event: CdkDragDrop<string[]>) {
-  //   moveItemInArray(this.meals, event.previousIndex, event.currentIndex);
-  //   this.meals = [...this.meals];
-  // }
+  private setDataSource(): void {
+    this.dataSource.data = this.userService.user.log[this.userService.selectedEpoch];
+  }
 }
