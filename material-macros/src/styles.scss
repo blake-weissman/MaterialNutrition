@@ -19,6 +19,9 @@ $warn: mat-palette($mat-red);
     color: rgba(0, 0, 0, 0.87);
     background: #fafafa;
   }
+  a {
+    color: rgba(0, 0, 0, 0.87);
+  }
 }
 
 .dark-theme {
@@ -30,6 +33,9 @@ $warn: mat-palette($mat-red);
   .mat-snack-bar-container {
     color: rgba(255, 255, 255, 0.7);
     background: #323232;
+  }
+  a {
+    color: #ffffff;
   }
 }
 

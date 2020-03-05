@@ -20,6 +20,7 @@ export class TrackComponent implements OnInit, OnDestroy {
   public selectedDate = new Date();
   public dataSource = new MatTableDataSource<UserLog>();
   public displayedColumns: string[] = Object.keys(new UserFoodItem());
+  public currentDate = new Date();
 
   constructor(
     private activatedRoute: ActivatedRoute,
