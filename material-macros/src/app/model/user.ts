@@ -7,13 +7,12 @@ export class UserItems {
   [UserItemType.RECIPE]: UserRecipeItem[] = [];
 }
 
+export interface UserLog {
+  [key: number]: UserFoodItem[]
+}
+
 export class User {
-  log: {
-    [key: number]: {
-      name: string;
-      items: LogItem[];
-    }[]
-  } = {};
+  log: UserLog = {};
   items: UserItems = AppService.prototype.convertCustomObjectToObject(new UserItems());
   darkTheme: boolean = false;
 }
