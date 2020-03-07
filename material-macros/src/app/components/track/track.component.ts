@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -9,6 +9,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { LogItem, UserFoodItem } from 'src/app/model/items';
 import { MatTableDataSource } from '@angular/material/table';
 import { UserLog } from 'src/app/model/user';
+import { MatMenuTrigger } from '@angular/material/menu';
 
 @Component({
   selector: 'app-track',
@@ -16,6 +17,10 @@ import { UserLog } from 'src/app/model/user';
   styleUrls: ['./track.component.scss']
 })
 export class TrackComponent implements OnInit, OnDestroy {
+  @ViewChild(MatMenuTrigger, {
+    static: false
+  }) matMenuTrigger: MatMenuTrigger;
+
   private subscriptions: Subscription[];
   public selectedDate = new Date();
   public dataSource = new MatTableDataSource<UserLog>();
@@ -25,6 +30,7 @@ export class TrackComponent implements OnInit, OnDestroy {
   constructor(
     private activatedRoute: ActivatedRoute,
     public userService: UserService,
+    private router: Router,
   ) {}
 
   ngOnInit() { 
@@ -49,5 +55,10 @@ export class TrackComponent implements OnInit, OnDestroy {
 
   private setDataSource(): void {
     this.dataSource.data = this.userService.user.log[this.userService.selectedEpoch];
+  }
+
+  public onDateSelect(date: Date): void {
+    this.matMenuTrigger.closeMenu();
+    this.router.navigateByUrl('/' + date.getTime());
   }
 }

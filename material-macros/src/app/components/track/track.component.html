@@ -1,39 +1,65 @@
 <mat-sidenav-container *ngIf="userService.user">
   <mat-sidenav mode="side" opened>
-    <div id="macro-display">
-      <h1>
-        3000/3000 Cal
-      </h1>
-      <h4>
-        Fat: 225/225g
-        <br>
-        Carbs: 225/225g
-        <br>
-        Protien: 225/225g
-      </h4>
-      <mat-chip-list class="mat-chip-list-stacked">
-        <mat-chip>
+    <nav>
+      <div style="display: flex; align-items: center;">
+        <button mat-icon-button [matMenuTriggerFor]="navigationCalendar">
           <mat-icon>
-            bar_chart
+            today   
           </mat-icon>
-          Edit goals
-        </mat-chip>
-        <mat-chip routerLink="items">
+        </button>
+        <h2 style="margin: 0 !important;">
+          {{selectedDate | date: 'M/d/yyyy'}}
+        </h2>
+      </div>
+      <div>
+        <button mat-icon-button>
           <mat-icon>
-            edit
+            keyboard_arrow_left
           </mat-icon>
-          Edit items
-        </mat-chip>
-      </mat-chip-list>
+        </button>
+        <button mat-icon-button>
+          <mat-icon>
+            keyboard_arrow_right
+          </mat-icon>
+        </button>
+      </div>
+    </nav>
+    <div id="content">
+      <div>
+        <h1>
+          3000/3000 Cal
+        </h1>
+        <h4>
+          Fat: 225/225g
+          <br>
+          Carbs: 225/225g
+          <br>
+          Protien: 225/225g
+        </h4>
+        <mat-chip-list class="mat-chip-list-stacked">
+          <mat-chip>
+            <mat-icon>
+              bar_chart
+            </mat-icon>
+            Edit goals
+          </mat-chip>
+          <mat-chip routerLink="items">
+            <mat-icon>
+              edit
+            </mat-icon>
+            Edit items
+          </mat-chip>
+        </mat-chip-list>
+      </div>
+      <span class="mat-caption">
+        v1.0 Dev
+        <br>
+        &copy;{{currentDate | date: 'yyyy'}} 
+        <a href="https://blakeweissman.com" target="_blank">
+          Blake Weissman
+        </a>
+      </span>
     </div>
-    <span class="mat-caption">
-      v1.0 Dev
-      <br>
-      &copy;{{currentDate | date: 'yyyy'}} 
-      <a href="https://blakeweissman.com" target="_blank">
-        Blake Weissman
-      </a>
-    </span>
   </mat-sidenav>
   <mat-sidenav-content>
     <router-outlet>
@@ -43,8 +69,6 @@
         add
       </mat-icon>
     </button>
-    {{dataSource.data | json}}
-    <!-- {{userService.user.log | json}} -->
     <table mat-table [dataSource]="dataSource" style="width: 100%;">
       <ng-container [matColumnDef]="displayedColumn" *ngFor="let displayedColumn of displayedColumns">
         <th mat-header-cell *matHeaderCellDef> {{displayedColumn | titlecase}} </th>
@@ -84,3 +108,9 @@
     </cdk-virtual-scroll-viewport> -->
   </mat-sidenav-content>
 </mat-sidenav-container>
+<mat-menu #navigationCalendar="matMenu">
+  <div (click)="$event.stopPropagation();">
+    <mat-calendar [selected]="selectedDate" (selectedChange)="onDateSelect($event)">
+    </mat-calendar>  
+  </div>
+</mat-menu>

@@ -34,9 +34,4 @@ export class AppComponent {
       darkTheme: !this.userService.user.darkTheme
     });
   }
-
-  public onDateSelect(date: Date): void {
-    this.matMenuTrigger.closeMenu();
-    this.router.navigateByUrl('/' + date.getTime());
-  }
 }
