@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs';
 import { UserService } from 'src/app/services/user/user.service';
 import { trigger, state, transition, animate, style } from '@angular/animations';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { LogItem, UserFoodItem, NutritionKeys } from 'src/app/model/items';
+import { LogItem, UserFoodItem, NutritionDataKeys, NutritionData } from 'src/app/model/items';
 import { MatTableDataSource } from '@angular/material/table';
 import { UserLog } from 'src/app/model/user';
 import { MatMenuTrigger } from '@angular/material/menu';
@@ -26,9 +26,8 @@ export class TrackComponent implements OnInit, OnDestroy {
   public dataSource = new MatTableDataSource<UserLog>();
   public displayedColumns: string[] = Object.keys(new UserFoodItem());
   public currentDate = new Date();
-  public totalNutrition: {
-    [key in NutritionKeys]?: number;
-  } = {};
+  public totalNutritionData: NutritionData = new NutritionData();
+  public NutritionDataKeys = NutritionDataKeys;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -60,8 +59,8 @@ export class TrackComponent implements OnInit, OnDestroy {
     const selectedEpochUserLog = this.userService.user.log[this.userService.selectedEpoch];
     if (selectedEpochUserLog) {
       this.dataSource.data = this.userService.user.log[this.userService.selectedEpoch];
-      Object.values(NutritionKeys).forEach(key => {
-        this.totalNutrition[key] = this.dataSource.data.reduce((result, item) => {
+      Object.values(NutritionDataKeys).forEach(key => {
+        this.totalNutritionData[key] = this.dataSource.data.reduce((result, item) => {
           result += Number(item[key]);
           return result;
         }, 0);
