@@ -1,13 +1,13 @@
-<ng-container *ngIf="'[0-9]{1,9}(?:\.[0-9]{1,2})?$'; let numberRegex">
+<form #form="ngForm">
   <h1 mat-dialog-title>
-    Edit Nutrition Goals
+    Nutrition Goals
   </h1>
-  <mat-dialog-content>
+  <mat-dialog-content *ngIf="'[0-9]{1,9}(?:\.[0-9]{1,2})?$'; let numberRegex">
     <mat-form-field floatLabel="always">
       <mat-label>
         Calories
       </mat-label>
-      <input matInput required ngModel #calories="ngModel" name="calories">
+      <input matInput required [(ngModel)]="currentUserGoals[NutritionDataKeys.CALORIES]" [pattern]="numberRegex" #calories="ngModel" name="calories">
       <mat-error>
         {{requiredErrorMessage}}
       </mat-error>
@@ -15,26 +15,29 @@
     <div>
       <mat-form-field floatLabel="always">
         <mat-label>
-          Fat (g)
+          Fat
         </mat-label>
         <input matInput [pattern]="numberRegex" ngModel required #fat="ngModel" name="fat">
+        <span matSuffix>%</span>
       </mat-form-field>
       <mat-form-field floatLabel="always">
         <mat-label>
-          Carbs (g)
+          Carbs
         </mat-label>
         <input matInput [pattern]="numberRegex" ngModel required #carbs="ngModel" name="carbs">
+        <span matSuffix>%</span>
       </mat-form-field>
       <mat-form-field floatLabel="always">
         <mat-label>
-          Protien (g)
+          Protien
         </mat-label>
         <input matInput [pattern]="numberRegex" ngModel required #protien="ngModel" name="protien">
+        <span matSuffix>%</span>
       </mat-form-field>
     </div>
   </mat-dialog-content>
   <mat-dialog-actions>
-    <button mat-stroked-button>Save</button>
+    <button mat-stroked-button [disabled]="form.invalid">Save</button>
     <button mat-stroked-button mat-dialog-close>Cancel</button>
   </mat-dialog-actions>
-</ng-container>
+</form>
