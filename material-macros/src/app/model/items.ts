@@ -4,12 +4,19 @@ export interface LogItem {
   units: string
 }
 
+export enum NutritionKeys {
+  CALORIES = 'calories',
+  FAT = 'fat',
+  CARBS = 'carbs',
+  PROTIEN = 'protien'
+}
+
 export class UserFoodItem {
   name: string = null;
-  calories: number = null;
-  fat: number = null;
-  carbs: number = null;
-  protien: number = null;
+  [NutritionKeys.CALORIES]: number = null;
+  [NutritionKeys.FAT]: number = null;
+  [NutritionKeys.CARBS]: number = null;
+  [NutritionKeys.PROTIEN]: number = null;
   servingUnit: string = null;
   amountPerServing: number = null;
 }
