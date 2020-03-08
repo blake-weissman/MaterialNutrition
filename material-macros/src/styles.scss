@@ -82,6 +82,10 @@ mat-dialog-actions {
   margin-bottom: 0 !important;
 }
 
+.mat-table {
+  background: transparent;
+}
+
 ::ng-deep {
   & h3 {
     line-height: 24px !important;
