@@ -39,6 +39,7 @@ import { UserFoodItemFormComponent } from './components/track/user-items-dialog/
 import { DynamicPipe } from './pipes/dynamic/dynamic.pipe';
 import { AddLogItemDialogComponent, AddLogItemDialogEntryComponent } from './components/track/add-log-item-dialog/add-log-item-dialog.component';
 import { UserItemsSelectionComponent } from './components/track/user-items-selection/user-items-selection.component';
+import { GoalsDialogComponent, GoalsDialogEntryComponent } from './components/track/goals-dialog/goals-dialog.component';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -67,6 +68,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AddLogItemDialogComponent,
     AddLogItemDialogEntryComponent,
     UserItemsSelectionComponent,
+    GoalsDialogComponent,
+    GoalsDialogEntryComponent
   ],
   imports: [
     BrowserModule,
@@ -111,6 +114,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
   entryComponents: [
     UserItemsDialogComponent,
     AddLogItemDialogComponent,
+    GoalsDialogComponent,
   ],
   bootstrap: [AppComponent]
 })

@@ -7,6 +7,7 @@ import { UserItemsDialogEntryComponent } from './components/track/user-items-dia
 import { CreateUserItemComponent } from './components/track/user-items-dialog/create-user-item/create-user-item.component';
 import { EditUserItemsComponent } from './components/track/user-items-dialog/edit-user-items/edit-user-items.component';
 import { AddLogItemDialogEntryComponent } from './components/track/add-log-item-dialog/add-log-item-dialog.component';
+import { GoalsDialogEntryComponent } from './components/track/goals-dialog/goals-dialog.component';
 
 //TODO Add redirect to current date if the route is blank.
 const routes: Routes = [
@@ -27,6 +28,10 @@ const routes: Routes = [
       {
         path: 'items',
         component: UserItemsDialogEntryComponent,
+      },
+      {
+        path: 'goals',
+        component: GoalsDialogEntryComponent,
       }
     ]
   },

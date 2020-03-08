@@ -27,7 +27,7 @@
     <div id="content">
       <div>
         <h1>
-          3000/3000 Cal
+          {{totalNutritionData[NutritionDataKeys.CALORIES]}}/3000 Cal
         </h1>
         <h4>
           Fat: 225/225g
@@ -37,7 +37,7 @@
           Protien: 225/225g
         </h4>
         <mat-chip-list class="mat-chip-list-stacked">
-          <mat-chip>
+          <mat-chip routerLink="goals">
             <mat-icon>
               bar_chart
             </mat-icon>
