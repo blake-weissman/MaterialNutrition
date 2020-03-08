@@ -1,0 +1,10 @@
+mat-dialog-content {
+  flex-direction: column;  
+  &, div {
+    display: flex;
+  }
+}
+
+div > mat-form-field:not(:first-of-type) {
+  margin-left: 24px;
+}
