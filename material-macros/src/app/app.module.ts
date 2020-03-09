@@ -40,6 +40,7 @@ import { DynamicPipe } from './pipes/dynamic/dynamic.pipe';
 import { AddLogItemDialogComponent, AddLogItemDialogEntryComponent } from './components/track/add-log-item-dialog/add-log-item-dialog.component';
 import { UserItemsSelectionComponent } from './components/track/user-items-selection/user-items-selection.component';
 import { GoalsDialogComponent, GoalsDialogEntryComponent } from './components/track/goals-dialog/goals-dialog.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -99,7 +100,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     MatMenuModule,
     MatChipsModule,
     MatSnackBarModule,
-    MatTableModule
+    MatTableModule,
+    MatProgressBarModule
   ],
   providers: [
     AngularFireAuthGuard,

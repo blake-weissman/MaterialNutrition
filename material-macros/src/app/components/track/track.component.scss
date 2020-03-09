@@ -86,13 +86,6 @@ nav {
 //   // }
 // }
 
-
-h1 {
-  margin: 0 !important;
-  margin-bottom: 8px !important;
-  line-height: inherit !important;
-}
-
 mat-expansion-panel-header {
   max-width: 700px;
   margin: 0 auto;
@@ -126,14 +119,12 @@ mat-expansion-panel {
   border-color: #e0e0e0;
 }
 
-mat-expansion-panel-header {
-  h2 {
-    margin: 0 !important;
-  }
+h2, h4 {
+  margin-bottom: 3px !important;
 }
 
-h4 {
-  margin-bottom: 10px !important;
+mat-progress-bar {
+  margin-bottom: 12px;
 }
 
 ::ng-deep  {

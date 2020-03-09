@@ -15,5 +15,5 @@ export class User {
   log: UserLog = {};
   items: UserItems = AppService.prototype.convertCustomObjectToObject(new UserItems());
   darkTheme: boolean = false;
-  goals: NutritionData = new NutritionData();
+  goals: NutritionData = AppService.prototype.convertCustomObjectToObject(new NutritionData());
 }

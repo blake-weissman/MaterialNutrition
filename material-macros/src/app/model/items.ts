@@ -8,14 +8,14 @@ export enum NutritionDataKeys {
   CALORIES = 'calories',
   FAT = 'fat',
   CARBS = 'carbs',
-  PROTIEN = 'protien'
+  PROTEIN = 'protein'
 }
 
 export class NutritionData {
   [NutritionDataKeys.CALORIES]: number = null;
   [NutritionDataKeys.FAT]: number = null;
   [NutritionDataKeys.CARBS]: number = null;
-  [NutritionDataKeys.PROTIEN]: number = null;
+  [NutritionDataKeys.PROTEIN]: number = null;
 }   
 
 export class UserFoodItem {
@@ -23,7 +23,7 @@ export class UserFoodItem {
   [NutritionDataKeys.CALORIES]: number = null;
   [NutritionDataKeys.FAT]: number = null;
   [NutritionDataKeys.CARBS]: number = null;
-  [NutritionDataKeys.PROTIEN]: number = null;
+  [NutritionDataKeys.PROTEIN]: number = null;
   servingUnit: string = null;
   amountPerServing: number = null;
 }

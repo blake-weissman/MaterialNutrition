@@ -7,9 +7,9 @@
             today   
           </mat-icon>
         </button>
-        <h2 style="margin: 0 !important;">
+        <h3 style="margin: 0 !important;">
           {{selectedDate | date: 'M/d/yyyy'}}
-        </h2>
+        </h3>
       </div>
       <div>
         <button mat-icon-button>
@@ -26,16 +26,16 @@
     </nav>
     <div id="content">
       <div>
-        <h1>
-          {{totalNutritionData[NutritionDataKeys.CALORIES]}}/3000 Cal
-        </h1>
+        <h2>
+          {{totalNutritionData[NutritionDataKeys.CALORIES]}}/{{userService.user.goals[NutritionDataKeys.CALORIES]}} Calories
+        </h2>
+        <mat-progress-bar mode="determinate" [value]="totalNutritionData[NutritionDataKeys.CALORIES]/userService.user.goals[NutritionDataKeys.CALORIES] * 100">
+        </mat-progress-bar>
         <h4>
-          Fat: 225/225g
-          <br>
-          Carbs: 225/225g
-          <br>
-          Protien: 225/225g
+          Fat: {{totalNutritionData[NutritionDataKeys.FAT]}}/{{userService.user.goals[NutritionDataKeys.FAT]}}
         </h4>
+        <mat-progress-bar mode="determinate" [value]="totalNutritionData[NutritionDataKeys.FAT]/userService.user.goals[NutritionDataKeys.FAT] * 100" style="width: 50%;">
+        </mat-progress-bar>
         <mat-chip-list class="mat-chip-list-stacked">
           <mat-chip routerLink="goals">
             <mat-icon>
