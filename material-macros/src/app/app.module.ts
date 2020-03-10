@@ -41,6 +41,7 @@ import { AddLogItemDialogComponent, AddLogItemDialogEntryComponent } from './com
 import { UserItemsSelectionComponent } from './components/track/user-items-selection/user-items-selection.component';
 import { GoalsDialogComponent, GoalsDialogEntryComponent } from './components/track/goals-dialog/goals-dialog.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatDividerModule } from '@angular/material/divider';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -101,7 +102,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     MatChipsModule,
     MatSnackBarModule,
     MatTableModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatDividerModule
   ],
   providers: [
     AngularFireAuthGuard,

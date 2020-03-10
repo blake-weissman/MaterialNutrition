@@ -24,41 +24,52 @@
         </button>
       </div>
     </nav>
-    <div id="content">
-      <div>
-        <h2>
-          {{totalNutritionData[NutritionDataKeys.CALORIES]}}/{{userService.user.goals[NutritionDataKeys.CALORIES]}} Calories
-        </h2>
-        <mat-progress-bar mode="determinate" [value]="totalNutritionData[NutritionDataKeys.CALORIES]/userService.user.goals[NutritionDataKeys.CALORIES] * 100">
-        </mat-progress-bar>
-        <h4>
-          Fat: {{totalNutritionData[NutritionDataKeys.FAT]}}/{{userService.user.goals[NutritionDataKeys.FAT]}}
-        </h4>
-        <mat-progress-bar mode="determinate" [value]="totalNutritionData[NutritionDataKeys.FAT]/userService.user.goals[NutritionDataKeys.FAT] * 100" style="width: 50%;">
-        </mat-progress-bar>
-        <mat-chip-list class="mat-chip-list-stacked">
-          <mat-chip routerLink="goals">
-            <mat-icon>
-              bar_chart
-            </mat-icon>
-            Edit goals
-          </mat-chip>
-          <mat-chip routerLink="items">
-            <mat-icon>
-              edit
-            </mat-icon>
-            Edit items
-          </mat-chip>
-        </mat-chip-list>
+    <div id="info">
+      <mat-divider>
+      </mat-divider>
+      <div id="menu">
+        <div>
+          <h2>
+            {{totalNutritionData[NutritionDataKeys.CALORIES]}}/{{userService.user.goals[NutritionDataKeys.CALORIES]}} Calories
+          </h2>
+          <mat-progress-bar mode="determinate" [value]="totalNutritionData[NutritionDataKeys.CALORIES]/userService.user.goals[NutritionDataKeys.CALORIES] * 100">
+          </mat-progress-bar>
+          <div id="macros">
+            <div *ngFor="let macroKey of macroKeys">
+              <h4>
+                {{macroKey | titlecase}}:
+              </h4>
+              <mat-progress-bar mode="determinate" [value]="totalNutritionData[macroKey]/userService.user.goals[macroKey] * 100">
+              </mat-progress-bar>
+              <h4>
+                {{totalNutritionData[macroKey]}}/{{userService.user.goals[macroKey]}}
+              </h4>
+            </div>
+          </div>
+          <mat-chip-list class="mat-chip-list-stacked">
+            <mat-chip routerLink="goals">
+              <mat-icon>
+                bar_chart
+              </mat-icon>
+              Edit goals
+            </mat-chip>
+            <mat-chip routerLink="items">
+              <mat-icon>
+                edit
+              </mat-icon>
+              Edit items
+            </mat-chip>
+          </mat-chip-list>
+        </div>
+        <span class="mat-caption">
+          v1.0 Dev
+          <br>
+          &copy;{{currentDate | date: 'yyyy'}} 
+          <a href="https://blakeweissman.com" target="_blank">
+            Blake Weissman
+          </a>
+        </span>
       </div>
-      <span class="mat-caption">
-        v1.0 Dev
-        <br>
-        &copy;{{currentDate | date: 'yyyy'}} 
-        <a href="https://blakeweissman.com" target="_blank">
-          Blake Weissman
-        </a>
-      </span>
     </div>
   </mat-sidenav>
   <mat-sidenav-content>

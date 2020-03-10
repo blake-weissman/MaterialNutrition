@@ -16,8 +16,14 @@ mat-sidenav {
   padding-bottom: 22px;
 }
 
-#content {
+#info {
   padding: 0 22px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+#menu {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -29,10 +35,13 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding-top: 0;
-  padding: 16px 12px;
-  mat-icon {
-    // font-size: 18px;
-  }
+  padding: 0 12px;
+  padding-top: 16px;
+  padding-bottom: 4px;
+}
+
+mat-divider {
+  padding-bottom: 12px;
 }
 
 // #nav {
@@ -124,7 +133,23 @@ h2, h4 {
 }
 
 mat-progress-bar {
+  //margin-bottom: ;
+}
+
+#macros {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;    
   margin-bottom: 12px;
+  mat-progress-bar {
+    margin-bottom: 6px;
+  }
+  div {
+    flex-grow: 1;
+    &:not(:first-of-type) {
+      margin-left: 10px;
+    }
+  }
 }
 
 ::ng-deep  {
