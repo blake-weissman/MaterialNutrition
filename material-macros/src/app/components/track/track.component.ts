@@ -37,7 +37,7 @@ export class TrackComponent implements OnInit, OnDestroy {
     private changeDetectorRef: ChangeDetectorRef
   ) {}
 
-  ngOnInit() { 
+  ngOnInit() {
     this.subscriptions = [
       this.activatedRoute.params.subscribe(params => {
         this.userService.selectedEpoch = params.date;
@@ -75,11 +75,11 @@ export class TrackComponent implements OnInit, OnDestroy {
 
   public onDateSelect(date: Date): void {
     this.matMenuTrigger.closeMenu();
-    this.navigateToDate(date);
+    this.navigateToDate(date.getTime());
   }
 
-  private navigateToDate(date: Date): void {
-    this.router.navigateByUrl('/' + date.getTime());
+  public navigateToDate(epoch: Number): void {
+    this.router.navigateByUrl('/' + epoch);
     this.changeDetectorRef.detectChanges();
   }
 }

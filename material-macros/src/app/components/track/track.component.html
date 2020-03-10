@@ -12,12 +12,12 @@
         </h3>
       </div>
       <div>
-        <button mat-icon-button>
+        <button mat-icon-button (click)="navigateToDate(selectedDate.setDate(selectedDate.getDate() - 1))">
           <mat-icon>
             keyboard_arrow_left
           </mat-icon>
         </button>
-        <button mat-icon-button>
+        <button mat-icon-button (click)="navigateToDate(selectedDate.setDate(selectedDate.getDate() + 1))">
           <mat-icon>
             keyboard_arrow_right
           </mat-icon>
