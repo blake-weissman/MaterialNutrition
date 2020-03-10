@@ -16,7 +16,9 @@ export class NutritionData {
   [NutritionDataKeys.FAT]: number = null;
   [NutritionDataKeys.CARBS]: number = null;
   [NutritionDataKeys.PROTEIN]: number = null;
-}   
+}
+
+export const macroKeys = [NutritionDataKeys.FAT, NutritionDataKeys.CARBS, NutritionDataKeys.PROTEIN];
 
 export class UserFoodItem {
   name: string = null;
