@@ -33,8 +33,7 @@ export class TrackComponent implements OnInit, OnDestroy {
   constructor(
     private activatedRoute: ActivatedRoute,
     public userService: UserService,
-    private router: Router,
-    private changeDetectorRef: ChangeDetectorRef
+    private router: Router
   ) {}
 
   ngOnInit() {
