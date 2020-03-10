@@ -79,6 +79,5 @@ export class TrackComponent implements OnInit, OnDestroy {
 
   public navigateToDate(epoch: Number): void {
     this.router.navigateByUrl('/' + epoch);
-    this.changeDetectorRef.detectChanges();
   }
 }
