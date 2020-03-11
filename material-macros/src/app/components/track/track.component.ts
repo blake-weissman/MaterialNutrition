@@ -24,7 +24,8 @@ export class TrackComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[];
   public selectedDate = new Date();
   public dataSource = new MatTableDataSource<UserLog>();
-  public displayedColumns: string[] = Object.keys(new UserFoodItem());
+  private userFoodItemKeys = Object.keys(new UserFoodItem());
+  public displayedColumns: string[] = [...this.userFoodItemKeys.slice(0, this.userFoodItemKeys.length - 2), 'Amount', 'Servings'];
   public currentDate = new Date();
   public totalNutritionData: NutritionData = new NutritionData();
   public NutritionDataKeys = NutritionDataKeys;
