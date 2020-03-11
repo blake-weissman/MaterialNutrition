@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, ViewChild, AfterViewInit, Output, EventEmitter } from '@angular/core';
-import { UserFoodItem } from 'src/app/model/items';
+import { UserFoodItem, NutritionDataKeys } from 'src/app/model/items';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { positiveIntegersRegex } from 'src/app/consts'
 
 @Component({
   selector: 'app-user-food-item-form',
@@ -13,6 +14,8 @@ export class UserFoodItemFormComponent implements AfterViewInit {
   @Input() public userFoodItem: UserFoodItem;
   @Output() private formInvalidityChanged = new EventEmitter<boolean>();
   private formValueChangesSubscription: Subscription;
+  public NutritionDataKeys = NutritionDataKeys;
+  public positiveIntegersRegex = positiveIntegersRegex;
 
   ngAfterViewInit() {
     this.formValueChangesSubscription = this.form.valueChanges.subscribe(() => {
