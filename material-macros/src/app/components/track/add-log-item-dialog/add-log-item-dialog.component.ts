@@ -28,9 +28,12 @@ export class AddLogItemDialogComponent {
     this.userService.getUserFirestoreDocument().update(this.appService.convertCustomObjectToObject({
       log: {
         ...this.userService.user.log,
-        [this.userService.selectedEpoch]: [...(selectedEpochLog ? selectedEpochLog : []), this.selectedUserItem]
+        [this.userService.selectedEpoch]: [...(selectedEpochLog ? selectedEpochLog : []), {
+          ...this.selectedUserItem,
+          servings: 1
+        }]
       }
-    }))
+    }));
   }
 }
 
