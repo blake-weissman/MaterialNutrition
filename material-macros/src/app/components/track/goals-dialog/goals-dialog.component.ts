@@ -2,9 +2,10 @@ import { Component, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { NutritionData, NutritionDataKeys } from 'src/app/model/items';
+import { NutritionData, NutritionDataKeys, macroKeys } from 'src/app/model/items';
 import { UserService } from 'src/app/services/user/user.service';
 import { AppService } from 'src/app/services/app/app.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-goals-dialog',
@@ -14,11 +15,24 @@ import { AppService } from 'src/app/services/app/app.service';
 export class GoalsDialogComponent {
   public currentUserGoals: NutritionData = this.appService.deepCopy(this.userService.user.goals);
   public NutritionDataKeys = NutritionDataKeys;
+  public Math = Math;
+  public macroKeys = macroKeys;
 
   constructor(
-    private userService: UserService,
+    public userService: UserService,
     private appService: AppService,
+    private matSnackBar: MatSnackBar
   ) {}
+
+  public saveGoals(): void {
+    this.userService.getUserFirestoreDocument().update(this.appService.convertCustomObjectToObject({
+      goals: this.currentUserGoals
+    })).then(() => {
+      this.matSnackBar.open('Your goals were successfully saved.', 'Dismiss', {
+        duration: 5000,
+      })
+    });
+  }
 }
 
 @Component({

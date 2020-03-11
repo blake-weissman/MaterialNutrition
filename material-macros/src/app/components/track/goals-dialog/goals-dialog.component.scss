@@ -5,6 +5,13 @@ mat-dialog-content {
   }
 }
 
-div > mat-form-field:not(:first-of-type) {
-  margin-left: 24px;
+div > div {
+  display: flex;
+  flex-direction: column;
+  span {
+    margin-top: -10px;
+  }
+  &:not(:first-of-type) {
+    margin-left: 24px;
+  }
 }

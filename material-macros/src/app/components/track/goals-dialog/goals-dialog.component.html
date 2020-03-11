@@ -7,37 +7,28 @@
       <mat-label>
         Calories
       </mat-label>
-      <input matInput required [(ngModel)]="currentUserGoals[NutritionDataKeys.CALORIES]" [pattern]="numberRegex" #calories="ngModel" name="calories">
+      <input matInput required [pattern]="numberRegex" [(ngModel)]="currentUserGoals[NutritionDataKeys.CALORIES]" #calories="ngModel" name="calories">
       <mat-error>
         {{requiredErrorMessage}}
       </mat-error>
     </mat-form-field>
     <div>
-      <mat-form-field floatLabel="always">
-        <mat-label>
-          Fat
-        </mat-label>
-        <input matInput [pattern]="numberRegex" ngModel required #fat="ngModel" name="fat">
-        <span matSuffix>%</span>
-      </mat-form-field>
-      <mat-form-field floatLabel="always">
-        <mat-label>
-          Carbs
-        </mat-label>
-        <input matInput [pattern]="numberRegex" ngModel required #carbs="ngModel" name="carbs">
-        <span matSuffix>%</span>
-      </mat-form-field>
-      <mat-form-field floatLabel="always">
-        <mat-label>
-          Protien
-        </mat-label>
-        <input matInput [pattern]="numberRegex" ngModel required #protien="ngModel" name="protien">
-        <span matSuffix>%</span>
-      </mat-form-field>
+      <div *ngFor="let macroKey of macroKeys">
+        <mat-form-field floatLabel="always">
+          <mat-label>
+            {{macroKey | titlecase}}
+          </mat-label>
+          <input matInput [pattern]="numberRegex" [ngModel]="userService.user.goals[NutritionDataKeys.CALORIES]/(userService.user.goals[macroKey]*9) | number: '1.0-0'" (ngModelChange)="currentUserGoals[macroKey] = Math.round((currentUserGoals[NutritionDataKeys.CALORIES]*$event)/900)" required [name]="macroKey" maxlength="2">
+          <span matSuffix>%</span>
+        </mat-form-field>
+        <span>
+          {{currentUserGoals[macroKey]}}g
+        </span>
+      </div>
     </div>
   </mat-dialog-content>
   <mat-dialog-actions>
-    <button mat-stroked-button [disabled]="form.invalid">Save</button>
+    <button mat-stroked-button mat-dialog-close [disabled]="form.invalid" (click)="saveGoals()">Save</button>
     <button mat-stroked-button mat-dialog-close>Cancel</button>
   </mat-dialog-actions>
 </form>
