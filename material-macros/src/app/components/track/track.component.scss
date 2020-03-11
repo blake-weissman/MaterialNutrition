@@ -153,5 +153,9 @@ h2, h4 {
     .mat-form-field-infix {
       width: 50px !important;
     }
+    .mat-drawer-inner-container {
+      display: flex;
+      flex-direction: column;
+    }
   }
 }
