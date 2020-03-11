@@ -1,8 +1,6 @@
-export interface LogItem {
-  userFoodItem: UserFoodItem, 
-  servings: number,
-  units: string
-}
+export type LogItem = UserFoodItem | {
+  servings: number
+};
 
 export enum NutritionDataKeys {
   CALORIES = 'calories',
@@ -26,8 +24,8 @@ export class UserFoodItem {
   [NutritionDataKeys.FAT]: number = null;
   [NutritionDataKeys.CARBS]: number = null;
   [NutritionDataKeys.PROTEIN]: number = null;
-  servingUnit: string = null;
   amountPerServing: number = null;
+  servingUnit: string = null;
 }
 
 export interface UserRecipeItem {
