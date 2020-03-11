@@ -6,10 +6,10 @@ import { Subscription } from 'rxjs';
 import { UserService } from 'src/app/services/user/user.service';
 import { trigger, state, transition, animate, style } from '@angular/animations';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { LogItem, UserFoodItem, NutritionDataKeys, NutritionData, macroKeys } from 'src/app/model/items';
+import { UserFoodItem, NutritionDataKeys, NutritionData, macroKeys, UserLogItem } from 'src/app/model/items';
 import { MatTableDataSource } from '@angular/material/table';
-import { UserLog } from 'src/app/model/user';
 import { MatMenuTrigger } from '@angular/material/menu';
+import { positiveIntegersRegex } from 'src/app/consts';
 
 @Component({
   selector: 'app-track',
@@ -23,18 +23,21 @@ export class TrackComponent implements OnInit, OnDestroy {
 
   private subscriptions: Subscription[];
   public selectedDate = new Date();
-  public dataSource = new MatTableDataSource<UserLog>();
+  public dataSource = new MatTableDataSource<UserLogItem>();
   private userFoodItemKeys = Object.keys(new UserFoodItem());
-  public displayedColumns: string[] = [...this.userFoodItemKeys.slice(0, this.userFoodItemKeys.length - 2), 'Amount', 'Servings'];
+  private displayedUserFoodItemPropertyKeys = this.userFoodItemKeys.slice(0, this.userFoodItemKeys.length - 2);
+  public displayedColumns: string[] = [...this.displayedUserFoodItemPropertyKeys, 'amount', 'servings'];
+  public nutritionDataKeysWithAmountKey = [...Object.values(NutritionDataKeys), 'amount'];
   public currentDate = new Date();
   public totalNutritionData: NutritionData = new NutritionData();
   public NutritionDataKeys = NutritionDataKeys;
   public macroKeys = macroKeys;
+  public positiveIntegersRegex = positiveIntegersRegex;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     public userService: UserService,
-    private router: Router
+    private router: Router,
   ) {}
 
   ngOnInit() {
@@ -60,17 +63,21 @@ export class TrackComponent implements OnInit, OnDestroy {
   private setDataSource(): void {
     this.dataSource.data = this.userService.user.log[this.userService.selectedEpoch];
     if (this.dataSource.data) {
-      Object.values(NutritionDataKeys).forEach(key => {
-        this.totalNutritionData[key] = this.dataSource.data.reduce((result, item) => {
-          result += Number(item[key]);
-          return result;
-        }, 0);
-      });
+      this.setTotalNutritionData();
     } else {
       Object.values(NutritionDataKeys).forEach(key => {
         this.totalNutritionData[key] = 0;
       });
     }
+  }
+
+  private setTotalNutritionData(): void {
+    Object.values(NutritionDataKeys).forEach(key => {
+      this.totalNutritionData[key] = this.dataSource.data.reduce((result, item) => {
+        result += Number(item[key]) * item.servings;
+        return result;
+      }, 0);
+    });
   }
 
   public onDateSelect(date: Date): void {
@@ -80,5 +87,18 @@ export class TrackComponent implements OnInit, OnDestroy {
 
   public navigateToDate(epoch: Number): void {
     this.router.navigateByUrl('/' + epoch);
+  }
+
+  public saveLogItem(userLogItem: UserLogItem): void {
+    if (!userLogItem.servings) {
+      userLogItem.servings = 0;
+    }
+    this.setTotalNutritionData();
+    this.userService.getUserFirestoreDocument().update({
+      log: {
+        ...this.userService.user.log,
+        [this.userService.selectedEpoch]: this.dataSource.data
+      }
+    });
   }
 }

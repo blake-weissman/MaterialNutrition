@@ -81,9 +81,31 @@
       </mat-icon>
     </button>
     <table mat-table [dataSource]="dataSource" style="width: 100%;">
-      <ng-container [matColumnDef]="displayedColumn" *ngFor="let displayedColumn of displayedColumns">
-        <th mat-header-cell *matHeaderCellDef> {{displayedColumn | titlecase}} </th>
-        <td mat-cell *matCellDef="let item"> {{item[displayedColumn]}} </td>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> 
+          Name
+        </th>
+        <td mat-cell *matCellDef="let userLogItem"> 
+          {{userLogItem.name}}
+        </td>
+      </ng-container>
+      <ng-container [matColumnDef]="key" *ngFor="let key of nutritionDataKeysWithAmountKey">
+        <th mat-header-cell *matHeaderCellDef> 
+          {{key | titlecase}} 
+        </th>
+        <td mat-cell *matCellDef="let userLogItem"> 
+          {{userLogItem[key == 'amount' ? 'amountPerServing' : key] * userLogItem.servings}} {{key == 'amount' ? userLogItem.servingUnit : ''}}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="servings">
+        <th mat-header-cell *matHeaderCellDef> 
+          Servings
+        </th>
+        <td mat-cell *matCellDef="let userLogItem"> 
+          <mat-form-field>
+            <input matInput [ngModel]="userLogItem.servings" [pattern]="positiveIntegersRegex" (ngModelChange)="userLogItem.servings = servings.valid ? $event : userLogItem.servings" #servings="ngModel" (blur)="saveLogItem(userLogItem)" (keyup.enter)="$event.target.blur()">
+          </mat-form-field>
+        </td>
       </ng-container>
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

@@ -1,4 +1,4 @@
-import { LogItem, UserFoodItem, UserItemType, UserRecipeItem, NutritionDataKeys, NutritionData } from './items';
+import { UserFoodItem, UserItemType, UserRecipeItem, NutritionDataKeys, NutritionData, UserLogItem } from './items';
 import { AppService } from '../services/app/app.service';
 import { Inject, Injectable, Injector } from '@angular/core';
 
@@ -7,12 +7,10 @@ export class UserItems {
   [UserItemType.RECIPE]: UserRecipeItem[] = [];
 }
 
-export interface UserLog {
-  [key: number]: UserFoodItem[]
-}
-
 export class User {
-  log: UserLog = {};
+  log: {
+    [key: number]: UserLogItem[]
+  } = {};
   items: UserItems = AppService.prototype.convertCustomObjectToObject(new UserItems());
   darkTheme: boolean = false;
   goals: NutritionData = AppService.prototype.convertCustomObjectToObject(new NutritionData());

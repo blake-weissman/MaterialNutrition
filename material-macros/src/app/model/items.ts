@@ -1,4 +1,4 @@
-export type LogItem = UserFoodItem | {
+export type UserLogItem = UserFoodItem & {
   servings: number
 };
 
