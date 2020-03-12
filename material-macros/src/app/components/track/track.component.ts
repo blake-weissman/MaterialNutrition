@@ -26,7 +26,7 @@ export class TrackComponent implements OnInit, OnDestroy {
   public dataSource = new MatTableDataSource<UserLogItem>();
   private userFoodItemKeys = Object.keys(new UserFoodItem());
   private displayedUserFoodItemPropertyKeys = this.userFoodItemKeys.slice(0, this.userFoodItemKeys.length - 2);
-  public displayedColumns: string[] = [...this.displayedUserFoodItemPropertyKeys, 'amount', 'servings'];
+  public displayedColumns: string[] = [...this.displayedUserFoodItemPropertyKeys, 'amount', 'servings', 'remove'];
   public nutritionDataKeysWithAmountKey = [...Object.values(NutritionDataKeys), 'amount'];
   public currentDate = new Date();
   public totalNutritionData: NutritionData = new NutritionData();
@@ -89,10 +89,7 @@ export class TrackComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl('/' + epoch);
   }
 
-  public saveLogItem(userLogItem: UserLogItem): void {
-    if (!userLogItem.servings) {
-      userLogItem.servings = 0;
-    }
+  private setTotalNutritionDataAndUpdateFirestore(): void {
     this.setTotalNutritionData();
     this.userService.getUserFirestoreDocument().update({
       log: {
@@ -100,5 +97,17 @@ export class TrackComponent implements OnInit, OnDestroy {
         [this.userService.selectedEpoch]: this.dataSource.data
       }
     });
+  }
+
+  public saveLogItem(userLogItem: UserLogItem): void {
+    if (!userLogItem.servings) {
+      userLogItem.servings = 0;
+    }
+    this.setTotalNutritionDataAndUpdateFirestore();
+  }
+
+  public removeLogItem(index: number): void {
+    this.dataSource.data.splice(index, 1);
+    this.setTotalNutritionDataAndUpdateFirestore();
   }
 }
