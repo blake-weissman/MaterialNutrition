@@ -121,35 +121,6 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-    <!-- {{userService.user.log[userService.selectedEpoch][0].items | json}} -->
-    <!-- <table mat-table [dataSource]="userService.user.log[userService.selectedEpoch]">
-    </table>     -->
-
-    <!-- <cdk-virtual-scroll-viewport itemSize="50">
-      <div cdkDropList (cdkDropListDropped)="drop($event)">
-        <!--
-          TODO: In the future users will be able to catagorize foods into custom 
-          meals. For now users can only store foods into the "Other" meal, which 
-          just displays the list of foods without nesting them.
-        <ng-container *cdkVirtualFor="let meal of userService.user.log[userService.selectedEpoch]">
-          <ng-container *ngFor='let logItem of meal.items'>
-            <mat-expansion-panel *ngIf="userService.user.items[logItem.key]; let userItem" [expanded]="true" hideToggle>
-              <mat-expansion-panel-header>
-                <h2>
-                  {{userItem.label}}
-                </h2>
-                <mat-icon>
-                  drag_handle
-                </mat-icon>
-              </mat-expansion-panel-header>
-              <app-log-item-stats [logItem]="logItem" [userItem]="userItem">
-              </app-log-item-stats>
-              <button mat-stroked-button color="warn">Remove</button>
-            </mat-expansion-panel>
-          </ng-container>
-        </ng-container>
-      </div>
-    </cdk-virtual-scroll-viewport> -->
   </mat-sidenav-content>
 </mat-sidenav-container>
 <mat-menu #navigationCalendar="matMenu">
