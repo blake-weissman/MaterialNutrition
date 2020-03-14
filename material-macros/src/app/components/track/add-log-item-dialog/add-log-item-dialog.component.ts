@@ -1,10 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Injector } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserItem, UserItemType, UserLogItem } from 'src/app/model/items';
 import { UserService } from 'src/app/services/user/user.service';
 import { AppService } from 'src/app/services/app/app.service';
+import { DialogEntryComponent } from '../dialog-entry/dialog-entry.component';
 
 @Component({
   selector: 'app-add-log-item-dialog',
@@ -40,21 +41,10 @@ export class AddLogItemDialogComponent {
 @Component({
   template: '',
 })
-export class AddLogItemDialogEntryComponent implements OnDestroy {
-  private redirectWhenClosedSubscription: Subscription;
-
+export class AddLogItemDialogEntryComponent extends DialogEntryComponent {
   constructor(
-    private matDialog: MatDialog, 
-    private router: Router,
-    private route: ActivatedRoute
+    protected injector: Injector,
   ) {
-    const addLogItemDialog = this.matDialog.open(AddLogItemDialogComponent);
-    this.redirectWhenClosedSubscription = addLogItemDialog.afterClosed().subscribe(() => {
-      this.router.navigate(['../'], { relativeTo: this.route });
-    });
-  }
-
-  ngOnDestroy() {
-    this.redirectWhenClosedSubscription.unsubscribe();
+    super(injector, [AddLogItemDialogComponent], [['../']]);
   }
 }

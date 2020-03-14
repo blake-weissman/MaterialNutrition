@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnDestroy, Injector, TemplateRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -6,6 +6,7 @@ import { NutritionData, NutritionDataKeys, macroKeys } from 'src/app/model/items
 import { UserService } from 'src/app/services/user/user.service';
 import { AppService } from 'src/app/services/app/app.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DialogEntryComponent } from '../dialog-entry/dialog-entry.component';
 
 @Component({
   selector: 'app-goals-dialog',
@@ -38,22 +39,10 @@ export class GoalsDialogComponent {
 @Component({
   template: '',
 })
-export class GoalsDialogEntryComponent implements OnDestroy {
-  private redirectWhenClosedSubscription: Subscription;
-
+export class GoalsDialogEntryComponent extends DialogEntryComponent {
   constructor(
-    public matDialog: MatDialog, 
-    private router: Router,
+    protected injector: Injector
   ) {
-    const itemsDialog = this.matDialog.open(GoalsDialogComponent, {
-      maxWidth: '275px',
-    });
-    this.redirectWhenClosedSubscription = itemsDialog.afterClosed().subscribe(() => {
-      this.router.navigate(['../']);
-    });
-  }
-
-  ngOnDestroy() {
-    this.redirectWhenClosedSubscription.unsubscribe();
+    super(injector, [GoalsDialogComponent], [['../']]);
   }
 }
