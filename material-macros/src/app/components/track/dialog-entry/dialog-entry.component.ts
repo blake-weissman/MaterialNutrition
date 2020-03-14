@@ -11,12 +11,18 @@ export abstract class DialogEntryComponent implements OnDestroy {
 
   constructor(
     protected injector: Injector,
-    protected dialogParams: [ComponentType<any> | TemplateRef<any>, MatDialogConfig<any>],
-    protected exitRouteParams: [any[], NavigationExtras],
+    protected dialogParams: {
+      0: ComponentType<any> | TemplateRef<any>;
+      1?: MatDialogConfig<any>;
+    },
+    protected exitRouteParams: {
+      0: any[], 
+      1?: NavigationExtras
+    },
   ) {
-    const dialog = injector.get(MatDialog).open.apply(dialogParams);
+    const dialog = injector.get(MatDialog).open(dialogParams[0], dialogParams[1]);
     this.redirectWhenClosedSubscription = dialog.afterClosed().subscribe(() => {
-      injector.get(Router).navigate.apply(exitRouteParams);
+      injector.get(Router).navigate(exitRouteParams[0], exitRouteParams[1]);
     });
   }
 
