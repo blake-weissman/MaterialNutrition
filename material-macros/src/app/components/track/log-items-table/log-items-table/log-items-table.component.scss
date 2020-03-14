@@ -1,4 +1,8 @@
 table {
   width: 100%;
   background: transparent !important;
+  
+  ::ng-deep.mat-form-field-infix {
+    width: 50px !important;
+  }
 }
