@@ -45,6 +45,8 @@ export class AddLogItemDialogEntryComponent extends DialogEntryComponent {
   constructor(
     protected injector: Injector,
   ) {
-    super(injector, [AddLogItemDialogComponent], [['../']]);
+    super(injector, [AddLogItemDialogComponent, {
+      width: '650px'
+    }], [['../']]);
   }
 }

@@ -43,6 +43,8 @@ export class GoalsDialogEntryComponent extends DialogEntryComponent {
   constructor(
     protected injector: Injector
   ) {
-    super(injector, [GoalsDialogComponent], [['../']]);
+    super(injector, [GoalsDialogComponent, {
+      width: '275px',
+    }], [['../']]);
   }
 }

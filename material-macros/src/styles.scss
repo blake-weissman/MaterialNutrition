@@ -82,15 +82,23 @@ mat-dialog-actions {
   margin-bottom: 0 !important;
 }
 
+mat-dialog-content.mat-dialog-content {
+  margin-top: 16px !important;
+  margin: 0;
+  padding: 0;
+  margin-top: 16px;
+  margin-bottom: 28px;
+}
+
+mat-dialog-container .mat-form-field-infix {
+  width: auto;
+}
+
 ::ng-deep {
   & h3 {
     line-height: 24px !important;
     margin-bottom: 10px !important;
   }
-}
-
-mat-dialog-container .mat-form-field-infix {
-  width: auto;
 }
 
 app-track mat-chip mat-icon {
