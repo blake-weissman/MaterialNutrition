@@ -2,9 +2,9 @@
   Add Item
 </h1>
 <mat-dialog-content>
-  <app-user-items-selection (userItemSelected)="userItemSelected($event.userItem, $event.userItemType)">
+  <app-user-items-selection (userItemSelected)="userItemSelected($event.userItem)">
   </app-user-items-selection>
-  <app-log-items-table *ngIf="selectedUserItem" [dataSource]="[selectedUserItem]">
+  <app-log-items-table *ngIf="newUserLogItem" [dataSource]="[newUserLogItem]">
   </app-log-items-table>
 </mat-dialog-content>
 <mat-dialog-actions>

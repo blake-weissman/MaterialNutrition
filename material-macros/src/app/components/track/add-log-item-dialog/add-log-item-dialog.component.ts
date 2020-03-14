@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
-import { UserItem, UserItemType } from 'src/app/model/items';
+import { UserItem, UserItemType, UserLogItem } from 'src/app/model/items';
 import { UserService } from 'src/app/services/user/user.service';
 import { AppService } from 'src/app/services/app/app.service';
 
@@ -12,15 +12,18 @@ import { AppService } from 'src/app/services/app/app.service';
   styleUrls: ['./add-log-item-dialog.component.scss']
 })
 export class AddLogItemDialogComponent {
-  private selectedUserItem: UserItem;
+  private newUserLogItem: UserLogItem;
   
   constructor (
     private userService: UserService,
     private appService: AppService,
   ) {}
 
-  public userItemSelected(userItem: UserItem, userItemType: UserItemType): void {
-    this.selectedUserItem = userItem;
+  public userItemSelected(userItem: UserItem): void {
+    this.newUserLogItem = {
+      ...userItem,
+      servings: 1
+    } as UserLogItem;
   }
 
   public addNewLogItem(): void {
@@ -28,10 +31,7 @@ export class AddLogItemDialogComponent {
     this.userService.getUserFirestoreDocument().update(this.appService.convertCustomObjectToObject({
       log: {
         ...this.userService.user.log,
-        [this.userService.selectedEpoch]: [...(selectedEpochLog ? selectedEpochLog : []), {
-          ...this.selectedUserItem,
-          servings: 1
-        }]
+        [this.userService.selectedEpoch]: [...(selectedEpochLog ? selectedEpochLog : []), this.newUserLogItem]
       }
     }));
   }
