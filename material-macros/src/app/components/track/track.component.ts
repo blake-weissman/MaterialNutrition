@@ -24,15 +24,10 @@ export class TrackComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[];
   public selectedDate = new Date();
   public dataSource = new MatTableDataSource<UserLogItem>();
-  private userFoodItemKeys = Object.keys(new UserFoodItem());
-  private displayedUserFoodItemPropertyKeys = this.userFoodItemKeys.slice(0, this.userFoodItemKeys.length - 2);
-  public displayedColumns: string[] = [...this.displayedUserFoodItemPropertyKeys, 'amount', 'servings', 'remove'];
-  public nutritionDataKeysWithAmountKey = [...Object.values(NutritionDataKeys), 'amount'];
   public currentDate = new Date();
   public totalNutritionData: NutritionData = new NutritionData();
   public NutritionDataKeys = NutritionDataKeys;
   public macroKeys = macroKeys;
-  public positiveIntegersRegex = positiveIntegersRegex;
 
   constructor(
     private activatedRoute: ActivatedRoute,

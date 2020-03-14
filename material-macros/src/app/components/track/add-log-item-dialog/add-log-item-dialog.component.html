@@ -4,6 +4,8 @@
 <mat-dialog-content>
   <app-user-items-selection (userItemSelected)="userItemSelected($event.userItem, $event.userItemType)">
   </app-user-items-selection>
+  <app-log-items-table *ngIf="selectedUserItem" [dataSource]="[selectedUserItem]">
+  </app-log-items-table>
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-stroked-button mat-dialog-close (click)="addNewLogItem()">Add</button>
