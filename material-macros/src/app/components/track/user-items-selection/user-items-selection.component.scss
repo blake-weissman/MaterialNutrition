@@ -7,7 +7,17 @@
   }
 }
 
+mat-form-field {
+  width: 100%;
+}
+
 //TODO: Dark-theme corrector mixin?
-::ng-deep .dark-theme #search {
-  color: #ffffff;
+::ng-deep {
+  .dark-theme #search {
+    color: #ffffff;
+  }
+  .mat-form-field-wrapper {
+    padding: 0;
+    margin-bottom: 0;
+  }
 }
