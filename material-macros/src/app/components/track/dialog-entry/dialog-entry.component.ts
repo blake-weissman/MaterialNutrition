@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, ComponentRef, AfterContentChecked, Injectable, Injector, TemplateRef } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Router, NavigationExtras } from '@angular/router';
 import { ComponentType } from '@angular/cdk/portal';
 import { GoalsDialogComponent } from '../goals-dialog/goals-dialog.component';
 import { AddLogItemDialogComponent } from '../add-log-item-dialog/add-log-item-dialog.component';
@@ -11,12 +11,12 @@ export abstract class DialogEntryComponent implements OnDestroy {
 
   constructor(
     protected injector: Injector,
-    protected dialogComponent: ComponentType<any> | TemplateRef<any>,
-    protected exitRoute: string,
+    protected dialogParams: [ComponentType<any> | TemplateRef<any>, MatDialogConfig<any>],
+    protected exitRouteParams: [any[], NavigationExtras],
   ) {
-    const dialog = injector.get(MatDialog).open(dialogComponent);
+    const dialog = injector.get(MatDialog).open.apply(dialogParams);
     this.redirectWhenClosedSubscription = dialog.afterClosed().subscribe(() => {
-      injector.get(Router).navigate([exitRoute]);
+      injector.get(Router).navigate.apply(exitRouteParams);
     });
   }
 
