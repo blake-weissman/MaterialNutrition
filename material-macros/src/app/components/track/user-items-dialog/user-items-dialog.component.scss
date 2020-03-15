@@ -3,10 +3,6 @@
   align-items: center;
   justify-content: space-between;
   button {
-    width: auto;
-    height: auto;
-    &, .mat-button-ripple {
-      line-height: initial;
-    }
+    margin-right: -12px;
   }
 }
