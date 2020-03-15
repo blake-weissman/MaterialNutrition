@@ -158,6 +158,10 @@ h2, h4 {
   }
 }
 
+mat-calendar {
+  min-width: 275px;
+}
+
 ::ng-deep .dark-theme #no-log-items span {
   color: rgba(255, 255, 255, 0.5) !important;
 }
