@@ -7,6 +7,11 @@ import { UserService } from 'src/app/services/user/user.service';
 import { AppService } from 'src/app/services/app/app.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DialogEntryComponent } from '../dialog-entry/dialog-entry.component';
+import { positiveIntegersRegex } from 'src/app/consts';
+
+type NutritionDataKeysNumberMap = {
+  [key in NutritionDataKeys]?: number;
+};
 
 @Component({
   selector: 'app-goals-dialog',
@@ -15,15 +20,26 @@ import { DialogEntryComponent } from '../dialog-entry/dialog-entry.component';
 })
 export class GoalsDialogComponent {
   public currentUserGoals: NutritionData = this.appService.deepCopy(this.userService.user.goals);
+  public currentUserPercentageGoals: NutritionDataKeysNumberMap = {};
   public NutritionDataKeys = NutritionDataKeys;
-  public Math = Math;
+  // public Math = Math;
   public macroKeys = macroKeys;
+  public positiveIntegersRegex = positiveIntegersRegex;
+  public macroCalorieMap: NutritionDataKeysNumberMap = {
+    [NutritionDataKeys.FAT]: 9,
+    [NutritionDataKeys.CARBS]: 4,
+    [NutritionDataKeys.PROTEIN]: 4
+  };
 
   constructor(
     public userService: UserService,
     private appService: AppService,
     private matSnackBar: MatSnackBar
-  ) {}
+  ) {
+    macroKeys.forEach(macroKey => {
+      this.currentUserPercentageGoals[macroKey] = Math.round(this.userService.user.goals[NutritionDataKeys.CALORIES]/(this.userService.user.goals[macroKey]*this.macroCalorieMap[macroKey]));
+    });
+  }
 
   public saveGoals(): void {
     this.userService.getUserFirestoreDocument().update(this.appService.convertCustomObjectToObject({
@@ -33,6 +49,11 @@ export class GoalsDialogComponent {
         duration: 5000,
       })
     });
+  }
+
+  public setCurrentUserGoals(event: string, macroKey: NutritionDataKeys): void {
+    this.currentUserGoals[macroKey] = Math.round((this.currentUserGoals[NutritionDataKeys.CALORIES]*Number(event))/(this.macroCalorieMap[macroKey]*100));
+    this.currentUserPercentageGoals[macroKey] = Number(event);
   }
 }
 

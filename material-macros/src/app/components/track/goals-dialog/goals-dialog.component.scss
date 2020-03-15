@@ -1,3 +1,7 @@
+@import '../../../../styles.scss';
+@import '~@angular/material/theming';
+@include mat-core();
+
 mat-dialog-content {
   flex-direction: column;  
   &, div {
@@ -14,4 +18,13 @@ div > div {
   &:not(:first-of-type) {
     margin-left: 24px;
   }
+}
+
+#error {
+  @include mat-typography-level-to-styles(mat-typography-config(), caption);
+  color: mat-color($warn);
+}
+
+#macros {
+  
 }
