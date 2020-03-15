@@ -148,6 +148,20 @@ h2, h4 {
   }
 }
 
+#no-log-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  span {
+    color: rgba(0, 0, 0, 0.42);
+  }
+}
+
+::ng-deep .dark-theme #no-log-items span {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
 :host {
   ::ng-deep .mat-drawer-inner-container {
     display: flex;

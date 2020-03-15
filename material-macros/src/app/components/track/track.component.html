@@ -80,8 +80,15 @@
         add
       </mat-icon>
     </button>
-    <app-log-items-table [dataSource]="dataSource" (servingsChanged)="setTotalNutritionDataAndUpdateFirestore()" [makeItemsRemovable]="true" (removeClicked)="removeLogItem($event)">
+    <app-log-items-table *ngIf="dataSource.data.length; else noLogItems" [dataSource]="dataSource" (servingsChanged)="setTotalNutritionDataAndUpdateFirestore()" [makeItemsRemovable]="true" (removeClicked)="removeLogItem($event)">
     </app-log-items-table>
+    <ng-template #noLogItems>
+      <div id="no-log-items">
+        <span>
+          No items added.
+        </span>
+      </div>
+    </ng-template>
   </mat-sidenav-content>
 </mat-sidenav-container>
 <mat-menu #navigationCalendar="matMenu">
