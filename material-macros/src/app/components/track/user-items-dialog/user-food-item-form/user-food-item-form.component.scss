@@ -1,6 +1,11 @@
 div {
   display: flex;
-  margin-bottom: 12px;
+  &:not(:last-of-type) {
+    margin-bottom: 12px;
+  }
+  &:last-of-type {
+    margin-bottom: -1.25em;
+  }
   mat-form-field:not(:first-of-type) {
     margin-left: 24px;
   }
@@ -11,4 +16,10 @@ div {
 
 span {
   margin-bottom: 8px;
+}
+
+::ng-deep { 
+  mat-dialog-content {
+    overflow: hidden !important;
+  }
 }

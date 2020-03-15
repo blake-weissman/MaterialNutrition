@@ -1,0 +1,9 @@
+mat-dialog-content {
+  margin-bottom: 14px;
+}
+
+:host {
+  ::ng-deep app-user-items-selection mat-form-field, ::ng-deep app-user-food-item-form form {
+    margin-bottom: 14px;
+  }
+}
