@@ -22,7 +22,6 @@ export class GoalsDialogComponent {
   public currentUserGoals: NutritionData = this.appService.deepCopy(this.userService.user.goals);
   public currentUserPercentageGoals: NutritionDataKeysNumberMap = {};
   public NutritionDataKeys = NutritionDataKeys;
-  // public Math = Math;
   public macroKeys = macroKeys;
   public positiveIntegersRegex = positiveIntegersRegex;
   public macroCalorieMap: NutritionDataKeysNumberMap = {
@@ -37,7 +36,7 @@ export class GoalsDialogComponent {
     private matSnackBar: MatSnackBar
   ) {
     macroKeys.forEach(macroKey => {
-      this.currentUserPercentageGoals[macroKey] = Math.round(this.userService.user.goals[NutritionDataKeys.CALORIES]/(this.userService.user.goals[macroKey]*this.macroCalorieMap[macroKey]));
+      this.currentUserPercentageGoals[macroKey] = Math.round(((this.userService.user.goals[macroKey]*this.macroCalorieMap[macroKey])/this.userService.user.goals[NutritionDataKeys.CALORIES])*100);
     });
   }
 
@@ -52,8 +51,9 @@ export class GoalsDialogComponent {
   }
 
   public setCurrentUserGoals(event: string, macroKey: NutritionDataKeys): void {
-    this.currentUserGoals[macroKey] = Math.round((this.currentUserGoals[NutritionDataKeys.CALORIES]*Number(event))/(this.macroCalorieMap[macroKey]*100));
-    this.currentUserPercentageGoals[macroKey] = Number(event);
+    const eventAsNumber = Number(event);
+    this.currentUserGoals[macroKey] = Math.round((this.currentUserGoals[NutritionDataKeys.CALORIES]*eventAsNumber)/(this.macroCalorieMap[macroKey]*100));
+    this.currentUserPercentageGoals[macroKey] = eventAsNumber;
   }
 }
 
