@@ -4,7 +4,7 @@
 
 mat-dialog-content {
   flex-direction: column;
-  overflow: visible;  
+  overflow: visible !important;  
   &, div {
     display: flex;
   }
@@ -26,5 +26,5 @@ div > div {
   @include mat-typography-level-to-styles(mat-typography-config(), caption);
   color: mat-color($warn);
   margin-top: 5px;
-  margin-bottom: -7px;
+  margin-bottom: -2px;
 }
