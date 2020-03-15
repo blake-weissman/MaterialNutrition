@@ -14,7 +14,7 @@ export class UserItemsDialogComponent {}
 export class UserItemsDialogEntryComponent extends DialogEntryComponent {
   constructor(protected injector: Injector) {
     super(injector, [UserItemsDialogComponent, {
-      width: '300px'
+      width: '315px'
     }], [['../']]);
   }
 }
