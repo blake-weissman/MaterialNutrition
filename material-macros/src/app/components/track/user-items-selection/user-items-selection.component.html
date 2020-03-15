@@ -1,20 +1,26 @@
+<!--TODO: Reimplement search/repipe selection-->
 <mat-form-field appearance="outline" floatLabel="always">
   <mat-label>Items</mat-label>
   <mat-select placeholder="Select an item" [ngModel]="selectedUserItemIndex" (ngModelChange)="selectedUserItemIndexChange.emit($event)">
-    <div id="search">
+    <!-- <div id="search">
       <mat-icon>
         search
       </mat-icon>
       <input matInput placeholder="Search" (keydown)="filterItems($event)">
-    </div>
-    <mat-option [routerLink]="[{ outlets: { items: ['create']}}]">
+    </div> -->
+    <mat-option [routerLink]="[{ outlets: { items: ['create']}}]" *ngIf="showCreateItem">
       <mat-icon>
         add
       </mat-icon>
       Create a new item
+    </mat-option> 
+    <mat-option *ngFor="let userItem of userService.user.items[UserItemType.FOOD]; let index = index;" [value]="index" (click)="userItemSelected.emit({
+      userItem: userItem, 
+      userItemType: UserItemType.FOOD
+    })">
+      {{userItem.name}}
     </mat-option>
-    <ng-container *ngFor="let userItemTypeKey of UserItemType | objectValues">
-      <ng-container *ngIf="userService.user.items[userItemTypeKey]; let userItemType">
+      <!-- <ng-container *ngIf="userService.user.items[userItemTypeKey]; let userItemType">
         <mat-optgroup *ngIf="userItemType.length;" [label]="(userItemTypeKey | titlecase) + 's'">
           <mat-option *ngFor="let userItem of userItemType; let index = index;" [value]="index" (click)="userItemSelected.emit({
             userItem: userItem, 
@@ -24,6 +30,6 @@
           </mat-option>
         </mat-optgroup>
       </ng-container>
-    </ng-container>
+    </ng-container> -->
   </mat-select>
 </mat-form-field>

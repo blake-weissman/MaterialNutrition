@@ -1,5 +1,5 @@
 <mat-dialog-content>
-  <app-user-items-selection [(selectedUserItemIndex)]="selectedUserItemIndex" (userItemSelected)="userItemSelected($event.userItem, $event.userItemType)">
+  <app-user-items-selection [(selectedUserItemIndex)]="selectedUserItemIndex" (userItemSelected)="userItemSelected($event.userItem, $event.userItemType)" [showCreateItem]="true">
   </app-user-items-selection>
   <app-user-food-item-form [userFoodItem]="currentUserItem" *ngIf="selectedUserItemType === UserItemType.FOOD" (formInvalidityChanged)="isFormInvalid = $event">
   </app-user-food-item-form>

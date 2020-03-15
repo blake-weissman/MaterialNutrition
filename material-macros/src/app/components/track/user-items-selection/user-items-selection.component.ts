@@ -9,6 +9,7 @@ import { UserItemType, UserItem } from 'src/app/model/items';
 })
 export class UserItemsSelectionComponent {
   @Input() public selectedUserItemIndex: number;
+  @Input() public showCreateItem = false;
   @Output() public selectedUserItemIndexChange = new EventEmitter<number>();
   @Output() public userItemSelected = new EventEmitter<{
     userItem: UserItem,
