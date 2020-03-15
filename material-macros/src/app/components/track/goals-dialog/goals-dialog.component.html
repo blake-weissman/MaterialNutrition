@@ -8,9 +8,6 @@
         Calories
       </mat-label>
       <input matInput required [pattern]="positiveIntegersRegex" [(ngModel)]="currentUserGoals[NutritionDataKeys.CALORIES]" #calories="ngModel" name="calories">
-      <mat-error>
-        {{requiredErrorMessage}}
-      </mat-error>
     </mat-form-field>
     <div id="macros">
       <div *ngFor="let macroKey of macroKeys">
