@@ -80,7 +80,7 @@
         add
       </mat-icon>
     </button>
-    <app-log-items-table *ngIf="dataSource.data.length; else noLogItems" [dataSource]="dataSource" (servingsChanged)="setTotalNutritionDataAndUpdateFirestore()" [makeItemsRemovable]="true" (removeClicked)="removeLogItem($event)">
+    <app-log-items-table *ngIf="dataSource.data?.length; else noLogItems" [dataSource]="dataSource" (servingsChanged)="setTotalNutritionDataAndUpdateFirestore()" [makeItemsRemovable]="true" (removeClicked)="removeLogItem($event)">
     </app-log-items-table>
     <ng-template #noLogItems>
       <div id="no-log-items">
