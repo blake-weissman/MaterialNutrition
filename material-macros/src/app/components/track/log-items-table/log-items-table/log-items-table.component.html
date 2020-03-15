@@ -21,7 +21,7 @@
     </th>
     <td mat-cell *matCellDef="let userLogItem"> 
       <mat-form-field>
-        <input matInput [ngModel]="userLogItem.servings" [pattern]="positiveIntegersRegex" (ngModelChange)="userLogItem.servings = servings.valid ? $event : userLogItem.servings" #servings="ngModel" (blur)="servingsChanged.emit(userLogItem)" (keyup.enter)="$event.target.blur()">
+        <input matInput [ngModel]="userLogItem.servings" [pattern]="positiveIntegersRegex" (ngModelChange)="userLogItem.servings = servings.valid ? $event : userLogItem.servings" #servings="ngModel" (blur)="servingsChanged.emit(userLogItem)" (keyup.enter)="$event.target.blur()" (input)="servingsValidityChanged.emit(servings.valid)">
       </mat-form-field>
     </td>
   </ng-container>

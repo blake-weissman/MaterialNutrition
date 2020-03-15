@@ -13,7 +13,8 @@ import { DialogEntryComponent } from '../dialog-entry/dialog-entry.component';
   styleUrls: ['./add-log-item-dialog.component.scss']
 })
 export class AddLogItemDialogComponent {
-  private newUserLogItem: UserLogItem;
+  public newUserLogItem: UserLogItem;
+  public servingsInvalid: boolean;
   
   constructor (
     private userService: UserService,
@@ -25,6 +26,7 @@ export class AddLogItemDialogComponent {
       ...userItem,
       servings: 1
     } as UserLogItem;
+    this.servingsInvalid = false;
   }
 
   public addNewLogItem(): void {

@@ -13,6 +13,7 @@ export class LogItemsTableComponent implements OnInit {
   @Input() private makeItemsRemovable: boolean;
   @Output() public servingsChanged = new EventEmitter<UserLogItem>();
   @Output() public removeClicked = new EventEmitter<number>();
+  @Output() public servingsValidityChanged = new EventEmitter<boolean>();
 
   private userFoodItemKeys = Object.keys(new UserFoodItem());
   public nutritionDataKeysWithAmountKey = [...Object.values(NutritionDataKeys), 'amount'];
