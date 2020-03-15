@@ -80,7 +80,7 @@
         add
       </mat-icon>
     </button>
-    <app-log-items-table [dataSource]="dataSource" (servingsChanged)="saveLogItem($event)" [makeItemsRemovable]="true" (removeClicked)="removeLogItem($event)">
+    <app-log-items-table [dataSource]="dataSource" (servingsChanged)="setTotalNutritionDataAndUpdateFirestore()" [makeItemsRemovable]="true" (removeClicked)="removeLogItem($event)">
     </app-log-items-table>
   </mat-sidenav-content>
 </mat-sidenav-container>

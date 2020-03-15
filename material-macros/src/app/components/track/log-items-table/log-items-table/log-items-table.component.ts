@@ -25,4 +25,11 @@ export class LogItemsTableComponent implements OnInit {
      this.displayedColumns.push('remove');
     }
   }
+
+  public onServingsBlur(userLogItem: UserLogItem): void {
+    if (!userLogItem.servings) {
+      userLogItem.servings = 0;
+    }
+    this.servingsChanged.emit(userLogItem);
+  }
 }

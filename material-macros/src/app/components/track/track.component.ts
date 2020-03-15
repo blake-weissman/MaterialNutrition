@@ -84,7 +84,7 @@ export class TrackComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl('/' + epoch);
   }
 
-  private setTotalNutritionDataAndUpdateFirestore(): void {
+  public setTotalNutritionDataAndUpdateFirestore(): void {
     this.setTotalNutritionData();
     this.userService.getUserFirestoreDocument().update({
       log: {
@@ -92,13 +92,6 @@ export class TrackComponent implements OnInit, OnDestroy {
         [this.userService.selectedEpoch]: this.dataSource.data
       }
     });
-  }
-
-  public saveLogItem(userLogItem: UserLogItem): void {
-    if (!userLogItem.servings) {
-      userLogItem.servings = 0;
-    }
-    this.setTotalNutritionDataAndUpdateFirestore();
   }
 
   public removeLogItem(index: number): void {
