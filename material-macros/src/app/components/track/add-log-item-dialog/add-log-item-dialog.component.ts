@@ -6,11 +6,14 @@ import { UserItem, UserItemType, UserLogItem } from 'src/app/model/items';
 import { UserService } from 'src/app/services/user/user.service';
 import { AppService } from 'src/app/services/app/app.service';
 import { DialogEntryComponent } from '../dialog-entry/dialog-entry.component';
+import { expand } from 'src/app/consts';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-add-log-item-dialog',
   templateUrl: './add-log-item-dialog.component.html',
-  styleUrls: ['./add-log-item-dialog.component.scss']
+  styleUrls: ['./add-log-item-dialog.component.scss'],
+  animations: expand
 })
 export class AddLogItemDialogComponent {
   public newUserLogItem: UserLogItem;

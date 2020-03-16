@@ -7,7 +7,7 @@ import { UserService } from 'src/app/services/user/user.service';
 import { AppService } from 'src/app/services/app/app.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DialogEntryComponent } from '../dialog-entry/dialog-entry.component';
-import { positiveIntegersRegex } from 'src/app/consts';
+import { positiveIntegersRegex, expand } from 'src/app/consts';
 
 type NutritionDataKeysNumberMap = {
   [key in NutritionDataKeys]?: number;
@@ -16,7 +16,8 @@ type NutritionDataKeysNumberMap = {
 @Component({
   selector: 'app-goals-dialog',
   templateUrl: './goals-dialog.component.html',
-  styleUrls: ['./goals-dialog.component.scss']
+  styleUrls: ['./goals-dialog.component.scss'],
+  animations: expand
 })
 export class GoalsDialogComponent {
   public currentUserGoals: NutritionData = this.appService.deepCopy(this.userService.user.goals);

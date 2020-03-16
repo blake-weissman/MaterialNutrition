@@ -4,11 +4,13 @@ import { UserItemType, UserFoodItem, UserRecipeItem, UserItem } from 'src/app/mo
 import { UserItems } from 'src/app/model/user';
 import { AppService } from 'src/app/services/app/app.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { expand } from 'src/app/consts';
 
 @Component({
   selector: 'app-edit-user-items',
   templateUrl: './edit-user-items.component.html',
-  styleUrls: ['./edit-user-items.component.scss']
+  styleUrls: ['./edit-user-items.component.scss'],
+  animations: expand
 })
 export class EditUserItemsComponent {
   public UserItemType = UserItemType;

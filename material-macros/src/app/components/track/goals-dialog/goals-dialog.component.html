@@ -23,7 +23,7 @@
         </span>
       </div>
     </div>
-    <span id="error" *ngIf="totalPercentage !== 100">
+    <span id="error" @expand *ngIf="totalPercentage !== 100">
       Your percentages must total to 100%. Currently, your percentages total to {{totalPercentage}}%.
     </span> 
   </mat-dialog-content>

@@ -95,6 +95,10 @@ mat-dialog-container .mat-form-field-infix {
   width: auto;
 }
 
+mat-dialog-content {
+  overflow: hidden !important;
+}
+
 ::ng-deep {
   & h3 {
     line-height: 24px !important;

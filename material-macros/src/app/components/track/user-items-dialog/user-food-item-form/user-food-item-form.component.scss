@@ -20,3 +20,7 @@ span {
     overflow: hidden !important;
   }
 }
+
+:host {
+  display: block;
+}

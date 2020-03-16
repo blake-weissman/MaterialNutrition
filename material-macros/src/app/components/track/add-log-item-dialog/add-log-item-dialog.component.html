@@ -4,7 +4,7 @@
 <mat-dialog-content>
   <app-user-items-selection (userItemSelected)="userItemSelected($event.userItem)">
   </app-user-items-selection>
-  <app-log-items-table *ngIf="newUserLogItem" [dataSource]="[newUserLogItem]" (servingsValidityChanged)="servingsInvalid = !$event">
+  <app-log-items-table @expand *ngIf="newUserLogItem" [dataSource]="[newUserLogItem]" (servingsValidityChanged)="servingsInvalid = !$event">
   </app-log-items-table>
 </mat-dialog-content>
 <mat-dialog-actions>

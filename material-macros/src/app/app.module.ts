@@ -97,8 +97,6 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     FormsModule,
     MatButtonModule,
     MatDialogModule,
-    BrowserModule,
-    BrowserAnimationsModule,
     AngularFirestoreModule,
     MatMenuModule,
     MatChipsModule,
