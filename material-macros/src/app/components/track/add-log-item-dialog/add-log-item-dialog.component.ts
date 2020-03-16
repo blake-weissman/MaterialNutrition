@@ -49,9 +49,13 @@ export class AddLogItemDialogComponent {
 export class AddLogItemDialogEntryComponent extends DialogEntryComponent {
   constructor(
     protected injector: Injector,
+    private activatedRoute: ActivatedRoute
   ) {
     super(injector, [AddLogItemDialogComponent, {
       width: '650px'
     }], [['../']]);
+    this.exitRouteParams[1] = {
+      relativeTo: this.activatedRoute
+    };
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, Injector, TemplateRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { Router, Route, ActivatedRoute } from '@angular/router';
 import { NutritionData, NutritionDataKeys, macroKeys } from 'src/app/model/items';
 import { UserService } from 'src/app/services/user/user.service';
 import { AppService } from 'src/app/services/app/app.service';
@@ -63,10 +63,14 @@ export class GoalsDialogComponent {
 })
 export class GoalsDialogEntryComponent extends DialogEntryComponent {
   constructor(
-    protected injector: Injector
+    protected injector: Injector,
+    private activatedRoute: ActivatedRoute
   ) {
     super(injector, [GoalsDialogComponent, {
       width: '350px',
-    }], [['../']]);
+    }], [['..']]);
+    this.exitRouteParams[1] = {
+      relativeTo: this.activatedRoute
+    };
   }
 }
