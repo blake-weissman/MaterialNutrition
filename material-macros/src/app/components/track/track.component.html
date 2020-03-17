@@ -1,9 +1,7 @@
 <mat-sidenav-container *ngIf="userService.user">
   <mat-sidenav mode="side" [opened]="!appService.isMobile">
-    <nav>
-      <app-date-navigation>
-      </app-date-navigation>
-    </nav>
+    <app-date-navigation>
+    </app-date-navigation>
     <div id="info">
       <mat-divider>
       </mat-divider>
@@ -31,10 +29,16 @@
         add
       </mat-icon>
     </button>
-    <div id="mobile-goals-display" *ngIf="appService.isMobile">
-      <app-goals-display [nutritionData]="nutritionData">
-      </app-goals-display>
-    </div>
+    <ng-container *ngIf="appService.isMobile">
+      <mat-toolbar>
+        <app-date-navigation>
+        </app-date-navigation>
+      </mat-toolbar>
+      <div id="mobile-goals-display">
+        <app-goals-display [nutritionData]="nutritionData">
+        </app-goals-display>
+      </div>
+    </ng-container>
     <app-log-items-table *ngIf="dataSource.data?.length; else noLogItems" [dataSource]="dataSource" (servingsChanged)="setNutritionDataAndUpdateFirestore()" [makeItemsRemovable]="true" (removeClicked)="removeLogItem($event)">
     </app-log-items-table>
     <ng-template #noLogItems>
