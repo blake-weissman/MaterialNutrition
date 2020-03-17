@@ -10,6 +10,7 @@ import { UserFoodItem, NutritionDataKeys, NutritionData, macroKeys, UserLogItem 
 import { MatTableDataSource } from '@angular/material/table';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { positiveIntegersRegex } from 'src/app/consts';
+import { AppService } from 'src/app/services/app/app.service';
 
 @Component({
   selector: 'app-track',
@@ -33,7 +34,13 @@ export class TrackComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     public userService: UserService,
     private router: Router,
-  ) {}
+    public appService: AppService
+  ) {
+    this.setIsMobile();
+    window.onresize = () => { 
+      this.setIsMobile();
+    };
+  }
 
   ngOnInit() {
     this.subscriptions = [
@@ -53,6 +60,10 @@ export class TrackComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());
+  }
+
+  private setIsMobile(): void {
+    this.appService.isMobile = window.innerWidth < 599;
   }
 
   private setDataSource(): void {
