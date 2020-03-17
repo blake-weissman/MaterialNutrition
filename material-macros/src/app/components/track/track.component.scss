@@ -40,112 +40,11 @@ nav {
   padding-bottom: 4px;
 }
 
-mat-divider {
-  padding-bottom: 12px;
-}
-
-// #nav {
-//   display: flex;
-//   align-items: center;
-//   mat-icon {
-//     font-size: 1.5em;
-//   }
-//   ::ng-deep {
-//     .mat-form-field-infix {
-//       width: initial;    
-//       padding: 0;
-//       border: 0;
-//     }
-//     .mat-form-field-flex {
-//       // flex-direction: row-reverse;    
-//       padding: 0;
-//       margin: 0;
-//     }
-//     .mat-form-field-wrapper {
-//       padding: 0;
-//       margin: 0;
-//     }
-//     .mat-form-field-outline {
-//       color: transparent;
-//     }
-//     .mat-datepicker-toggle-default-icon {
-//       // margin: 0;
-//     }
-//   }
-//   input {
-//     @include mat-typography-level-to-styles(mat-typography-config(), headline);
-//     //TODO: Light mode
-//     color: #ffffff;
-//   }
-// }
-
-// #macro-display {
-//   // @include mat-elevation(2);
-//   // border-radius: 0;
-//   // background: mat-color($accent);
-//   // width: 100%;
-//   // color: mat-color($accent, 'accent-contrast');
-//   // div {
-//   //   max-width: 700px;
-//   //   margin: 0 auto;
-//   //   padding: 24px;
-//   // }
-//   // button {
-//   //   margin-right: 15px;
-//   // }
-// }
-
-mat-expansion-panel-header {
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-cdk-virtual-scroll-viewport {
-  width: 100%;
-  height: 100%;
-}
-
-[cdkdroplist] {
-  height: 100%;
-  //TODO Replace with something more cross-browser compatible
-  max-width: fit-content;
-  padding: 24px;
-  margin: 0 auto;
-}
-
 [mat-fab] {
   position: fixed;
   z-index: 1;
   bottom: 20px;
   right: 35px;
-}
-
-mat-expansion-panel {
-  margin-bottom: 20px;
-  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0,0,0,.12) !important;
-  border-width: 1px;
-  border-style: solid;
-  border-color: #e0e0e0;
-}
-
-h2, h4 {
-  margin-bottom: 3px !important;
-}
-
-#macros {
-  display: flex;
-  flex-direction: row;
-  margin-top: 10px;    
-  margin-bottom: 12px;
-  mat-progress-bar {
-    margin-bottom: 6px;
-  }
-  div {
-    flex-grow: 1;
-    &:not(:first-of-type) {
-      margin-left: 10px;
-    }
-  }
 }
 
 #no-log-items {
@@ -158,8 +57,17 @@ h2, h4 {
   }
 }
 
+#mobile-goals-display {
+  padding: 0 20px;
+  padding-top: 12px;
+}
+
 mat-calendar {
   min-width: 275px;
+}
+
+mat-divider {
+  padding-bottom: 12px;
 }
 
 ::ng-deep .dark-theme #no-log-items span {

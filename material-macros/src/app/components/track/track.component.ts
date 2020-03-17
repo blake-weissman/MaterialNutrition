@@ -26,9 +26,7 @@ export class TrackComponent implements OnInit, OnDestroy {
   public selectedDate = new Date();
   public dataSource = new MatTableDataSource<UserLogItem>();
   public currentDate = new Date();
-  public totalNutritionData: NutritionData = new NutritionData();
-  public NutritionDataKeys = NutritionDataKeys;
-  public macroKeys = macroKeys;
+  public nutritionData: NutritionData = new NutritionData();
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -69,17 +67,17 @@ export class TrackComponent implements OnInit, OnDestroy {
   private setDataSource(): void {
     this.dataSource.data = this.userService.user.log[this.userService.selectedEpoch];
     if (this.dataSource.data) {
-      this.setTotalNutritionData();
+      this.setNutritionData();
     } else {
       Object.values(NutritionDataKeys).forEach(key => {
-        this.totalNutritionData[key] = 0;
+        this.nutritionData[key] = 0;
       });
     }
   }
 
-  private setTotalNutritionData(): void {
+  private setNutritionData(): void {
     Object.values(NutritionDataKeys).forEach(key => {
-      this.totalNutritionData[key] = this.dataSource.data.reduce((result, item) => {
+      this.nutritionData[key] = this.dataSource.data.reduce((result, item) => {
         result += Number(item[key]) * item.servings;
         return result;
       }, 0);
@@ -95,8 +93,8 @@ export class TrackComponent implements OnInit, OnDestroy {
     this.router.navigateByUrl('/' + epoch);
   }
 
-  public setTotalNutritionDataAndUpdateFirestore(): void {
-    this.setTotalNutritionData();
+  public setNutritionDataAndUpdateFirestore(): void {
+    this.setNutritionData();
     this.userService.getUserFirestoreDocument().update({
       log: {
         ...this.userService.user.log,
@@ -107,6 +105,6 @@ export class TrackComponent implements OnInit, OnDestroy {
 
   public removeLogItem(index: number): void {
     this.dataSource.data.splice(index, 1);
-    this.setTotalNutritionDataAndUpdateFirestore();
+    this.setNutritionDataAndUpdateFirestore();
   }
 }

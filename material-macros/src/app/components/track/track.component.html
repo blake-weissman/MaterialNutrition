@@ -29,37 +29,8 @@
       </mat-divider>
       <div id="menu">
         <div>
-          <h2>
-            {{totalNutritionData[NutritionDataKeys.CALORIES]}}/{{userService.user.goals[NutritionDataKeys.CALORIES]}} Calories
-          </h2>
-          <mat-progress-bar mode="determinate" [value]="totalNutritionData[NutritionDataKeys.CALORIES]/userService.user.goals[NutritionDataKeys.CALORIES] * 100">
-          </mat-progress-bar>
-          <div id="macros">
-            <div *ngFor="let macroKey of macroKeys">
-              <h4>
-                {{macroKey | titlecase}}:
-              </h4>
-              <mat-progress-bar mode="determinate" [value]="totalNutritionData[macroKey]/userService.user.goals[macroKey] * 100">
-              </mat-progress-bar>
-              <h4>
-                {{totalNutritionData[macroKey]}}/{{userService.user.goals[macroKey]}}g
-              </h4>
-            </div>
-          </div>
-          <mat-chip-list class="mat-chip-list-stacked">
-            <mat-chip routerLink="goals">
-              <mat-icon>
-                bar_chart
-              </mat-icon>
-              Edit goals
-            </mat-chip>
-            <mat-chip routerLink="items">
-              <mat-icon>
-                edit
-              </mat-icon>
-              Edit items
-            </mat-chip>
-          </mat-chip-list>
+          <app-goals-display [nutritionData]="nutritionData">
+          </app-goals-display>
         </div>
         <span class="mat-caption">
           v1.0 Dev
@@ -80,7 +51,11 @@
         add
       </mat-icon>
     </button>
-    <app-log-items-table *ngIf="dataSource.data?.length; else noLogItems" [dataSource]="dataSource" (servingsChanged)="setTotalNutritionDataAndUpdateFirestore()" [makeItemsRemovable]="true" (removeClicked)="removeLogItem($event)">
+    <div id="mobile-goals-display">
+      <app-goals-display [nutritionData]="nutritionData" *ngIf="appService.isMobile">
+      </app-goals-display>
+    </div>
+    <app-log-items-table *ngIf="dataSource.data?.length; else noLogItems" [dataSource]="dataSource" (servingsChanged)="setNutritionDataAndUpdateFirestore()" [makeItemsRemovable]="true" (removeClicked)="removeLogItem($event)">
     </app-log-items-table>
     <ng-template #noLogItems>
       <div id="no-log-items">
