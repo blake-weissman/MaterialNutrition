@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -37,6 +37,7 @@ export class TrackComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscriptions = [
       this.activatedRoute.params.subscribe(params => {
+        this.userService.selectedEpoch = params.date;
         if (this.userService.user) {
           this.setDataSource();
         }

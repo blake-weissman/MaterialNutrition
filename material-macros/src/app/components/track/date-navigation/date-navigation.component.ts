@@ -23,7 +23,6 @@ export class DateNavigationComponent implements OnDestroy {
     private userService: UserService
   ) {
     this.navigationSubscription = this.activatedRoute.params.subscribe(params => {
-      this.userService.selectedEpoch = params.date;
       this.selectedDate = new Date(Number(this.userService.selectedEpoch));
     })
   }
