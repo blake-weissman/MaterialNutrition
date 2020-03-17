@@ -1,0 +1,30 @@
+@import '../../../../styles';
+@import '~@angular/material/theming';
+@include mat-core();
+
+:host {
+  @extend .mat-typography;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0;
+  padding: 0 12px;
+  padding-top: 16px;
+  padding-bottom: 4px;
+}
+
+#date {
+  display: flex; 
+  align-items: center;
+}
+
+h3 {
+  margin: 0 !important;
+}
+
+mat-calendar {
+  min-width: 275px;
+}
