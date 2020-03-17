@@ -1,28 +1,8 @@
 <mat-sidenav-container *ngIf="userService.user">
   <mat-sidenav mode="side" [opened]="!appService.isMobile">
     <nav>
-      <div style="display: flex; align-items: center;">
-        <button mat-icon-button [matMenuTriggerFor]="navigationCalendar">
-          <mat-icon>
-            today   
-          </mat-icon>
-        </button>
-        <h3 style="margin: 0 !important;">
-          {{selectedDate | date: 'M/d/yyyy'}}
-        </h3>
-      </div>
-      <div>
-        <button mat-icon-button (click)="navigateToDate(selectedDate.setDate(selectedDate.getDate() - 1))">
-          <mat-icon>
-            keyboard_arrow_left
-          </mat-icon>
-        </button>
-        <button mat-icon-button (click)="navigateToDate(selectedDate.setDate(selectedDate.getDate() + 1))">
-          <mat-icon>
-            keyboard_arrow_right
-          </mat-icon>
-        </button>
-      </div>
+      <app-date-navigation>
+      </app-date-navigation>
     </nav>
     <div id="info">
       <mat-divider>
@@ -51,8 +31,8 @@
         add
       </mat-icon>
     </button>
-    <div id="mobile-goals-display">
-      <app-goals-display [nutritionData]="nutritionData" *ngIf="appService.isMobile">
+    <div id="mobile-goals-display" *ngIf="appService.isMobile">
+      <app-goals-display [nutritionData]="nutritionData">
       </app-goals-display>
     </div>
     <app-log-items-table *ngIf="dataSource.data?.length; else noLogItems" [dataSource]="dataSource" (servingsChanged)="setNutritionDataAndUpdateFirestore()" [makeItemsRemovable]="true" (removeClicked)="removeLogItem($event)">

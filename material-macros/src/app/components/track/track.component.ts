@@ -18,12 +18,7 @@ import { AppService } from 'src/app/services/app/app.service';
   styleUrls: ['./track.component.scss']
 })
 export class TrackComponent implements OnInit, OnDestroy {
-  @ViewChild(MatMenuTrigger, {
-    static: false
-  }) matMenuTrigger: MatMenuTrigger;
-
   private subscriptions: Subscription[];
-  public selectedDate = new Date();
   public dataSource = new MatTableDataSource<UserLogItem>();
   public currentDate = new Date();
   public nutritionData: NutritionData = new NutritionData();
@@ -31,7 +26,6 @@ export class TrackComponent implements OnInit, OnDestroy {
   constructor(
     private activatedRoute: ActivatedRoute,
     public userService: UserService,
-    private router: Router,
     public appService: AppService
   ) {
     this.setIsMobile();
@@ -43,8 +37,6 @@ export class TrackComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscriptions = [
       this.activatedRoute.params.subscribe(params => {
-        this.userService.selectedEpoch = params.date;
-        this.selectedDate = new Date(Number(this.userService.selectedEpoch));
         if (this.userService.user) {
           this.setDataSource();
         }
@@ -82,15 +74,6 @@ export class TrackComponent implements OnInit, OnDestroy {
         return result;
       }, 0);
     });
-  }
-
-  public onDateSelect(date: Date): void {
-    this.matMenuTrigger.closeMenu();
-    this.navigateToDate(date.getTime());
-  }
-
-  public navigateToDate(epoch: Number): void {
-    this.router.navigateByUrl('/' + epoch);
   }
 
   public setNutritionDataAndUpdateFirestore(): void {
