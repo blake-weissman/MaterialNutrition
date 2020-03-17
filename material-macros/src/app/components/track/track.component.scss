@@ -51,6 +51,10 @@ mat-sidenav {
   justify-content: center;
   align-items: center;
   height: 100%;
+  @media (max-width: 599px) {
+    height: auto;
+    padding-top: 12px;
+  }
   span {
     color: rgba(0, 0, 0, 0.42);
   }
@@ -77,6 +81,11 @@ mat-toolbar {
     padding: 0 12px;
     padding-top: 16px;
     padding-bottom: 4px;
+  }
+}
+@media (max-width: 599px) {
+  app-log-items-table {
+    padding-bottom: 76px;
   }
 }
 
