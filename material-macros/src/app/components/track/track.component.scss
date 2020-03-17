@@ -42,10 +42,6 @@ mat-sidenav {
   }
 }
 
-.dark-theme mat-toolbar {  
-  border-top: solid 1px rgba(255, 255, 255, 0.12);
-}
-
 #no-log-items {
   display: flex;
   justify-content: center;
@@ -89,8 +85,13 @@ mat-toolbar {
   }
 }
 
-::ng-deep .dark-theme #no-log-items span {
-  color: rgba(255, 255, 255, 0.5) !important;
+::ng-deep .dark-theme  {
+  #no-log-items span {
+    color: rgba(255, 255, 255, 0.5) !important;
+  }
+  mat-toolbar {  
+    border-top: solid 1px rgba(255, 255, 255, 0.12);
+  }
 }
 
 :host {
