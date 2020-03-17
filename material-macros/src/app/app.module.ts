@@ -43,6 +43,7 @@ import { GoalsDialogComponent, GoalsDialogEntryComponent } from './components/tr
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDividerModule } from '@angular/material/divider';
 import { LogItemsTableComponent } from './components/track/log-items-table/log-items-table/log-items-table.component';
+import { GoalsDisplayComponent } from './components/track/goals-display/goals-display.component';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -73,7 +74,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     UserItemsSelectionComponent,
     GoalsDialogComponent,
     GoalsDialogEntryComponent,
-    LogItemsTableComponent
+    LogItemsTableComponent,
+    GoalsDisplayComponent
   ],
   imports: [
     BrowserModule,
