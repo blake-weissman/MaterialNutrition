@@ -85,7 +85,7 @@ mat-toolbar {
   }
 }
 
-::ng-deep .dark-theme  {
+.dark-theme :host ::ng-deep  {
   #no-log-items span {
     color: rgba(255, 255, 255, 0.5) !important;
   }
@@ -94,9 +94,7 @@ mat-toolbar {
   }
 }
 
-:host {
-  ::ng-deep .mat-drawer-inner-container {
-    display: flex;
-    flex-direction: column;
-  }
+:host ::ng-deep .mat-drawer-inner-container {
+  display: flex;
+  flex-direction: column;
 }
