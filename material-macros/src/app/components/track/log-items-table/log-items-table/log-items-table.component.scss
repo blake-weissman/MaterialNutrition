@@ -1,16 +1,38 @@
 table {
   width: 100%;
   background: transparent !important;
-  
-  ::ng-deep.mat-form-field-infix {
-    width: 50px !important;
-  }
 }
 
 th {
   width: 100vw;
 }
 
+td {
+  white-space: nowrap;
+}
+
 :host {
   display: block;
+  ::ng-deep {
+    td.mat-cell:last-of-type {
+      padding-right: 0 !important;
+    }
+    .mat-form-field-infix {
+      width: 50px !important;
+    }
+    @media (max-width: 599px) { 
+      td.mat-cell:last-of-type {
+        padding-right: 16px !important;
+      }
+      .mat-form-field-infix {
+        width: 30px !important;
+      }
+      .mat-cell {
+        font-size: 12px;
+      }
+      .mat-header-cell {
+        font-size: 10px;
+      }
+    }
+  }
 }

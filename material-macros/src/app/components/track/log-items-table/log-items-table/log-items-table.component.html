@@ -9,7 +9,7 @@
   </ng-container>
   <ng-container [matColumnDef]="key" *ngFor="let key of nutritionDataKeysWithAmountKey">
     <th mat-header-cell *matHeaderCellDef> 
-      {{key | titlecase}} 
+      {{macroKeys.includes(key) ? (key[0] | uppercase) : (key | titlecase)}}
     </th>
     <td mat-cell *matCellDef="let userLogItem"> 
       {{userLogItem[key == 'amount' ? 'amountPerServing' : key] * userLogItem.servings}} {{key == 'amount' ? userLogItem.servingUnit : ''}}
