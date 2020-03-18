@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NutritionDataKeys, UserFoodItem, UserLogItem, macroKeys } from 'src/app/model/items';
 import { MatTableDataSource } from '@angular/material/table';
 import { positiveIntegersRegex } from 'src/app/consts';
+import { AppService } from 'src/app/services/app/app.service';
 
 @Component({
   selector: 'app-log-items-table',
@@ -20,6 +21,8 @@ export class LogItemsTableComponent implements OnInit {
   public displayedColumns: string[] = [...this.userFoodItemKeys.slice(0, this.userFoodItemKeys.length - 2), 'amount', 'servings'];
   public positiveIntegersRegex = positiveIntegersRegex;
   public macroKeys = macroKeys;
+
+  constructor(public appService: AppService) {}
 
   ngOnInit() {
     if (this.makeItemsRemovable) {
