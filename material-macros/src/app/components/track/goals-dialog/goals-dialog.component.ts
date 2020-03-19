@@ -51,10 +51,22 @@ export class GoalsDialogComponent {
     });
   }
 
-  public setCurrentUserGoals(event: string, macroKey: NutritionDataKeys): void {
+  public userGoalChanged(event: string, macroKey: NutritionDataKeys): void {
     const eventAsNumber = Number(event);
-    this.currentUserGoals[macroKey] = Math.round((this.currentUserGoals[NutritionDataKeys.CALORIES]*eventAsNumber)/(this.macroCalorieMap[macroKey]*100));
+    this.setCurrentUserGoal(macroKey, eventAsNumber);
     this.currentUserPercentageGoals[macroKey] = eventAsNumber;
+  }
+
+  private setCurrentUserGoal(macroKey: NutritionDataKeys, percentage: number) {
+    this.currentUserGoals[macroKey] = Math.round((this.currentUserGoals[NutritionDataKeys.CALORIES]*percentage)/(this.macroCalorieMap[macroKey]*100));
+  }
+
+  public caloriesChanged() {
+    if (this.currentUserGoals[NutritionDataKeys.CALORIES]) {
+      macroKeys.forEach(macroKey => {
+        this.setCurrentUserGoal(macroKey, Number(this.currentUserPercentageGoals[macroKey]));
+      });
+    }
   }
 }
 
