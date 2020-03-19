@@ -46,6 +46,7 @@ import { LogItemsTableComponent } from './components/track/log-items-table/log-i
 import { GoalsDisplayComponent } from './components/track/goals-display/goals-display.component';
 import { DateNavigationComponent } from './components/track/date-navigation/date-navigation.component';
 import { TitleBarComponent } from './components/track/title-bar/title-bar.component';
+import { IncludesPipe } from './pipes/includes/includes.pipe';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -79,7 +80,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     LogItemsTableComponent,
     GoalsDisplayComponent,
     DateNavigationComponent,
-    TitleBarComponent
+    TitleBarComponent,
+    IncludesPipe
   ],
   imports: [
     BrowserModule,
