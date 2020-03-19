@@ -1,13 +1,10 @@
-import { Component, OnInit, OnDestroy, Injector } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { MatDialog } from '@angular/material/dialog';
-import { Router, ActivatedRoute } from '@angular/router';
-import { UserItem, UserItemType, UserLogItem } from 'src/app/model/items';
+import { Component, Injector } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { UserItem, UserLogItem } from 'src/app/model/items';
 import { UserService } from 'src/app/services/user/user.service';
 import { AppService } from 'src/app/services/app/app.service';
 import { DialogEntryComponent } from '../dialog-entry/dialog-entry.component';
 import { expand } from 'src/app/consts';
-import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-add-log-item-dialog',

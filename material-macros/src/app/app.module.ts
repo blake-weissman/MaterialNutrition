@@ -42,7 +42,7 @@ import { UserItemsSelectionComponent } from './components/track/user-items-selec
 import { GoalsDialogComponent, GoalsDialogEntryComponent } from './components/track/goals-dialog/goals-dialog.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatDividerModule } from '@angular/material/divider';
-import { LogItemsTableComponent } from './components/track/log-items-table/log-items-table/log-items-table.component';
+import { LogItemsTableComponent } from './components/track/log-items-table/log-items-table.component';
 import { GoalsDisplayComponent } from './components/track/goals-display/goals-display.component';
 import { DateNavigationComponent } from './components/track/date-navigation/date-navigation.component';
 import { TitleBarComponent } from './components/track/title-bar/title-bar.component';

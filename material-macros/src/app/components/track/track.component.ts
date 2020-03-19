@@ -1,15 +1,9 @@
-import { Component, OnInit, OnDestroy, ViewChild, ChangeDetectorRef, AfterViewInit } from '@angular/core';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { UserService } from 'src/app/services/user/user.service';
-import { trigger, state, transition, animate, style } from '@angular/animations';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { UserFoodItem, NutritionDataKeys, NutritionData, macroKeys, UserLogItem } from 'src/app/model/items';
+import { NutritionDataKeys, NutritionData, UserLogItem } from 'src/app/model/items';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatMenuTrigger } from '@angular/material/menu';
-import { positiveIntegersRegex } from 'src/app/consts';
 import { AppService } from 'src/app/services/app/app.service';
 
 @Component({

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UserService } from 'src/app/services/user/user.service';
-import { UserItemType, UserFoodItem, UserRecipeItem, UserItem } from 'src/app/model/items';
+import { UserItemType, UserItem } from 'src/app/model/items';
 import { UserItems } from 'src/app/model/user';
 import { AppService } from 'src/app/services/app/app.service';
 import { MatSnackBar } from '@angular/material/snack-bar';

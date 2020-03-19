@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, AfterViewInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, ViewChild, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import { UserFoodItem, NutritionDataKeys } from 'src/app/model/items';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';

@@ -1,6 +1,5 @@
-import { UserFoodItem, UserItemType, UserRecipeItem, NutritionDataKeys, NutritionData, UserLogItem } from './items';
+import { UserFoodItem, UserItemType, UserRecipeItem, NutritionData, UserLogItem } from './items';
 import { AppService } from '../services/app/app.service';
-import { Inject, Injectable, Injector } from '@angular/core';
 
 export class UserItems {
   [UserItemType.FOOD]: UserFoodItem[] = [];

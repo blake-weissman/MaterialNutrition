@@ -1,7 +1,5 @@
-import { Component, OnDestroy, Injector, TemplateRef } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { MatDialog } from '@angular/material/dialog';
-import { Router, Route, ActivatedRoute } from '@angular/router';
+import { Component, Injector } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { NutritionData, NutritionDataKeys, macroKeys } from 'src/app/model/items';
 import { UserService } from 'src/app/services/user/user.service';
 import { AppService } from 'src/app/services/app/app.service';
