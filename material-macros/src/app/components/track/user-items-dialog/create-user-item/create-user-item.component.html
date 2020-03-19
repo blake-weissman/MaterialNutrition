@@ -4,5 +4,5 @@
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-stroked-button [disabled]="isFormInvalid" (click)="createFoodItem()">Create</button>
-  <button mat-stroked-button mat-dialog-close>Go Back</button>
+  <button mat-stroked-button [routerLink]="['../']">Go Back</button>
 </mat-dialog-actions>
