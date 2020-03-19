@@ -1,4 +1,4 @@
-<app-title-bar label="Edit Items">
+<app-title-bar [label]="(router.url | includes: '(items:create)') ? 'Create New Item' : 'Edit Items'">
 </app-title-bar>
 <router-outlet name="items">
 </router-outlet>

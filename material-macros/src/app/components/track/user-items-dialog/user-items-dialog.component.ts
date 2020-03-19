@@ -1,13 +1,15 @@
 import { Component, Injector } from '@angular/core';
 import { DialogEntryComponent } from '../dialog-entry/dialog-entry.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-items-dialog',
   templateUrl: './user-items-dialog.component.html',
   styleUrls: ['./user-items-dialog.component.scss']
 })
-export class UserItemsDialogComponent {}
+export class UserItemsDialogComponent {
+  constructor(public router: Router) {}
+}
 
 @Component({
   template: '',
