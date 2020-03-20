@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "material-macros": {
+    "material-nutrition": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/material-macros",
+            "outputPath": "dist/material-nutrition",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -68,18 +68,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "material-macros:build"
+            "browserTarget": "material-nutrition:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "material-macros:build:production"
+              "browserTarget": "material-nutrition:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "material-macros:build"
+            "browserTarget": "material-nutrition:build"
           }
         },
         "test": {
@@ -117,15 +117,15 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "material-macros:serve"
+            "devServerTarget": "material-nutrition:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "material-macros:serve:production"
+              "devServerTarget": "material-nutrition:serve:production"
             }
           }
         }
       }
     }},
-  "defaultProject": "material-macros"
+  "defaultProject": "material-nutrition"
 }
