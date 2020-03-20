@@ -31,7 +31,7 @@ export class TrackComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscriptions = [
       this.activatedRoute.params.subscribe(params => {
-        this.userService.selectedEpoch = params.date;
+        this.userService.selectedEpoch = params.date || new Date().setHours(0,0,0,0);
         if (this.userService.user) {
           this.setDataSource();
         }
