@@ -20,7 +20,7 @@ export class UserItemsSelectionComponent {
 
   constructor(public userService: UserService) {}
   
-  //TODO: Implement
+  //TODO: Impelement
   public filterItems(event) {
     event.stopPropagation();
     console.log(event);

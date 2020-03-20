@@ -9,7 +9,6 @@ import { EditUserItemsComponent } from './components/track/user-items-dialog/edi
 import { AddLogItemDialogEntryComponent } from './components/track/add-log-item-dialog/add-log-item-dialog.component';
 import { GoalsDialogEntryComponent } from './components/track/goals-dialog/goals-dialog.component';
 
-//TODO Add redirect to current date if the route is blank.
 const routes: Routes = [
   { 
     path: 'login', 
