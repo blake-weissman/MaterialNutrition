@@ -50,9 +50,3 @@
     </ng-template>
   </mat-sidenav-content>
 </mat-sidenav-container>
-<mat-menu #navigationCalendar="matMenu">
-  <div (click)="$event.stopPropagation();">
-    <mat-calendar [selected]="selectedDate" (selectedChange)="onDateSelect($event)">
-    </mat-calendar>  
-  </div>
-</mat-menu>

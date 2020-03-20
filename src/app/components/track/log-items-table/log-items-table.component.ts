@@ -11,7 +11,7 @@ import { AppService } from 'src/app/services/app/app.service';
 })
 export class LogItemsTableComponent implements OnInit {
   @Input() public dataSource: MatTableDataSource<UserLogItem>;
-  @Input() private makeItemsRemovable: boolean;
+  @Input() public makeItemsRemovable: boolean;
   @Output() public servingsChanged = new EventEmitter<UserLogItem>();
   @Output() public removeClicked = new EventEmitter<number>();
   @Output() public servingsValidityChanged = new EventEmitter<boolean>();
