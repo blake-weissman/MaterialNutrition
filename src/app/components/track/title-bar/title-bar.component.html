@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>
   {{label}}
 </h1>
-<button mat-icon-button mat-dialog-close>
+<button mat-icon-button mat-dialog-close *ngIf="!hideCloseButton">
   <mat-icon>close</mat-icon>
 </button>

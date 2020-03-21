@@ -31,6 +31,11 @@ export class TrackComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscriptions = [
+      this.userService.getUserFirestoreDocument().valueChanges().subscribe(value => {
+        this.userService.user = value;
+        this.setDataSource();
+        this.openGoalsIfNoneExist();
+      }),
       this.activatedRoute.params.subscribe(params => {
         if (!params.date) {
           this.router.navigate([String(new Date().setHours(0,0,0,0))]);
@@ -38,18 +43,21 @@ export class TrackComponent implements OnInit, OnDestroy {
           this.userService.selectedEpoch = params.date;
           if (this.userService.user) {
             this.setDataSource();
+            this.openGoalsIfNoneExist();
           }
         }
-      }),
-      this.userService.getUserFirestoreDocument().valueChanges().subscribe(value => {
-        this.userService.user = value;
-        this.setDataSource();
       })
     ];
   }
 
   ngOnDestroy() {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());
+  }
+
+  private openGoalsIfNoneExist(): void { 
+    if (!this.userService.user.goals.calories) {
+      this.router.navigate([this.userService.selectedEpoch + '/goals']);
+    }
   }
 
   private setIsMobile(): void {

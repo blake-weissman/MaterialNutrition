@@ -7,4 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class TitleBarComponent {
   @Input() public label: string;
+  @Input() public hideCloseButton: boolean;
 }

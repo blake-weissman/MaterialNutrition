@@ -35,7 +35,7 @@ export class GoalsDialogComponent {
     private matSnackBar: MatSnackBar
   ) {
     macroKeys.forEach(macroKey => {
-      this.currentUserPercentageGoals[macroKey] = Math.round(((this.userService.user.goals[macroKey]*this.macroCalorieMap[macroKey])/this.userService.user.goals[NutritionDataKeys.CALORIES])*100);
+      this.currentUserPercentageGoals[macroKey] = Math.round(((this.userService.user.goals[macroKey]*this.macroCalorieMap[macroKey])/this.userService.user.goals[NutritionDataKeys.CALORIES])*100) || 0;
     });
   }
 
@@ -74,10 +74,12 @@ export class GoalsDialogComponent {
 export class GoalsDialogEntryComponent extends DialogEntryComponent {
   constructor(
     protected injector: Injector,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private userService: UserService
   ) {
     super(injector, [GoalsDialogComponent, {
       width: '350px',
+      disableClose: !userService.user.goals[NutritionDataKeys.CALORIES]
     }], [['..']]);
     this.exitRouteParams[1] = {
       relativeTo: this.activatedRoute
