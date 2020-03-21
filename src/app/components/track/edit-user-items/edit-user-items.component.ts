@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 import { UserService } from 'src/app/services/user/user.service';
 import { UserItemType, UserItem } from 'src/app/model/items';
 import { UserItems } from 'src/app/model/user';
 import { AppService } from 'src/app/services/app/app.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { expand } from 'src/app/consts';
+import { ActivatedRoute } from '@angular/router';
+import { DialogEntryComponent } from '../dialog-entry/dialog-entry.component';
 
 @Component({
   selector: 'app-edit-user-items',
@@ -42,5 +44,22 @@ export class EditUserItemsComponent {
         duration: 5000,
       })
     });
+  }
+}
+
+@Component({
+  template: '',
+})
+export class EditUserItemsEntryComponent extends DialogEntryComponent {
+  constructor(
+    protected injector: Injector,
+    private activatedRoute: ActivatedRoute,
+  ) {
+    super(injector, [EditUserItemsComponent, {
+      width: '315px',
+    }], [['..']]);
+    this.exitRouteParams[1] = {
+      relativeTo: this.activatedRoute
+    };
   }
 }

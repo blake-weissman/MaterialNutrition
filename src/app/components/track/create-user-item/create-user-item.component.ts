@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 import { UserFoodItem, UserItemType } from 'src/app/model/items';
 import { UserService } from 'src/app/services/user/user.service';
 import { AppService } from 'src/app/services/app/app.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DialogEntryComponent } from '../dialog-entry/dialog-entry.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-create-user-item',
@@ -14,7 +16,7 @@ export class CreateUserItemComponent {
   public isFormInvalid: boolean;
 
   constructor(
-    private userService: UserService,
+    public userService: UserService,
     private appService: AppService,
     private matSnackBar: MatSnackBar
   ) {}
@@ -30,5 +32,22 @@ export class CreateUserItemComponent {
         duration: 5000,
       })
     });
+  }
+}
+
+@Component({
+  template: '',
+})
+export class CreateUserItemEntryComponent extends DialogEntryComponent {
+  constructor(
+    protected injector: Injector,
+    private activatedRoute: ActivatedRoute,
+  ) {
+    super(injector, [CreateUserItemComponent, {
+      width: '315px',
+    }], [['..']]);
+    this.exitRouteParams[1] = {
+      relativeTo: this.activatedRoute
+    };
   }
 }

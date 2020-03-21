@@ -32,10 +32,9 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { UserItemsDialogComponent, UserItemsDialogEntryComponent } from './components/track/user-items-dialog/user-items-dialog.component';
-import { CreateUserItemComponent } from './components/track/user-items-dialog/create-user-item/create-user-item.component';
-import { EditUserItemsComponent } from './components/track/user-items-dialog/edit-user-items/edit-user-items.component';
-import { UserFoodItemFormComponent } from './components/track/user-items-dialog/user-food-item-form/user-food-item-form.component';
+import { CreateUserItemComponent, CreateUserItemEntryComponent } from './components/track/create-user-item/create-user-item.component';
+import { EditUserItemsComponent, EditUserItemsEntryComponent } from './components/track/edit-user-items/edit-user-items.component';
+import { UserFoodItemFormComponent } from './components/track/user-food-item-form/user-food-item-form.component';
 import { DynamicPipe } from './pipes/dynamic/dynamic.pipe';
 import { AddLogItemDialogComponent, AddLogItemDialogEntryComponent } from './components/track/add-log-item-dialog/add-log-item-dialog.component';
 import { UserItemsSelectionComponent } from './components/track/user-items-selection/user-items-selection.component';
@@ -67,8 +66,6 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     TrackComponent,
     ObjectKeysPipe,
     ObjectValuesPipe,
-    UserItemsDialogComponent,
-    UserItemsDialogEntryComponent,
     CreateUserItemComponent,
     EditUserItemsComponent,
     UserFoodItemFormComponent,
@@ -82,7 +79,9 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     GoalsDisplayComponent,
     DateNavigationComponent,
     TitleBarComponent,
-    IncludesPipe
+    IncludesPipe,
+    CreateUserItemEntryComponent,
+    EditUserItemsEntryComponent
   ],
   imports: [
     BrowserModule,
@@ -126,9 +125,10 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     }
   ],
   entryComponents: [
-    UserItemsDialogComponent,
     AddLogItemDialogComponent,
     GoalsDialogComponent,
+    CreateUserItemComponent,
+    EditUserItemsComponent
   ],
   bootstrap: [AppComponent]
 })

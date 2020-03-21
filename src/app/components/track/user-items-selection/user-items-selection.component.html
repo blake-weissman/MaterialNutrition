@@ -8,7 +8,7 @@
       </mat-icon>
       <input matInput placeholder="Search" (keydown)="filterItems($event)">
     </div> -->
-    <mat-option [routerLink]="[{ outlets: { items: ['create']}}]" *ngIf="showCreateItem">
+    <mat-option  [routerLink]="[userService.selectedEpoch + '/create']" mat-dialog-close *ngIf="showCreateItem" mat-dialog-close>
       <mat-icon>
         add
       </mat-icon>
