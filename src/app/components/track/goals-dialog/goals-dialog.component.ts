@@ -52,7 +52,7 @@ export class GoalsDialogComponent {
   public userGoalChanged(event: string, macroKey: NutritionDataKeys): void {
     const eventAsNumber = Number(event);
     this.setCurrentUserGoal(macroKey, eventAsNumber);
-    this.currentUserPercentageGoals[macroKey] = eventAsNumber;
+    this.currentUserPercentageGoals[macroKey] = eventAsNumber ? eventAsNumber : null;
   }
 
   private setCurrentUserGoal(macroKey: NutritionDataKeys, percentage: number) {
@@ -79,7 +79,8 @@ export class GoalsDialogEntryComponent extends DialogEntryComponent {
   ) {
     super(injector, [GoalsDialogComponent, {
       width: '350px',
-      disableClose: !userService.user.goals[NutritionDataKeys.CALORIES]
+      disableClose: !userService.user.goals[NutritionDataKeys.CALORIES],
+      closeOnNavigation: !userService.user.goals[NutritionDataKeys.CALORIES] 
     }], [['..']]);
     this.exitRouteParams[1] = {
       relativeTo: this.activatedRoute
