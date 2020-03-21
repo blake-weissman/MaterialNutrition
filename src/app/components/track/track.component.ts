@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { UserService } from 'src/app/services/user/user.service';
 import { NutritionDataKeys, NutritionData, UserLogItem } from 'src/app/model/items';
@@ -20,7 +20,8 @@ export class TrackComponent implements OnInit, OnDestroy {
   constructor(
     private activatedRoute: ActivatedRoute,
     public userService: UserService,
-    public appService: AppService
+    public appService: AppService,
+    private router: Router
   ) {
     this.setIsMobile();
     window.onresize = () => { 
@@ -31,9 +32,13 @@ export class TrackComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscriptions = [
       this.activatedRoute.params.subscribe(params => {
-        this.userService.selectedEpoch = params.date || new Date().setHours(0,0,0,0);
-        if (this.userService.user) {
-          this.setDataSource();
+        if (!params.date) {
+          this.router.navigate([String(new Date().setHours(0,0,0,0))]);
+        } else {
+          this.userService.selectedEpoch = params.date;
+          if (this.userService.user) {
+            this.setDataSource();
+          }
         }
       }),
       this.userService.getUserFirestoreDocument().valueChanges().subscribe(value => {
