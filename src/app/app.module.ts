@@ -47,6 +47,7 @@ import { GoalsDisplayComponent } from './components/track/goals-display/goals-di
 import { DateNavigationComponent } from './components/track/date-navigation/date-navigation.component';
 import { TitleBarComponent } from './components/track/title-bar/title-bar.component';
 import { IncludesPipe } from './pipes/includes/includes.pipe';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -111,7 +112,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     MatSnackBarModule,
     MatTableModule,
     MatProgressBarModule,
-    MatDividerModule
+    MatDividerModule,
+    MatTooltipModule
   ],
   providers: [
     AngularFireAuthGuard,
