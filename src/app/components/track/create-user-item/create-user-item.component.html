@@ -6,5 +6,5 @@
 </mat-dialog-content>
 <mat-dialog-actions>
   <button mat-stroked-button [disabled]="isFormInvalid" (click)="createFoodItem()">Create</button>
-  <button mat-stroked-button [routerLink]="[userService.selectedEpoch + '/edit']" mat-dialog-close>Go Back</button>
+  <button mat-stroked-button (click)="location.back()">Go Back</button>
 </mat-dialog-actions>

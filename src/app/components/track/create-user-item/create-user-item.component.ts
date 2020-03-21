@@ -5,6 +5,7 @@ import { AppService } from 'src/app/services/app/app.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DialogEntryComponent } from '../dialog-entry/dialog-entry.component';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-create-user-item',
@@ -18,7 +19,8 @@ export class CreateUserItemComponent {
   constructor(
     public userService: UserService,
     private appService: AppService,
-    private matSnackBar: MatSnackBar
+    private matSnackBar: MatSnackBar,
+    public location: Location
   ) {}
 
   public createFoodItem(): void {
