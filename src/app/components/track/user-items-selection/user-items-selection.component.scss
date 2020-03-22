@@ -12,11 +12,35 @@ mat-form-field {
 }
 
 ::ng-deep {
-  .dark-theme #search {
-    color: #ffffff;
+  .mat-select-panel {
+    overflow: hidden !important;
+  }
+  .dark-theme {
+    #search {
+      color: #ffffff;
+    }
+    .option-container:hover {
+      background: rgba(255, 255, 255, 0.04) !important;
+    }
   }
   .mat-form-field-wrapper {
     padding: 0;
     margin-bottom: 0;
+  }
+}
+
+.option-container {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  mat-option {
+    flex-grow: 1;
+    padding: 0;
+    &:hover {
+      background: initial;
+    }
+  }
+  &:hover {
+    background: rgba(0, 0, 0, 0.04);
   }
 }

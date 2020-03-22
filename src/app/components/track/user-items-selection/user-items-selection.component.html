@@ -13,13 +13,20 @@
         add
       </mat-icon>
       Create a new item
-    </mat-option> 
-    <mat-option *ngFor="let userItem of userService.user.items[UserItemType.FOOD]; let index = index;" [value]="index" (click)="userItemSelected.emit({
-      userItem: userItem, 
-      userItemType: UserItemType.FOOD
-    })">
-      {{userItem.name}}
     </mat-option>
+    <div *ngFor="let userItem of userService.user.items[UserItemType.FOOD]; let index = index;" class="option-container" @expand>
+      <mat-option [value]="index" (click)="userItemSelected.emit({
+        userItem: userItem, 
+        userItemType: UserItemType.FOOD
+      })">
+        {{userItem.name}}
+      </mat-option>
+      <button mat-icon-button (click)="removeItem(index)" color="warn">
+        <mat-icon>
+          delete
+        </mat-icon>
+      </button>
+    </div> 
       <!-- <ng-container *ngIf="userService.user.items[userItemTypeKey]; let userItemType">
         <mat-optgroup *ngIf="userItemType.length;" [label]="(userItemTypeKey | titlecase) + 's'">
           <mat-option *ngFor="let userItem of userItemType; let index = index;" [value]="index" (click)="userItemSelected.emit({
