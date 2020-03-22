@@ -14,7 +14,7 @@
       </mat-icon>
       Create a new item
     </mat-option>
-    <div *ngFor="let userItem of userService.user.items[UserItemType.FOOD]; let index = index;" class="option-container" @expand>
+    <div *ngFor="let userItem of userService.user.items[UserItemType.FOOD]; let index = index;" class="option-container">
       <mat-option [value]="index" (click)="userItemSelected.emit({
         userItem: userItem, 
         userItemType: UserItemType.FOOD

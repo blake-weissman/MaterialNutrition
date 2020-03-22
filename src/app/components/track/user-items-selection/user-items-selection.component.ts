@@ -4,36 +4,11 @@ import { UserItemType, UserItem } from 'src/app/model/items';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AppService } from 'src/app/services/app/app.service';
 import { Subscription } from 'rxjs';
-import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-user-items-selection',
   templateUrl: './user-items-selection.component.html',
-  styleUrls: ['./user-items-selection.component.scss'],
-  animations: [
-    trigger('expand', [
-      transition(':enter', [
-        style({
-          height: '0',
-          opacity: 0
-        }),
-        animate('200ms 75ms cubic-bezier(0.4, 0.0, 0.2, 1)', style({
-          height: '*', 
-          opacity: 1
-        }))
-      ]),
-      transition(':leave', [
-        style({
-          height: '*',
-          opacity: 1
-        }),
-        animate('200ms 75ms cubic-bezier(0.4, 0.0, 0.2, 1)', style({
-          height: '0', 
-          opacity: 0
-        }))
-      ]),
-    ]),
-  ]
+  styleUrls: ['./user-items-selection.component.scss']
 })
 export class UserItemsSelectionComponent implements OnDestroy {
   @Input() public selectedUserItemIndex: number;
