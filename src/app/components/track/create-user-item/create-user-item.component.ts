@@ -33,6 +33,7 @@ export class CreateUserItemComponent {
       this.matSnackBar.open('"' + this.userFoodItem.name + '" was successfully created.', 'Dismiss', {
         duration: 5000,
       })
+      this.location.back();
     });
   }
 }
