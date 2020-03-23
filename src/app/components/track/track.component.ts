@@ -33,8 +33,10 @@ export class TrackComponent implements OnInit, OnDestroy {
     this.subscriptions = [
       this.userService.getUserFirestoreDocument().valueChanges().subscribe(value => {
         this.userService.user = value;
-        this.setDataSource();
-        this.openGoalsIfNoneExist();
+        if (this.userService.user) {
+          this.setDataSource();
+          this.openGoalsIfNoneExist();
+        }
       }),
       this.activatedRoute.params.subscribe(params => {
         if (!params.date) {
