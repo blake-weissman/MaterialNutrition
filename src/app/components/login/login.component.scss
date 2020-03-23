@@ -9,6 +9,6 @@
   @extend .mat-typography;
 }
 
-firebase-ui {
-  margin-top: 3vh;
+::ng-deep .firebaseui-card-footer {
+  display: none;
 }
