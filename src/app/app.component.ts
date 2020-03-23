@@ -33,11 +33,6 @@ export class AppComponent implements OnDestroy {
     this.authStateSubscription.unsubscribe();
   }
 
-  public async signOut(): Promise<void> {
-    await this.userService.angularFireAuth.auth.signOut();
-    this.router.navigate(['login']);
-  }
-
   public toggleDarkTheme() {
     this.userService.getUserFirestoreDocument().update({
       darkTheme: !this.userService.user.darkTheme
