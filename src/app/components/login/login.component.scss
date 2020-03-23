@@ -1,4 +1,14 @@
+@import '../../../styles';
+@import '~@angular/material/theming';
+@include mat-core();
+
 :host {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  @extend .mat-typography;
+}
+
+firebase-ui {
+  margin-top: 3vh;
 }
