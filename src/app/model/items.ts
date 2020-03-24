@@ -10,10 +10,10 @@ export enum NutritionDataKeys {
 }
 
 export class NutritionData {
-  [NutritionDataKeys.CALORIES]: number = 0;
-  [NutritionDataKeys.FAT]: number = 0;
-  [NutritionDataKeys.CARBS]: number = 0;
-  [NutritionDataKeys.PROTEIN]: number = 0;
+  [NutritionDataKeys.CALORIES]: number = 2000;
+  [NutritionDataKeys.FAT]: number = 56;
+  [NutritionDataKeys.CARBS]: number = 225;
+  [NutritionDataKeys.PROTEIN]: number = 150;
 }
 
 export const macroKeys = [NutritionDataKeys.FAT, NutritionDataKeys.CARBS, NutritionDataKeys.PROTEIN];
