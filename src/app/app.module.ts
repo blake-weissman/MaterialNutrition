@@ -8,7 +8,6 @@ import { environment } from 'src/environments/environment';
 import { FirebaseUIModule, firebase, firebaseui } from 'firebaseui-angular';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { LoginComponent } from './components/login/login.component';
 import { TrackComponent } from './components/track/track.component';
 import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -62,7 +61,6 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
     TrackComponent,
     ObjectKeysPipe,
     ObjectValuesPipe,

@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
-import { canActivate, redirectUnauthorizedTo, redirectLoggedInTo, AngularFireAuthGuard } from '@angular/fire/auth-guard';
 import { TrackComponent } from './components/track/track.component';
 import { CreateUserItemEntryComponent } from './components/track/create-user-item/create-user-item.component';
 import { EditUserItemsEntryComponent } from './components/track/edit-user-items/edit-user-items.component';
