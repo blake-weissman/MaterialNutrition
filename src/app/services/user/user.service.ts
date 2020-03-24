@@ -18,13 +18,12 @@ export class UserService {
   ) {}
 
   public getUserFirestoreDocument(id?: string): AngularFirestoreDocument<User> {
-    if (!this.angularFireAuth.auth.currentUser) {
-      this.signOut();
-      return;
+    if (this.angularFireAuth.auth.currentUser) {
+      id = this.angularFireAuth.auth.currentUser.uid;
+      return this.angularFirestore.doc<User>('users/' + id);
     } else if (!id) {
-      id = this.angularFireAuth.auth.currentUser.uid
+      return;
     }
-    return this.angularFirestore.doc<User>('users/' + id);
   }
 
   public async signOut(): Promise<void> {

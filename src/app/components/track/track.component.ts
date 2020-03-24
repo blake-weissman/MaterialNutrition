@@ -5,6 +5,7 @@ import { UserService } from 'src/app/services/user/user.service';
 import { NutritionDataKeys, NutritionData, UserLogItem } from 'src/app/model/items';
 import { MatTableDataSource } from '@angular/material/table';
 import { AppService } from 'src/app/services/app/app.service';
+import { User } from 'src/app/model/user';
 
 @Component({
   selector: 'app-track',
@@ -30,28 +31,45 @@ export class TrackComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    if(this.userService.getUserFirestoreDocument()) {
-      this.subscriptions = [
-        this.userService.getUserFirestoreDocument().valueChanges().subscribe(value => {
-          this.userService.user = value;
+    if (this.userService.getUserFirestoreDocument()) {
+      this.setSubscriptions();
+    } else {
+      this.userService.angularFireAuth.auth.signInAnonymously().then(res => {
+        const userFirestoreDocument = this.userService.getUserFirestoreDocument(res.user.uid);
+        userFirestoreDocument.get().subscribe(response => {
+          if (!response.exists) {
+            userFirestoreDocument.set(this.appService.convertCustomObjectToObject(new User())).then(() => { 
+              this.setSubscriptions();
+            });
+          } else {   
+            this.setSubscriptions();
+          }
+        });
+      })
+    }
+  }
+
+  private setSubscriptions() {
+    this.subscriptions = [
+      this.userService.getUserFirestoreDocument().valueChanges().subscribe(value => {
+        this.userService.user = value;
+        if (this.userService.user) {
+          this.setDataSource();
+          this.openGoalsIfNoneExist();
+        }
+      }),
+      this.activatedRoute.params.subscribe(params => {
+        if (!params.date) {
+          this.router.navigate([String(new Date().setHours(0,0,0,0))]);
+        } else {
+          this.userService.selectedEpoch = params.date;
           if (this.userService.user) {
             this.setDataSource();
             this.openGoalsIfNoneExist();
           }
-        }),
-        this.activatedRoute.params.subscribe(params => {
-          if (!params.date) {
-            this.router.navigate([String(new Date().setHours(0,0,0,0))]);
-          } else {
-            this.userService.selectedEpoch = params.date;
-            if (this.userService.user) {
-              this.setDataSource();
-              this.openGoalsIfNoneExist();
-            }
-          }
-        })
-      ];
-    }
+        }
+      })
+    ];
   }
 
   ngOnDestroy() {

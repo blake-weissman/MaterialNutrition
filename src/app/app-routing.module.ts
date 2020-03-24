@@ -8,18 +8,10 @@ import { EditUserItemsEntryComponent } from './components/track/edit-user-items/
 import { AddLogItemDialogEntryComponent } from './components/track/add-log-item-dialog/add-log-item-dialog.component';
 import { GoalsDialogEntryComponent } from './components/track/goals-dialog/goals-dialog.component';
 
-const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
-
 const routes: Routes = [
-  { 
-    path: 'login', 
-    component: LoginComponent,
-    ...canActivate(redirectLoggedInTo(['']))
-  },
   { 
     path: ':date',
     component: TrackComponent,
-    ...canActivate(redirectUnauthorizedTo(['login'])),
     children: [
       {
         path: 'add',
@@ -42,10 +34,6 @@ const routes: Routes = [
   { 
     path: '',
     pathMatch: 'full',
-    canActivate: [AngularFireAuthGuard],
-    data: { 
-      authGuardPipe: redirectUnauthorizedToLogin 
-    },
     component: TrackComponent,
   },
   { 
