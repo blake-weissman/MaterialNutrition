@@ -26,4 +26,22 @@
       Toggle dark theme
     </span>
   </button>
+	<button mat-menu-item (click)="userService.signOut()" *ngIf="false; else signIn">
+    <mat-icon>
+      exit_to_app
+    </mat-icon>
+    <span>
+      Sign out
+    </span>
+  </button>
+	<ng-template #signIn>
+		<button mat-menu-item (click)="userService.signOut()" routerLink="login">
+			<mat-icon>
+				login
+			</mat-icon>
+			<span>
+				Sign in
+			</span>
+		</button>
+	</ng-template>
 </mat-menu>

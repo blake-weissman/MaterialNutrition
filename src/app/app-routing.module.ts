@@ -5,9 +5,15 @@ import { CreateUserItemEntryComponent } from './components/track/create-user-ite
 import { EditUserItemsEntryComponent } from './components/track/edit-user-items/edit-user-items.component';
 import { AddLogItemDialogEntryComponent } from './components/track/add-log-item-dialog/add-log-item-dialog.component';
 import { GoalsDialogEntryComponent } from './components/track/goals-dialog/goals-dialog.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
-  { 
+  {
+		path: 'login',
+    component: LoginComponent,
+    // ...canActivate(redirectLoggedInTo(['']))
+  },
+	{
     path: ':date',
     component: TrackComponent,
     children: [
@@ -22,20 +28,20 @@ const routes: Routes = [
       {
         path: 'create',
         component: CreateUserItemEntryComponent,
-      }, 
+      },
       {
         path: 'edit',
         component: EditUserItemsEntryComponent,
       }
     ]
   },
-  { 
+  {
     path: '',
     pathMatch: 'full',
     component: TrackComponent,
   },
-  { 
-    path: '**', 
+  {
+    path: '**',
     redirectTo: ''
   },
 ];
