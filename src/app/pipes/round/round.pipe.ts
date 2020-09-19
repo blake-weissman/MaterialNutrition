@@ -8,6 +8,6 @@ export class RoundPipe implements PipeTransform {
   constructor(private decimalPipe: DecimalPipe) {}
 
   transform(value: any): string {
-    return this.decimalPipe.transform(value, "0.0-1");
+    return this.decimalPipe.transform(value, "0.0-2");
   }
 }
