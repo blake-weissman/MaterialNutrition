@@ -4,3 +4,37 @@ A responsive and easy-to-use calorie and nutrition tracker that syncs user data 
 Built with Angular and Firebase.
 
 https://material-nutrition.web.app/
+
+## Development
+
+Run:
+```bash
+$ npm install
+$ ng serve
+```
+
+## Deployment
+
+### Beta
+
+Build with:
+```bash
+$ ng build --aot
+```
+
+Deploy with:
+```bash
+$ firebase deploy --only hosting:beta
+```
+
+### Prod
+
+Build with:
+```bash
+$ ng build --prod
+```
+
+Deploy with:
+```bash
+$ firebase deploy --only hosting:prod
+
