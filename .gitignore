@@ -40,14 +40,10 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+/MaterialNutritionEnvironmentConsts
+/.firebase
 
 # System Files
 .DS_Store
 Thumbs.db
-.firebaserc
-firebase.*
-environment.*
-hosting.*
-firestore.rules
-src/environments/environment.prod.ts
-src/environments/environment.ts
+
