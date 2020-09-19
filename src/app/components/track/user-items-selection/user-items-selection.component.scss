@@ -12,9 +12,6 @@ mat-form-field {
 }
 
 ::ng-deep {
-  .mat-select-panel {
-    overflow: hidden !important;
-  }
   .dark-theme {
     #search {
       color: #ffffff;
