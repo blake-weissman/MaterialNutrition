@@ -47,6 +47,8 @@ import { TitleBarComponent } from './components/track/title-bar/title-bar.compon
 import { IncludesPipe } from './pipes/includes/includes.pipe';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { LoginComponent } from './components/login/login.component';
+import { RoundPipe } from './pipes/round/round.pipe';
+import { DecimalPipe } from '@angular/common';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   autoUpgradeAnonymousUsers: true,
@@ -81,7 +83,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     IncludesPipe,
     CreateUserItemEntryComponent,
     EditUserItemsEntryComponent,
-		LoginComponent
+		LoginComponent,
+		RoundPipe
   ],
   imports: [
     BrowserModule,
@@ -116,6 +119,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
   ],
   providers: [
     AngularFireAuthGuard,
+    DecimalPipe,
     {
       provide: MAT_DIALOG_DEFAULT_OPTIONS,
       useValue: {

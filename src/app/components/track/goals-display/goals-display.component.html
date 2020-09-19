@@ -1,5 +1,5 @@
 <h2>
-  {{nutritionData[NutritionDataKeys.CALORIES]}}/{{userService.user.goals[NutritionDataKeys.CALORIES]}} Calories
+  {{nutritionData[NutritionDataKeys.CALORIES] | round}}/{{userService.user.goals[NutritionDataKeys.CALORIES]}} Calories
 </h2>
 <mat-progress-bar mode="determinate" [value]="nutritionData[NutritionDataKeys.CALORIES]/userService.user.goals[NutritionDataKeys.CALORIES] * 100">
 </mat-progress-bar>
@@ -11,7 +11,7 @@
     <mat-progress-bar mode="determinate" [value]="nutritionData[macroKey]/userService.user.goals[macroKey] * 100">
     </mat-progress-bar>
     <h4>
-      {{nutritionData[macroKey]}}/{{userService.user.goals[macroKey]}}g
+      {{nutritionData[macroKey] | round}}/{{userService.user.goals[macroKey] | round}}g
     </h4>
   </div>
 </div>
