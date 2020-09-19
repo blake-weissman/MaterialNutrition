@@ -26,6 +26,7 @@ $ ng build --aot
 
 Deploy with:
 ```bash
+$ firebase use beta
 $ firebase deploy --only hosting:beta
 ```
 
