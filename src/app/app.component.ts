@@ -1,4 +1,4 @@
-import { Component, HostBinding, Directive, ViewChild, OnDestroy } from '@angular/core';
+import { Component, HostBinding, Directive, ViewChild } from '@angular/core';
 import { UserService } from './services/user/user.service';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
@@ -13,25 +13,17 @@ import { Subscription } from 'rxjs';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnDestroy {
+export class AppComponent {
   @ViewChild(MatMenuTrigger, {static: false}) matMenuTrigger: MatMenuTrigger;
   @HostBinding('class') get currentTheme() {
     const user: User = this.userService.user;
     return user && user.darkTheme ? 'dark-theme' : 'light-theme';
   };
 
-  private authStateSubscription: Subscription;
-
   constructor(
     public userService: UserService,
     private router: Router,
-  ) {
-    this.authStateSubscription = this.userService.angularFireAuth.authState.subscribe(() => {});
-  }
-
-  ngOnDestroy() {
-    this.authStateSubscription.unsubscribe();
-  }
+  ) {}
 
   public toggleDarkTheme() {
     this.userService.getUserFirestoreDocument().update({

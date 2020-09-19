@@ -15,8 +15,8 @@ export class LoginComponent {
     public userService: UserService,
     private appService: AppService
   ) {}
-//
-  public signInSuccessWithAuthResult(event: any): void {
+
+	public signInSuccessWithAuthResult(event: any): void {
     const userFirestoreDocument = this.userService.getUserFirestoreDocument(event.authResult.user.uid);
     userFirestoreDocument.get().subscribe(response => {
       if (!response.exists) {

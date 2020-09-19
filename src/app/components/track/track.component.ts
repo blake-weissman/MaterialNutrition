@@ -6,6 +6,7 @@ import { NutritionDataKeys, NutritionData, UserLogItem } from 'src/app/model/ite
 import { MatTableDataSource } from '@angular/material/table';
 import { AppService } from 'src/app/services/app/app.service';
 import { User } from 'src/app/model/user';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-track',
@@ -25,28 +26,33 @@ export class TrackComponent implements OnInit, OnDestroy {
     private router: Router
   ) {
     this.setIsMobile();
-    window.onresize = () => { 
+    window.onresize = () => {
       this.setIsMobile();
     };
   }
 
   ngOnInit() {
-    if (this.userService.getUserFirestoreDocument()) {
-      this.setSubscriptions();
-    } else {
-      this.userService.angularFireAuth.auth.signInAnonymously().then(res => {
-        const userFirestoreDocument = this.userService.getUserFirestoreDocument(res.user.uid);
-        userFirestoreDocument.get().subscribe(response => {
-          if (!response.exists) {
-            userFirestoreDocument.set(this.appService.convertCustomObjectToObject(new User())).then(() => { 
-              this.setSubscriptions();
+    this.authStateSubscription = this.userService.angularFireAuth.authState.subscribe((res) => {
+      this.userService.angularFireAuth.auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(() => {
+        if (res) {
+          this.setSubscriptions();
+        }
+        if (!res) {
+          this.userService.angularFireAuth.auth.signInAnonymously().then(subRes => {
+            const userFirestoreDocument = this.userService.getUserFirestoreDocument(subRes.user.uid);
+            userFirestoreDocument.get().subscribe(response => {
+              if (!response.exists) {
+                userFirestoreDocument.set(this.appService.convertCustomObjectToObject(new User())).then(() => { 
+                  this.setSubscriptions();
+                });
+              } else {   
+                this.setSubscriptions();
+              }
             });
-          } else {   
-            this.setSubscriptions();
-          }
-        });
-      })
-    }
+          });
+        }
+      });
+		});
   }
 
   private setSubscriptions() {
@@ -78,7 +84,7 @@ export class TrackComponent implements OnInit, OnDestroy {
     }
   }
 
-  private openGoalsIfNoneExist(): void { 
+  private openGoalsIfNoneExist(): void {
     if (!this.userService.user.goals.calories) {
       this.router.navigate([this.userService.selectedEpoch + '/goals']);
     }

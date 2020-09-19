@@ -49,7 +49,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { LoginComponent } from './components/login/login.component';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
-  signInFlow: 'popup',
+  autoUpgradeAnonymousUsers: true,
+	signInFlow: 'popup',
   signInOptions: [
     firebase.auth.EmailAuthProvider.PROVIDER_ID,
 		firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
