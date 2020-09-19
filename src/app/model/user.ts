@@ -6,11 +6,13 @@ export class UserItems {
   [UserItemType.RECIPE]: UserRecipeItem[] = [];
 }
 
+const matchMediaDarkMode = window.matchMedia("(prefers-color-scheme: dark)");
+
 export class User {
   log: {
     [key: number]: UserLogItem[]
   } = {};
   items: UserItems = AppService.prototype.convertCustomObjectToObject(new UserItems());
-  darkTheme: boolean = false;
+  darkTheme: boolean = matchMediaDarkMode ? matchMediaDarkMode.matches : false;
   goals: NutritionData = AppService.prototype.convertCustomObjectToObject(new NutritionData());
 }
