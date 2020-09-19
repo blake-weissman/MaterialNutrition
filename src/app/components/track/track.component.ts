@@ -32,27 +32,7 @@ export class TrackComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.authStateSubscription = this.userService.angularFireAuth.authState.subscribe((res) => {
-      this.userService.angularFireAuth.auth.setPersistence(firebase.auth.Auth.Persistence.LOCAL).then(() => {
-        if (res) {
-          this.setSubscriptions();
-        }
-        if (!res) {
-          this.userService.angularFireAuth.auth.signInAnonymously().then(subRes => {
-            const userFirestoreDocument = this.userService.getUserFirestoreDocument(subRes.user.uid);
-            userFirestoreDocument.get().subscribe(response => {
-              if (!response.exists) {
-                userFirestoreDocument.set(this.appService.convertCustomObjectToObject(new User())).then(() => { 
-                  this.setSubscriptions();
-                });
-              } else {   
-                this.setSubscriptions();
-              }
-            });
-          });
-        }
-      });
-		});
+    this.setSubscriptions();
   }
 
   private setSubscriptions() {
