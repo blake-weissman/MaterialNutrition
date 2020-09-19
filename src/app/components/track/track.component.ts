@@ -32,30 +32,30 @@ export class TrackComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.setSubscriptions();
-  }
-
-  private setSubscriptions() {
-    this.subscriptions = [
-      this.userService.getUserFirestoreDocument().valueChanges().subscribe(value => {
-        this.userService.user = value;
-        if (this.userService.user) {
-          this.setDataSource();
-          this.openGoalsIfNoneExist();
-        }
-      }),
-      this.activatedRoute.params.subscribe(params => {
-        if (!params.date) {
-          this.router.navigate([String(new Date().setHours(0,0,0,0))]);
-        } else {
-          this.userService.selectedEpoch = params.date;
-          if (this.userService.user) {
-            this.setDataSource();
-            this.openGoalsIfNoneExist();
-          }
-        }
-      })
-    ];
+    this.userService.angularFireAuth.auth.onAuthStateChanged((user) => {
+      if (user && !this.subscriptions) {
+        this.subscriptions = [
+          this.userService.getUserFirestoreDocument().valueChanges().subscribe(value => {
+            this.userService.user = value;
+            if (this.userService.user) {
+              this.setDataSource();
+              this.openGoalsIfNoneExist();
+            }
+          }),
+          this.activatedRoute.params.subscribe(params => {
+            if (!params.date) {
+              this.router.navigate([String(new Date().setHours(0,0,0,0))]);
+            } else {
+              this.userService.selectedEpoch = params.date;
+              if (this.userService.user) {
+                this.setDataSource();
+                this.openGoalsIfNoneExist();
+              }
+            }
+          }),
+        ];
+      }
+    });
   }
 
   ngOnDestroy() {
