@@ -7,7 +7,9 @@ https://material-nutrition.web.app/
 
 ## Development
 
-Run:
+Add environment consts to `src/environments` 
+
+Then run:
 ```bash
 $ npm install
 $ ng serve
