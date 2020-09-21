@@ -1,0 +1,31 @@
+footer {
+  padding: 8px 20px;
+  width: 100%;
+  display: block;
+  border-top: solid 1px rgba(0, 0, 0, 0.12);
+  background-color: #ffffff;
+}
+
+@mixin footer-dark-theme {
+  footer {
+    background-color: #424242 !important;
+    color: #ffffff !important;
+    border-top: solid 1px rgba(255, 255, 255, 0.12) !important;
+  }
+}
+
+::ng-deep {
+  .dark-theme {
+    @include footer-dark-theme;
+  }
+  @media (prefers-color-scheme: dark) {
+    app-login {
+      app-footer {
+        @include footer-dark-theme;
+        a {
+          color: #ffffff !important;
+        }
+      }
+    }
+  }
+}

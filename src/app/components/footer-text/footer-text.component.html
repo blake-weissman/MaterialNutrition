@@ -1,0 +1,17 @@
+<span class="mat-caption">
+  <ng-container *ngIf="multiline">
+    {{version}}
+    <br>
+  </ng-container>
+  &copy;{{currentDate | date: 'yyyy'}}
+  <a href="https://blakeweissman.com" target="_blank">
+    Blake Weissman</a>
+    |
+  <a href="https://github.com/BlakeWeissman/MaterialNutrition" target="_blank">
+    GitHub Repo
+  </a>
+</span>
+<span class="mat-caption" *ngIf="!multiline" style="margin-left: auto;">
+  {{version}}
+</span>
+
