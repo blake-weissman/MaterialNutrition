@@ -1,9 +1,13 @@
 @import '~@angular/material/theming';
+@import '../styles';
+@include mat-core();
 
 mat-toolbar {
   @include mat-elevation(6);
   z-index: 2;
   position: fixed;
+  display: flex;
+  justify-content: space-between;
 }
 
 main {
@@ -23,7 +27,56 @@ main {
   }
 }
 
-mat-toolbar {
-  display: flex;
-  justify-content: space-between;
+
+::ng-deep {
+  .dark-theme {
+    .mat-menu-panel {
+      color: #ffffff;
+    }
+  }
+  .light-theme .mat-menu-item .mat-icon-no-color, .light-theme {
+    color: #000000;
+  }
+  .mat-menu-panel {
+    @extend .mat-typography;
+    overflow: hidden !important;
+    max-width: initial !important;
+    .mat-menu-content {
+      $mat-icon-padding: 8px;
+      padding: 0 !important;
+      .mat-menu-item mat-icon {
+        margin-right: $mat-icon-padding;
+      } 
+      div.row {
+        align-items: center;
+        padding: 10px 16px;
+        display: flex;
+        &:not(#profile) {
+          & > *:last-child {
+            margin-left: auto;
+            padding-left: 16px;
+          }
+          mat-icon {
+            margin-right: $mat-icon-padding;
+          }
+        }
+      }
+      #profile {
+        padding: 16px;
+        flex-direction: column;
+        span {
+          padding: 0 10px;
+        }
+      }
+    }
+    mat-radio-group {
+      display: flex;
+      .mat-radio-button:not(:first-child) {
+        margin-left: 16px;
+      }
+    }
+    span {
+      white-space: nowrap;
+    }
+  }
 }

@@ -6,9 +6,9 @@
     Material Nutrition
   </span>
   <div *ngIf="userService.angularFireAuth.auth.currentUser">
-    <button mat-icon-button [matMenuTriggerFor]="mainMenu">
+    <button mat-icon-button [matMenuTriggerFor]="account">
       <mat-icon>
-        more_vert
+        account_circle
       </mat-icon>
     </button>
   </div>
@@ -17,21 +17,35 @@
   <router-outlet>
   </router-outlet>
 </main>
-<mat-menu #mainMenu="matMenu">
-  <button mat-menu-item (click)="toggleDarkTheme()">
-    <mat-icon>
-      brightness_medium
-    </mat-icon>
-    <span>
-      Toggle dark theme
-    </span>
-  </button>
-  <button mat-menu-item (click)="userService.signOut()">
-    <mat-icon>
-      exit_to_app
-    </mat-icon>
-    <span>
-      Sign out
-    </span>
-  </button>
+<mat-menu #account="matMenu">
+  <div (click)="$event.stopPropagation()">
+    <div class="row" id="profile">
+      <mat-icon>
+        account_box
+      </mat-icon>
+      <span>
+        {{userService.angularFireAuth.auth.currentUser?.email || "Guest"}}
+      </span>
+    </div>
+    <mat-divider>
+    </mat-divider>
+    <button mat-menu-item (click)="userService.signOut()">
+      <mat-icon>
+        exit_to_app
+      </mat-icon>
+      <span>Sign out</span>
+    </button>
+    <mat-divider>
+    </mat-divider>
+    <div class="row">
+      <mat-icon>
+        brightness_medium
+      </mat-icon>
+      <span>
+        Dark theme
+      </span>
+      <mat-slide-toggle (change)="toggleDarkTheme()" checked="userService.user.darkTheme">
+      </mat-slide-toggle>
+    </div>
+  </div>
 </mat-menu>

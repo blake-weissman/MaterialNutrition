@@ -49,6 +49,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { LoginComponent } from './components/login/login.component';
 import { RoundPipe } from './pipes/round/round.pipe';
 import { DecimalPipe } from '@angular/common';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   autoUpgradeAnonymousUsers: true,
@@ -115,7 +116,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     MatTableModule,
     MatProgressBarModule,
     MatDividerModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSlideToggleModule,
   ],
   providers: [
     AngularFireAuthGuard,
