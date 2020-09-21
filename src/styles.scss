@@ -14,6 +14,15 @@ $primary: mat-palette($palette, primary);
 $accent: mat-palette($palette, accent);
 $warn: mat-palette($mat-red);
 
+@media (prefers-color-scheme: dark) {
+  ::ng-deep {
+    body {
+      background: #303030;
+    }
+  }
+}
+
+
 .light-theme {
   $light-theme: mat-light-theme($primary, $accent, $warn);
   @include angular-material-theme($light-theme);

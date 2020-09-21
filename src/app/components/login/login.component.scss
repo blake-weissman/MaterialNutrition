@@ -2,13 +2,22 @@
 @import '~@angular/material/theming';
 @include mat-core();
 
+div {
+  margin-top: 1vh;
+}
+
 :host {
   display: flex;
   flex-direction: column;
-  height: 100%;
   @extend .mat-typography;
 }
 
 ::ng-deep .firebaseui-card-footer {
   display: none;
+}
+
+app-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }

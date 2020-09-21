@@ -14,7 +14,8 @@ main {
   padding-top: 64px;
   height: 100vh;
   @media (max-width: 599px) {
-    padding: 56px 0;
+    padding-top: 56px;
+    padding-bottom: 92px;
   }
 }
 
@@ -27,15 +28,16 @@ main {
   }
 }
 
-
 ::ng-deep {
   .dark-theme {
     .mat-menu-panel {
       color: #ffffff;
     }
   }
-  .light-theme .mat-menu-item .mat-icon-no-color, .light-theme {
-    color: #000000;
+  .light-theme {
+    .mat-menu-item .mat-icon-no-color, .light-theme {
+      color: #000000;
+    }
   }
   .mat-menu-panel {
     @extend .mat-typography;

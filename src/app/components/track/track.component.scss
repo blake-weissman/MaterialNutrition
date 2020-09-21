@@ -37,7 +37,7 @@ mat-sidenav {
   right: 16px;
   @media (max-width: 599px) {
     & {
-      bottom: 76px;
+      bottom: 112px;
     }
   }
 }
@@ -97,4 +97,10 @@ mat-toolbar {
 :host ::ng-deep .mat-drawer-inner-container {
   display: flex;
   flex-direction: column;
+}
+
+#mobile {
+  position: fixed; 
+  bottom: 0; 
+  width: 100%;
 }

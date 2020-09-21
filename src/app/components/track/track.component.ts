@@ -16,7 +16,6 @@ import * as firebase from 'firebase/app';
 export class TrackComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[];
   public dataSource = new MatTableDataSource<UserLogItem>();
-  public currentDate = new Date();
   public nutritionData: NutritionData = new NutritionData();
 
   constructor(

@@ -40,4 +40,4 @@ $ ng build --prod
 Deploy with:
 ```bash
 $ firebase deploy --only hosting:prod
-
+```
