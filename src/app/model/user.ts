@@ -7,12 +7,13 @@ export class UserItems {
 }
 
 const matchMediaDarkMode = window.matchMedia("(prefers-color-scheme: dark)");
+export const browserPrefersDarkMode = matchMediaDarkMode && matchMediaDarkMode.matches;
 
 export class User {
   log: {
     [key: number]: UserLogItem[]
   } = {};
   items: UserItems = AppService.prototype.convertCustomObjectToObject(new UserItems());
-  darkTheme: boolean = matchMediaDarkMode ? matchMediaDarkMode.matches : false;
+  darkTheme = browserPrefersDarkMode;
   goals: NutritionData = AppService.prototype.convertCustomObjectToObject(new NutritionData());
 }

@@ -2,6 +2,8 @@
 @import '../styles';
 @include mat-core();
 
+$mat-toolbar-height: 56px;
+
 mat-toolbar {
   @include mat-elevation(6);
   z-index: 2;
@@ -14,8 +16,8 @@ main {
   padding-top: 64px;
   height: 100vh;
   @media (max-width: 599px) {
-    padding-top: 56px;
-    padding-bottom: 92px;
+    padding-top: $mat-toolbar-height;
+    padding-bottom: $mat-toolbar-height + $footer-height;
   }
 }
 
@@ -26,6 +28,14 @@ main {
   mat-icon {
     margin-right: 7px;
   }
+}
+
+footer {
+  padding: 8px 20px;
+  width: 100%;
+  display: block;
+  position: fixed;
+  bottom: 0;
 }
 
 ::ng-deep {

@@ -101,6 +101,6 @@ mat-toolbar {
 
 #mobile {
   position: fixed; 
-  bottom: 0; 
+  bottom: $footer-height + $footer-border-width; 
   width: 100%;
 }

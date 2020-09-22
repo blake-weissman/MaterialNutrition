@@ -14,14 +14,8 @@ $primary: mat-palette($palette, primary);
 $accent: mat-palette($palette, accent);
 $warn: mat-palette($mat-red);
 
-@media (prefers-color-scheme: dark) {
-  ::ng-deep {
-    body {
-      background: #303030;
-    }
-  }
-}
-
+$footer-height: 36px;
+$footer-border-width: 1px;
 
 .light-theme {
   $light-theme: mat-light-theme($primary, $accent, $warn);
@@ -32,6 +26,11 @@ $warn: mat-palette($mat-red);
   }
   a {
     color: rgba(0, 0, 0, 0.87);
+  }
+  footer {
+    border-top: solid 1px rgba(0, 0, 0, 0.12);
+    background-color: #ffffff;
+    color: #000000;
   }
 }
 
@@ -48,6 +47,14 @@ $warn: mat-palette($mat-red);
   a {
     color: #ffffff;
   }
+  footer {
+    background-color: #424242;
+    color: #ffffff;
+    border-top: solid 1px rgba(255, 255, 255, 0.12);
+    a {
+      color: #ffffff;
+    }
+  }
 }
 
 html, body { 
@@ -57,6 +64,9 @@ html, body {
 body { 
   margin: 0; 
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  &.dark-theme {
+    background: #303030
+  }
 }
 
 * { 

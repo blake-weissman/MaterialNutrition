@@ -16,6 +16,10 @@
 <main>
   <router-outlet>
   </router-outlet>
+  <footer *ngIf="!userService.angularFireAuth.auth.currentUser || appService.isMobile">
+    <app-footer-text>
+    </app-footer-text>
+  </footer>
 </main>
 <mat-menu #account="matMenu">
   <div (click)="$event.stopPropagation()">
@@ -44,7 +48,7 @@
       <span>
         Dark theme
       </span>
-      <mat-slide-toggle (change)="toggleDarkTheme()" checked="userService.user.darkTheme">
+      <mat-slide-toggle (change)="toggleDarkTheme()" [checked]="userService.user?.darkTheme">
       </mat-slide-toggle>
     </div>
   </div>

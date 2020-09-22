@@ -51,7 +51,6 @@ import { RoundPipe } from './pipes/round/round.pipe';
 import { DecimalPipe } from '@angular/common';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FooterTextComponent } from './components/footer-text/footer-text.component';
-import { FooterComponent } from './components/footer/footer.component';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   autoUpgradeAnonymousUsers: true,
@@ -89,7 +88,6 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
 		LoginComponent,
 		RoundPipe,
 		FooterTextComponent,
-		FooterComponent
   ],
   imports: [
     BrowserModule,

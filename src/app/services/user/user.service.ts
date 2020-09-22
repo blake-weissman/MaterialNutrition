@@ -28,6 +28,8 @@ export class UserService {
 
   public async signOut(): Promise<void> {
     await this.angularFireAuth.auth.signOut();
-    this.router.navigate(['login']);
+    this.router.navigate(['login']).then(() => {
+      this.user = null;
+    });
   }
 }
