@@ -16,6 +16,14 @@ $warn: mat-palette($mat-red);
 
 $footer-height: 36px;
 $footer-border-width: 1px;
+$mat-toolbar-height: 56px;
+$mobile-width: 599px;
+
+@mixin mobile {
+  @media (max-width: $mobile-width) {
+    @content;
+  }
+}
 
 .light-theme {
   $light-theme: mat-light-theme($primary, $accent, $warn);
@@ -28,7 +36,7 @@ $footer-border-width: 1px;
     color: rgba(0, 0, 0, 0.87);
   }
   footer {
-    border-top: solid 1px rgba(0, 0, 0, 0.12);
+    border-top: solid $footer-border-width rgba(0, 0, 0, 0.12);
     background-color: #ffffff;
     color: #000000;
   }
@@ -50,7 +58,7 @@ $footer-border-width: 1px;
   footer {
     background-color: #424242;
     color: #ffffff;
-    border-top: solid 1px rgba(255, 255, 255, 0.12);
+    border-top: solid $footer-border-width rgba(255, 255, 255, 0.12);
     a {
       color: #ffffff;
     }

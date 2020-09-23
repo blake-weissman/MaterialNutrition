@@ -1,3 +1,5 @@
+@import '../../../../styles';
+
 table {
   width: 100%;
   background: transparent !important;
@@ -20,7 +22,7 @@ td {
     .mat-form-field-infix {
       width: 50px !important;
     }
-    @media (max-width: 599px) { 
+    @include mobile { 
       td.mat-cell:last-of-type {
         padding-right: 16px !important;
       }

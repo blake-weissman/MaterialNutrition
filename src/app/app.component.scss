@@ -2,8 +2,6 @@
 @import '../styles';
 @include mat-core();
 
-$mat-toolbar-height: 56px;
-
 mat-toolbar {
   @include mat-elevation(6);
   z-index: 2;
@@ -15,7 +13,7 @@ mat-toolbar {
 main {
   padding-top: 64px;
   height: 100vh;
-  @media (max-width: 599px) {
+  @include mobile {
     padding-top: $mat-toolbar-height;
     padding-bottom: $mat-toolbar-height + $footer-height;
   }
@@ -60,14 +58,15 @@ footer {
       .mat-menu-item mat-icon {
         margin-right: $mat-icon-padding;
       } 
+      $padding: 16px;
       div.row {
         align-items: center;
-        padding: 10px 16px;
+        padding: 10px $padding;
         display: flex;
         &:not(#profile) {
           & > *:last-child {
             margin-left: auto;
-            padding-left: 16px;
+            padding-left: $padding;
           }
           mat-icon {
             margin-right: $mat-icon-padding;
@@ -75,17 +74,11 @@ footer {
         }
       }
       #profile {
-        padding: 16px;
+        padding: $padding;
         flex-direction: column;
         span {
           padding: 0 10px;
         }
-      }
-    }
-    mat-radio-group {
-      display: flex;
-      .mat-radio-button:not(:first-child) {
-        margin-left: 16px;
       }
     }
     span {

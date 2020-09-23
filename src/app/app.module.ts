@@ -53,8 +53,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FooterTextComponent } from './components/footer-text/footer-text.component';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
-  autoUpgradeAnonymousUsers: true,
-	signInFlow: 'popup',
   signInOptions: [
     firebase.auth.EmailAuthProvider.PROVIDER_ID,
 		firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID

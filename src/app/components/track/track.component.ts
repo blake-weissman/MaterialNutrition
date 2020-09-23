@@ -36,20 +36,14 @@ export class TrackComponent implements OnInit, OnDestroy {
         this.subscriptions = [
           this.userService.getUserFirestoreDocument().valueChanges().subscribe(value => {
             this.userService.user = value;
-            if (this.userService.user) {
-              this.setDataSource();
-              this.openGoalsIfNoneExist();
-            }
+            this.setDataSource();
           }),
           this.activatedRoute.params.subscribe(params => {
             if (!params.date) {
               this.router.navigate([String(new Date().setHours(0,0,0,0))]);
             } else {
               this.userService.selectedEpoch = params.date;
-              if (this.userService.user) {
-                this.setDataSource();
-                this.openGoalsIfNoneExist();
-              }
+              this.setDataSource();
             }
           }),
         ];
@@ -63,25 +57,24 @@ export class TrackComponent implements OnInit, OnDestroy {
     }
   }
 
-  private openGoalsIfNoneExist(): void {
-    if (!this.userService.user.goals.calories) {
-      this.router.navigate([this.userService.selectedEpoch + '/goals']);
+  private setDataSource(): void {
+    if (this.userService.user) {
+      this.dataSource.data = this.userService.user.log[this.userService.selectedEpoch];
+      if (this.dataSource.data) {
+        this.setNutritionData();
+      } else {
+        Object.values(NutritionDataKeys).forEach(key => {
+          this.nutritionData[key] = 0;
+        });
+      }
+      if (!this.userService.user.goals.calories) {
+        this.router.navigate([this.userService.selectedEpoch + '/goals']);
+      }
     }
   }
 
   private setIsMobile(): void {
     this.appService.isMobile = window.innerWidth < 599;
-  }
-
-  private setDataSource(): void {
-    this.dataSource.data = this.userService.user.log[this.userService.selectedEpoch];
-    if (this.dataSource.data) {
-      this.setNutritionData();
-    } else {
-      Object.values(NutritionDataKeys).forEach(key => {
-        this.nutritionData[key] = 0;
-      });
-    }
   }
 
   private setNutritionData(): void {

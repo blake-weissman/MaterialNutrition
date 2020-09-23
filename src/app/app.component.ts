@@ -18,7 +18,7 @@ export class AppComponent {
   @ViewChild(MatMenuTrigger, {static: false}) matMenuTrigger: MatMenuTrigger;
   @HostBinding('class') get currentTheme() {
     const user: User = this.userService.user;
-    return (user && user.darkTheme) || (browserPrefersDarkMode && !user) ? 'dark-theme' : 'light-theme';
+    return (user && user.darkTheme) || (!user && browserPrefersDarkMode) ? 'dark-theme' : 'light-theme';
   };
 
   constructor(
