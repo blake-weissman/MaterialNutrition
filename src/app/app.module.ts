@@ -57,8 +57,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     firebase.auth.EmailAuthProvider.PROVIDER_ID,
 		firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
   ],
-  tosUrl: '<your-tos-link>',
-  privacyPolicyUrl: '<your-privacyPolicyUrl-link>',
+  //tosUrl: '<your-tos-link>',
+  //privacyPolicyUrl: '<your-privacyPolicyUrl-link>',
 };
 
 @NgModule({
