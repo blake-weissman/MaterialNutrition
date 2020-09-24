@@ -30,6 +30,9 @@
       <span>
         {{userService.angularFireAuth.auth.currentUser?.email || "Guest"}}
       </span>
+      <span *ngIf="!userService.angularFireAuth.auth.currentUser?.email" id="warning">
+        Warning: You are currently logged in as a guest, your data will not be accessible if you press sign out.
+      </span>
     </div>
     <mat-divider>
     </mat-divider>

@@ -79,6 +79,14 @@ footer {
         span {
           padding: 0 10px;
         }
+        #warning {
+          white-space: initial;
+          max-width: 140px;
+          padding: 0;
+          margin-top: 4px;
+          text-align: center;
+          color: mat-color($warn);
+        }
       }
     }
     span {
