@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class FooterTextComponent {
   @Input() public multiline: boolean;
   public currentDate = new Date();
-  public version = "v0.2";
+  public version = "v0.2 Beta";
 
   constructor() { }
 }

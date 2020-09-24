@@ -179,6 +179,15 @@ mat-dialog-content {
   .firebaseui-textfield.mdl-textfield .firebaseui-label::after {
     background-color: $primary-color;
   }
+  @include mobile {
+    #firebaseui-auth-container {
+      padding: 0 20px;
+    }
+    .firebaseui-card-header {
+      border: none;
+      margin-bottom: none;
+    }
+  }
 }
 
 app-track mat-chip mat-icon {
