@@ -15,7 +15,7 @@ main {
   height: 100vh;
   @include mobile {
     padding-top: $mat-toolbar-height;
-    padding-bottom: $mat-toolbar-height + $footer-height;
+    padding-bottom: $mat-toolbar-height + $footer-height + $card-border-width;
   }
 }
 

@@ -1,48 +1,50 @@
-<mat-sidenav-container *ngIf="userService.user">
-  <mat-sidenav mode="side" [opened]="!appService.isMobile">
-    <app-date-navigation>
-    </app-date-navigation>
-    <div id="info">
-      <mat-divider>
-      </mat-divider>
-      <div id="menu">
-        <div>
+<ng-container *ngIf="userService.user">
+  <mat-sidenav-container>
+    <mat-sidenav mode="side" [opened]="!appService.isMobile">
+      <app-date-navigation>
+      </app-date-navigation>
+      <div id="info">
+        <mat-divider>
+        </mat-divider>
+        <div id="menu">
+          <div>
+            <app-goals-display [nutritionData]="nutritionData">
+            </app-goals-display>
+          </div>
+          <app-footer-text [multiline]="true">
+          </app-footer-text>
+        </div>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet>
+      </router-outlet>
+      <button mat-fab color="primary" routerLink="add" matTooltip="Track new item">
+        <mat-icon>
+          add
+        </mat-icon>
+      </button>
+      <ng-container *ngIf="appService.isMobile">
+        <div id="mobile-goals-display">
           <app-goals-display [nutritionData]="nutritionData">
           </app-goals-display>
         </div>
-        <app-footer-text [multiline]="true">
-        </app-footer-text>
-      </div>
-    </div>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <router-outlet>
-    </router-outlet>
-    <button mat-fab color="primary" routerLink="add" matTooltip="Track new item">
-      <mat-icon>
-        add
-      </mat-icon>
-    </button>
-    <ng-container *ngIf="appService.isMobile">
-      <div id="mobile-goals-display">
-        <app-goals-display [nutritionData]="nutritionData">
-        </app-goals-display>
-      </div>
-    </ng-container>
-    <app-log-items-table *ngIf="dataSource.data?.length; else noLogItems" [dataSource]="dataSource" (servingsChanged)="setNutritionDataAndUpdateFirestore()" [makeItemsRemovable]="true" (removeClicked)="removeLogItem($event)">
-    </app-log-items-table>
-    <ng-template #noLogItems>
-      <div id="no-log-items">
-        <span>
-          No items added.
-        </span>
-      </div>
-    </ng-template>
-    <div id="mobile" *ngIf="appService.isMobile">
-      <mat-toolbar>
-        <app-date-navigation>
-        </app-date-navigation>
-      </mat-toolbar>
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+      </ng-container>
+      <app-log-items-table *ngIf="dataSource.data?.length; else noLogItems" [dataSource]="dataSource" (servingsChanged)="setNutritionDataAndUpdateFirestore()" [makeItemsRemovable]="true" (removeClicked)="removeLogItem($event)">
+      </app-log-items-table>
+      <ng-template #noLogItems>
+        <div id="no-log-items">
+          <span>
+            No items added.
+          </span>
+        </div>
+      </ng-template>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  <div id="mobile" *ngIf="appService.isMobile">
+    <mat-toolbar>
+      <app-date-navigation>
+      </app-date-navigation>
+    </mat-toolbar>
+  </div>
+</ng-container>
