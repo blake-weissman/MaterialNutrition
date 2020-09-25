@@ -8,6 +8,9 @@
       "hosting": {
         "beta": [
           "material-nutrition-beta"
+        ],
+        "prod": [
+          "material-nutrition"
         ]
       }
     }
