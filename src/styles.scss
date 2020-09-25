@@ -1,9 +1,10 @@
 @import '~@angular/material/theming';
 @include mat-core();
 
+$primary-color: #00695b;
 $palette: (
   100: #b2dfdb,
-  primary: #00695b,
+  primary: $primary-color,
   accent: #439888,
   contrast: (
     primary: #ffffff,
@@ -14,9 +15,20 @@ $primary: mat-palette($palette, primary);
 $accent: mat-palette($palette, accent);
 $warn: mat-palette($mat-red);
 
+$footer-height: 36px;
+$card-border-width: 1px;
+$mat-toolbar-height: 56px;
+$mobile-width: 599px;
+
+//TODO: Replace theming css with a map loop once SASS version is upgraded.
+@mixin mobile {
+  @media (max-width: $mobile-width) {
+    @content;
+  }
+}
+
 .light-theme {
-  $light-theme: mat-light-theme($primary, $accent, $warn);
-  @include angular-material-theme($light-theme);
+  @include angular-material-theme(mat-light-theme($primary, $accent, $warn));
   .mat-snack-bar-container {
     color: rgba(0, 0, 0, 0.87);
     background: #fafafa;
@@ -24,11 +36,18 @@ $warn: mat-palette($mat-red);
   a {
     color: rgba(0, 0, 0, 0.87);
   }
+  footer, firebaseui-id-page-sign-in > form {
+    border-top: solid $card-border-width rgba(0, 0, 0, 0.12);
+    background-color: #ffffff;
+    color: #000000;
+  }
+  .firebaseui-container:not(.firebaseui-page-provider-sign-in) {
+    border: solid $card-border-width rgba(0, 0, 0, 0.12);
+  }
 }
 
 .dark-theme {
-  $dark-theme: mat-dark-theme($primary, $accent, $warn);
-  @include angular-material-theme($dark-theme);
+  @include angular-material-theme(mat-dark-theme($primary, $accent, $warn));
   .mat-button-wrapper, .mat-icon-button {
     color: #ffffff;
   }
@@ -36,9 +55,39 @@ $warn: mat-palette($mat-red);
     color: rgba(255, 255, 255, 0.7);
     background: #323232;
   }
-  a {
+  a, app-privacy-policy, app-terms-of-service {
     color: #ffffff;
   }
+  footer{
+    background-color: #424242;
+    color: #ffffff;
+    border-top: solid $card-border-width rgba(255, 255, 255, 0.12);
+    a {
+      color: #ffffff;
+    }
+  }
+  .firebaseui-label {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+  .firebaseui-textfield.mdl-textfield .firebaseui-input {
+    color: #ffffff;
+    border-color: #c7c7c7;
+  }
+  .mdl-textfield.is-invalid .mdl-textfield__input {
+    color: #ffffff;
+  }
+  .firebaseui-container:not(.firebaseui-page-provider-sign-in) {
+    border: solid $card-border-width rgba(255, 255, 255, 0.12);
+    background: #424242;
+    color: #ffffff;
+    h1, p {
+      color: #ffffff;
+    }
+  }
+}
+
+.panel {
+  margin: 0 20px;
 }
 
 html, body { 
@@ -48,6 +97,12 @@ html, body {
 body { 
   margin: 0; 
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  &.dark-theme {
+    background: #303030
+  }
+  &.light-theme {
+    background: #fafafa;
+  }
 }
 
 * { 
@@ -104,8 +159,48 @@ mat-dialog-content {
     line-height: 24px !important;
     margin-bottom: 10px !important;
   }
+  .firebaseui-container:not(.firebaseui-page-provider-sign-in) {
+    box-shadow: none;
+    margin-top: 2vh;
+    border-radius: 4px;
+  }
+  .firebaseui-error {
+    color: #f44336;
+  }
+  .mdl-button--raised.mdl-button--colored {
+    background: $primary-color !important;
+    &:hover {
+      background: $primary-color;
+    }
+  }
+  .mdl-button--primary.mdl-button--primary {
+    color: $primary-color;
+  }
+
+  .mdl-textfield.is-invalid .mdl-textfield__input {
+    border-color: #f44336;
+  }
+  .firebaseui-textfield.mdl-textfield .firebaseui-label::after {
+    background-color: $primary-color;
+  }
+  @include mobile {
+    #firebaseui-auth-container {
+      padding: 0 20px;
+    }
+    .firebaseui-card-header {
+      border: none;
+      margin-bottom: none;
+    }
+  }
 }
 
 app-track mat-chip mat-icon {
   margin-right: 5px;
+}
+
+app-privacy-policy, app-terms-of-service {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px + $footer-height;
 }

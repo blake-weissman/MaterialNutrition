@@ -1,15 +1,10 @@
+@import '../../../../styles';
+
 table {
   width: 100%;
   background: transparent !important;
 }
 
-th {
-  width: 100vw;
-}
-
-td {
-  white-space: nowrap;
-}
 
 :host {
   display: block;
@@ -20,7 +15,7 @@ td {
     .mat-form-field-infix {
       width: 50px !important;
     }
-    @media (max-width: 599px) { 
+    @include mobile { 
       td.mat-cell:last-of-type {
         padding-right: 16px !important;
       }
@@ -33,6 +28,14 @@ td {
       .mat-header-cell {
         font-size: 10px;
       }
+    }
+    td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:first-of-type {
+      padding: 16px 0;
+      padding-left: 24px;
+    }
+    td.mat-cell:not(:first-of-type), td.mat-footer-cell:not(:first-of-type), th.mat-header-cell:not(:first-of-type) {
+      padding-left: 19px;
+      white-space: nowrap;
     }
   }
 }

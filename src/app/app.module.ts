@@ -46,16 +46,23 @@ import { DateNavigationComponent } from './components/track/date-navigation/date
 import { TitleBarComponent } from './components/track/title-bar/title-bar.component';
 import { IncludesPipe } from './pipes/includes/includes.pipe';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { LoginComponent } from './components/login/login.component';
+import { RoundPipe } from './pipes/round/round.pipe';
+import { DecimalPipe } from '@angular/common';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { FooterTextComponent } from './components/footer-text/footer-text.component';
+import { GuestSignOutDialog } from './services/user/user.service';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { TermsOfServiceComponent } from './components/terms-of-service/terms-of-service.component';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
-  signInFlow: 'popup',
   signInOptions: [
-    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
+    firebase.auth.EmailAuthProvider.PROVIDER_ID,
+		firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
   ],
-  tosUrl: '<your-tos-link>',
-  privacyPolicyUrl: '<your-privacyPolicyUrl-link>',
-  credentialHelper: firebaseui.auth.CredentialHelper.ACCOUNT_CHOOSER_COM
+  credentialHelper: firebaseui.auth.CredentialHelper.NONE,
+  tosUrl: 'https://material-nutrition.web.app/termsofservice',
+  privacyPolicyUrl: 'https://material-nutrition.web.app/privacypolicy',
 };
 
 @NgModule({
@@ -79,7 +86,13 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     TitleBarComponent,
     IncludesPipe,
     CreateUserItemEntryComponent,
-    EditUserItemsEntryComponent
+    EditUserItemsEntryComponent,
+		LoginComponent,
+		RoundPipe,
+		FooterTextComponent,
+    GuestSignOutDialog,
+    PrivacyPolicyComponent,
+    TermsOfServiceComponent,
   ],
   imports: [
     BrowserModule,
@@ -110,12 +123,14 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     MatTableModule,
     MatProgressBarModule,
     MatDividerModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSlideToggleModule,
   ],
   providers: [
     AngularFireAuthGuard,
+    DecimalPipe,
     {
-      provide: MAT_DIALOG_DEFAULT_OPTIONS, 
+      provide: MAT_DIALOG_DEFAULT_OPTIONS,
       useValue: {
         hasBackdrop: true,
         closeOnNavigation: true,
@@ -126,7 +141,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     AddLogItemDialogComponent,
     GoalsDialogComponent,
     CreateUserItemComponent,
-    EditUserItemsComponent
+    EditUserItemsComponent,
+    GuestSignOutDialog,
   ],
   bootstrap: [AppComponent]
 })

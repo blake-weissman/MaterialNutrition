@@ -6,6 +6,7 @@ import { NutritionDataKeys, NutritionData, UserLogItem } from 'src/app/model/ite
 import { MatTableDataSource } from '@angular/material/table';
 import { AppService } from 'src/app/services/app/app.service';
 import { User } from 'src/app/model/user';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-track',
@@ -15,7 +16,6 @@ import { User } from 'src/app/model/user';
 export class TrackComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[];
   public dataSource = new MatTableDataSource<UserLogItem>();
-  public currentDate = new Date();
   public nutritionData: NutritionData = new NutritionData();
 
   constructor(
@@ -25,51 +25,30 @@ export class TrackComponent implements OnInit, OnDestroy {
     private router: Router
   ) {
     this.setIsMobile();
-    window.onresize = () => { 
+    window.onresize = () => {
       this.setIsMobile();
     };
   }
 
   ngOnInit() {
-    if (this.userService.getUserFirestoreDocument()) {
-      this.setSubscriptions();
-    } else {
-      this.userService.angularFireAuth.auth.signInAnonymously().then(res => {
-        const userFirestoreDocument = this.userService.getUserFirestoreDocument(res.user.uid);
-        userFirestoreDocument.get().subscribe(response => {
-          if (!response.exists) {
-            userFirestoreDocument.set(this.appService.convertCustomObjectToObject(new User())).then(() => { 
-              this.setSubscriptions();
-            });
-          } else {   
-            this.setSubscriptions();
-          }
-        });
-      })
-    }
-  }
-
-  private setSubscriptions() {
-    this.subscriptions = [
-      this.userService.getUserFirestoreDocument().valueChanges().subscribe(value => {
-        this.userService.user = value;
-        if (this.userService.user) {
-          this.setDataSource();
-          this.openGoalsIfNoneExist();
-        }
-      }),
-      this.activatedRoute.params.subscribe(params => {
-        if (!params.date) {
-          this.router.navigate([String(new Date().setHours(0,0,0,0))]);
-        } else {
-          this.userService.selectedEpoch = params.date;
-          if (this.userService.user) {
+    this.userService.angularFireAuth.auth.onAuthStateChanged((user) => {
+      if (user && !this.subscriptions) {
+        this.subscriptions = [
+          this.userService.getUserFirestoreDocument().valueChanges().subscribe(value => {
+            this.userService.user = value;
             this.setDataSource();
-            this.openGoalsIfNoneExist();
-          }
-        }
-      })
-    ];
+          }),
+          this.activatedRoute.params.subscribe(params => {
+            if (!params.date) {
+              this.router.navigate([String(new Date().setHours(0,0,0,0))]);
+            } else {
+              this.userService.selectedEpoch = params.date;
+              this.setDataSource();
+            }
+          }),
+        ];
+      }
+    });
   }
 
   ngOnDestroy() {
@@ -78,25 +57,24 @@ export class TrackComponent implements OnInit, OnDestroy {
     }
   }
 
-  private openGoalsIfNoneExist(): void { 
-    if (!this.userService.user.goals.calories) {
-      this.router.navigate([this.userService.selectedEpoch + '/goals']);
+  private setDataSource(): void {
+    if (this.userService.user) {
+      this.dataSource.data = this.userService.user.log[this.userService.selectedEpoch];
+      if (this.dataSource.data) {
+        this.setNutritionData();
+      } else {
+        Object.values(NutritionDataKeys).forEach(key => {
+          this.nutritionData[key] = 0;
+        });
+      }
+      if (!this.userService.user.goals.calories) {
+        this.router.navigate([this.userService.selectedEpoch + '/goals']);
+      }
     }
   }
 
   private setIsMobile(): void {
     this.appService.isMobile = window.innerWidth < 599;
-  }
-
-  private setDataSource(): void {
-    this.dataSource.data = this.userService.user.log[this.userService.selectedEpoch];
-    if (this.dataSource.data) {
-      this.setNutritionData();
-    } else {
-      Object.values(NutritionDataKeys).forEach(key => {
-        this.nutritionData[key] = 0;
-      });
-    }
   }
 
   private setNutritionData(): void {
