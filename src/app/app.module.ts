@@ -52,6 +52,8 @@ import { DecimalPipe } from '@angular/common';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FooterTextComponent } from './components/footer-text/footer-text.component';
 import { GuestSignOutDialog } from './services/user/user.service';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { TermsOfServiceComponent } from './components/terms-of-service/terms-of-service.component';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInOptions: [
@@ -59,8 +61,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
 		firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
   ],
   credentialHelper: firebaseui.auth.CredentialHelper.NONE,
-  //tosUrl: '<your-tos-link>',
-  //privacyPolicyUrl: '<your-privacyPolicyUrl-link>',
+  tosUrl: 'https://material-nutrition.web.app/termsofservice',
+  privacyPolicyUrl: 'https://material-nutrition.web.app/privacypolicy',
 };
 
 @NgModule({
@@ -89,6 +91,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
 		RoundPipe,
 		FooterTextComponent,
     GuestSignOutDialog,
+    PrivacyPolicyComponent,
+    TermsOfServiceComponent,
   ],
   imports: [
     BrowserModule,

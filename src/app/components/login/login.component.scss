@@ -6,6 +6,18 @@ div {
   margin-top: 1vh;
 }
 
+#policies {
+  position: absolute;
+  flex-direction: row;
+  font-size: 10px;
+  text-align: center;
+  bottom: $footer-height + 20px;
+  width: 100%;
+  a {
+    margin: 0 6px;
+  }
+}
+
 :host {
   display: flex;
   flex-direction: column;

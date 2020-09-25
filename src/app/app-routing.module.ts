@@ -7,6 +7,8 @@ import { CreateUserItemEntryComponent } from './components/track/create-user-ite
 import { EditUserItemsEntryComponent } from './components/track/edit-user-items/edit-user-items.component';
 import { AddLogItemDialogEntryComponent } from './components/track/add-log-item-dialog/add-log-item-dialog.component';
 import { GoalsDialogEntryComponent } from './components/track/goals-dialog/goals-dialog.component';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { TermsOfServiceComponent } from './components/terms-of-service/terms-of-service.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
@@ -15,6 +17,14 @@ const routes: Routes = [
     path: 'login', 
     component: LoginComponent,
     ...canActivate(redirectLoggedInTo(['']))
+  },
+  { 
+    path: 'privacypolicy', 
+    component: PrivacyPolicyComponent,
+  },
+  { 
+    path: 'termsofservice', 
+    component: TermsOfServiceComponent,
   },
   { 
     path: ':date',

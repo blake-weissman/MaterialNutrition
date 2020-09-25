@@ -55,7 +55,7 @@ $mobile-width: 599px;
     color: rgba(255, 255, 255, 0.7);
     background: #323232;
   }
-  a {
+  a, app-privacy-policy, app-terms-of-service {
     color: #ffffff;
   }
   footer{
@@ -196,4 +196,11 @@ mat-dialog-content {
 
 app-track mat-chip mat-icon {
   margin-right: 5px;
+}
+
+app-privacy-policy, app-terms-of-service {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px + $footer-height;
 }
