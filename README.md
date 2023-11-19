@@ -1,5 +1,5 @@
 # Material Nutrition
-A responsive and easy-to-use calorie and nutrition tracker that syncs user data across browsers. Easily set and follow caloric and macronutrient goals, track daily nutritional intake, and plan out future meals. 
+A responsive web app for tracking daily food, calorie, and macronutrient intake across devices.
 
 Built with Angular and Firebase.
 
