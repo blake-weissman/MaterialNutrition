@@ -1,0 +1,29 @@
+@import '../../../../styles.scss';
+@import '~@angular/material/theming';
+@include mat-core();
+
+mat-dialog-content {
+  flex-direction: column;
+  &, div {
+    display: flex;
+  }
+}
+
+div > div {
+  display: flex;
+  flex-direction: column;
+  span {
+    margin-top: -12px;
+    @include mat-typography-level-to-styles(mat-typography-config(), body-2);
+  }
+  &:not(:first-of-type) {
+    margin-left: 24px;
+  }
+}
+
+#error {
+  @include mat-typography-level-to-styles(mat-typography-config(), caption);
+  color: mat-color($warn);
+  margin-top: 5px;
+  margin-bottom: -2px;
+}

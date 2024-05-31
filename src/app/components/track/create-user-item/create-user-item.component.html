@@ -1,0 +1,10 @@
+<app-title-bar label="Create New Item">
+</app-title-bar>
+<mat-dialog-content>
+  <app-user-food-item-form [userFoodItem]="userFoodItem" (formInvalidityChanged)="isFormInvalid = $event">
+  </app-user-food-item-form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-stroked-button [disabled]="isFormInvalid" (click)="createFoodItem()">Create</button>
+  <button mat-stroked-button (click)="location.back()">Go Back</button>
+</mat-dialog-actions>

@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>
+  Add Item
+</h1>
+<mat-dialog-content>
+  <app-user-items-selection (userItemSelected)="userItemSelected($event.userItem)">
+  </app-user-items-selection>
+  <app-log-items-table @expand *ngIf="newUserLogItem" [dataSource]="[newUserLogItem]" (servingsValidityChanged)="servingsInvalid = !$event">
+  </app-log-items-table>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-stroked-button mat-dialog-close (click)="addNewLogItem()" [disabled]="!newUserLogItem || servingsInvalid">Add</button>
+  <button mat-stroked-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

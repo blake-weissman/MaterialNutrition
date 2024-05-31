@@ -1,0 +1,43 @@
+#search {
+  display: flex;
+  align-items: center;
+  padding: 0.75em;
+  input {
+    margin-left: 0.25em;
+  }
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+::ng-deep {
+  .dark-theme {
+    #search {
+      color: #ffffff;
+    }
+    .option-container:hover {
+      background: rgba(255, 255, 255, 0.04) !important;
+    }
+  }
+  .mat-form-field-wrapper {
+    padding: 0;
+    margin-bottom: 0;
+  }
+}
+
+.option-container {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  mat-option {
+    flex-grow: 1;
+    padding: 0;
+    &:hover {
+      background: initial;
+    }
+  }
+  &:hover {
+    background: rgba(0, 0, 0, 0.04);
+  }
+}

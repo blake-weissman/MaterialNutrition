@@ -1,0 +1,18 @@
+{
+  "projects": {
+    "default": "material-nutrition",
+    "beta": "material-nutrition"
+  },
+  "targets": {
+    "material-nutrition": {
+      "hosting": {
+        "beta": [
+          "material-nutrition-beta"
+        ],
+        "prod": [
+          "material-nutrition"
+        ]
+      }
+    }
+  }
+}

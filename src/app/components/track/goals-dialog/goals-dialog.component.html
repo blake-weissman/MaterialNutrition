@@ -1,0 +1,33 @@
+<form #form="ngForm">
+  <app-title-bar label="Nutrition Goals" [hideCloseButton]="!userService.user.goals[NutritionDataKeys.CALORIES]">
+  </app-title-bar>
+  <mat-dialog-content>
+    <mat-form-field floatLabel="always">
+      <mat-label>
+        Calories
+      </mat-label>
+      <input matInput required [pattern]="positiveIntegersRegex" [(ngModel)]="currentUserGoals[NutritionDataKeys.CALORIES]" #calories="ngModel" name="calories" (ngModelChange)="caloriesChanged()">
+    </mat-form-field>
+    <div id="macros">
+      <div *ngFor="let macroKey of macroKeys">
+        <mat-form-field floatLabel="always">
+          <mat-label>
+            {{macroKey | titlecase}}
+          </mat-label>
+          <input matInput [pattern]="positiveIntegersRegex" [ngModel]="currentUserPercentageGoals[macroKey]" (ngModelChange)="userGoalChanged($event, macroKey)" required [name]="macroKey" maxlength="2">
+          <span matSuffix>%</span>
+        </mat-form-field>
+        <span>
+          Total: {{currentUserGoals[macroKey] ? currentUserGoals[macroKey] + "g" : "N/A"}}
+        </span>
+      </div>
+    </div>
+    <span id="error" @expand *ngIf="currentUserPercentageGoals[NutritionDataKeys.FAT] + currentUserPercentageGoals[NutritionDataKeys.CARBS] + currentUserPercentageGoals[NutritionDataKeys.PROTEIN] !== 100">
+      Your percentages must total to 100%. Currently, your percentages total to {{currentUserPercentageGoals[NutritionDataKeys.FAT] + currentUserPercentageGoals[NutritionDataKeys.CARBS] + currentUserPercentageGoals[NutritionDataKeys.PROTEIN]}}%.
+    </span> 
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-stroked-button mat-dialog-close [disabled]="form.invalid || !currentUserGoals[NutritionDataKeys.CALORIES] || currentUserPercentageGoals[NutritionDataKeys.FAT] + currentUserPercentageGoals[NutritionDataKeys.CARBS] + currentUserPercentageGoals[NutritionDataKeys.PROTEIN] !== 100" (click)="saveGoals()">Save</button>
+    <button mat-stroked-button mat-dialog-close *ngIf="userService.user.goals[NutritionDataKeys.CALORIES]">Cancel</button>
+  </mat-dialog-actions>
+</form>

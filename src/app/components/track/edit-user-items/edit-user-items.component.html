@@ -1,0 +1,12 @@
+<app-title-bar label="Edit Items">
+</app-title-bar>
+<mat-dialog-content>
+  <app-user-items-selection [(selectedUserItemIndex)]="selectedUserItemIndex" (userItemSelected)="userItemSelected($event.userItem, $event.userItemType)">
+  </app-user-items-selection>
+  <app-user-food-item-form @expand [userFoodItem]="currentUserItem" *ngIf="selectedUserItemType === UserItemType.FOOD" (formInvalidityChanged)="isFormInvalid = $event">
+  </app-user-food-item-form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-stroked-button [disabled]="isFormInvalid || (selectedUserItem | json) === (currentUserItem | json)" (click)="saveItem()">Save</button>
+  <button mat-stroked-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

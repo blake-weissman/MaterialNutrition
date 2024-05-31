@@ -1,0 +1,30 @@
+<main>
+  <div id="date">
+    <button mat-icon-button [matMenuTriggerFor]="navigationCalendar" matTooltip="Open Calendar">
+      <mat-icon>
+        today   
+      </mat-icon>
+    </button>
+    <h3>
+      {{selectedDate | date: 'M/d/yyyy'}}
+    </h3>
+  </div>
+  <div>
+    <button mat-icon-button (click)="navigateToDate(selectedDate.setDate(selectedDate.getDate() - 1))" matTooltip="Yesterday">
+      <mat-icon>
+        keyboard_arrow_left
+      </mat-icon>
+    </button>
+    <button mat-icon-button (click)="navigateToDate(selectedDate.setDate(selectedDate.getDate() + 1))" matTooltip="Tomorrow">
+      <mat-icon>
+        keyboard_arrow_right
+      </mat-icon>
+    </button>
+  </div>
+</main>
+<mat-menu #navigationCalendar="matMenu">
+  <div (click)="$event.stopPropagation();">
+    <mat-calendar [selected]="selectedDate" (selectedChange)="onDateSelect($event)">
+    </mat-calendar>  
+  </div>
+</mat-menu>

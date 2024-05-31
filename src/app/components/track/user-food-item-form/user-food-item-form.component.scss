@@ -1,0 +1,26 @@
+div {
+  display: flex;
+  &:last-of-type {
+    margin-bottom: -16px;
+  }
+  mat-form-field:not(:first-of-type) {
+    margin-left: 24px;
+  }
+  mat-form-field { 
+    flex-grow: 1;
+  }
+}
+
+span {
+  margin-bottom: 8px;
+}
+
+::ng-deep { 
+  mat-dialog-content {
+    overflow: hidden !important;
+  }
+}
+
+:host {
+  display: block;
+}

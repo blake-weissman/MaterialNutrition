@@ -1,0 +1,41 @@
+@import '../../../../styles';
+
+table {
+  width: 100%;
+  background: transparent !important;
+}
+
+
+:host {
+  display: block;
+  ::ng-deep {
+    td.mat-cell:last-of-type {
+      padding-right: 0 !important;
+    }
+    .mat-form-field-infix {
+      width: 50px !important;
+    }
+    @include mobile { 
+      td.mat-cell:last-of-type {
+        padding-right: 16px !important;
+      }
+      .mat-form-field-infix {
+        width: 30px !important;
+      }
+      .mat-cell {
+        font-size: 12px;
+      }
+      .mat-header-cell {
+        font-size: 10px;
+      }
+    }
+    td.mat-cell:first-of-type, td.mat-footer-cell:first-of-type, th.mat-header-cell:first-of-type {
+      padding: 16px 0;
+      padding-left: 24px;
+    }
+    td.mat-cell:not(:first-of-type), td.mat-footer-cell:not(:first-of-type), th.mat-header-cell:not(:first-of-type) {
+      padding-left: 19px;
+      white-space: nowrap;
+    }
+  }
+}

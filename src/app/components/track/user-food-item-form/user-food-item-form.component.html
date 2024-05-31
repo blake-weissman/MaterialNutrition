@@ -1,0 +1,52 @@
+<form #form="ngForm">
+  <ng-container *ngIf="userFoodItem">
+    <div>
+      <mat-form-field floatLabel="always">
+        <mat-label>
+          Name
+        </mat-label>
+        <input matInput [(ngModel)]="userFoodItem.name" required #name="ngModel" name="name">
+      </mat-form-field>
+      <mat-form-field floatLabel="always">
+        <mat-label>
+          Calories
+        </mat-label>
+        <input matInput [pattern]="positiveIntegersRegex" [(ngModel)]="userFoodItem[NutritionDataKeys.CALORIES]" required #calories="ngModel" name="calories">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field floatLabel="always">
+        <mat-label>
+          Fat (g)
+        </mat-label>
+        <input matInput [pattern]="positiveIntegersRegex" [(ngModel)]="userFoodItem[NutritionDataKeys.FAT]" required #fat="ngModel" name="fat">
+      </mat-form-field>
+      <mat-form-field floatLabel="always">
+        <mat-label>
+          Carbs (g)
+        </mat-label>
+        <input matInput [pattern]="positiveIntegersRegex" [(ngModel)]="userFoodItem[NutritionDataKeys.CARBS]" required #carbs="ngModel" name="carbs">
+      </mat-form-field>
+      <mat-form-field floatLabel="always">
+        <mat-label>
+          Protein (g)
+        </mat-label>
+        <input matInput [pattern]="positiveIntegersRegex" [(ngModel)]="userFoodItem[NutritionDataKeys.PROTEIN]" required #protein="ngModel" name="protein">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field floatLabel="always">
+        <mat-label>
+          Serving Unit
+        </mat-label>
+        <input matInput [(ngModel)]="userFoodItem.servingUnit" required #servingUnit="ngModel" name="servingUnit">
+      </mat-form-field>
+      <mat-form-field floatLabel="always">
+        <mat-label>
+          Amount Per Serving
+        </mat-label>
+        <input matInput [pattern]="positiveIntegersRegex" [(ngModel)]="userFoodItem.amountPerServing" required #amountPerServing="ngModel" name="amountPerServing">
+      </mat-form-field>
+    </div>
+  </ng-container>
+</form>

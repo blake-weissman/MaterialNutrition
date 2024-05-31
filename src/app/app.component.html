@@ -1,0 +1,58 @@
+<mat-toolbar color="primary">
+  <span id="logo">
+    <mat-icon>
+      restaurant_menu
+    </mat-icon>
+    Material Nutrition
+  </span>
+  <div *ngIf="userService.angularFireAuth.auth.currentUser">
+    <button mat-icon-button [matMenuTriggerFor]="account">
+      <mat-icon>
+        account_circle
+      </mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+<main>
+  <router-outlet>
+  </router-outlet>
+  <footer *ngIf="!userService.angularFireAuth.auth.currentUser || appService.isMobile">
+    <app-footer-text>
+    </app-footer-text>
+  </footer>
+</main>
+<mat-menu #account="matMenu">
+  <div (click)="$event.stopPropagation()">
+    <div class="row" id="profile">
+      <mat-icon>
+        account_box
+      </mat-icon>
+      <span>
+        {{userService.angularFireAuth.auth.currentUser?.email || "Guest"}}
+      </span>
+      <span *ngIf="!userService.angularFireAuth.auth.currentUser?.email" id="warning">
+        Warning: You are currently logged in as a guest, your data will not be accessible if you press sign out.
+      </span>
+    </div>
+    <mat-divider>
+    </mat-divider>
+    <button mat-menu-item (click)="userService.signOut()">
+      <mat-icon>
+        exit_to_app
+      </mat-icon>
+      <span>Sign out</span>
+    </button>
+    <mat-divider>
+    </mat-divider>
+    <div class="row">
+      <mat-icon>
+        brightness_medium
+      </mat-icon>
+      <span>
+        Dark theme
+      </span>
+      <mat-slide-toggle (change)="toggleDarkTheme()" [checked]="userService.user?.darkTheme">
+      </mat-slide-toggle>
+    </div>
+  </div>
+</mat-menu>

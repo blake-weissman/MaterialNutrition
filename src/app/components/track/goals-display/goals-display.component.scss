@@ -1,0 +1,27 @@
+@import '../../../../styles';
+@import '~@angular/material/theming';
+@include mat-core();
+
+:host {
+  @extend .mat-typography;
+}
+
+#macros {
+  display: flex;
+  flex-direction: row;
+  margin-top: 10px;    
+  margin-bottom: 12px;
+  mat-progress-bar {
+    margin-bottom: 6px;
+  }
+  div {
+    flex-grow: 1;
+    &:not(:first-of-type) {
+      margin-left: 10px;
+    }
+  }
+}
+
+h2, h4 {
+  margin-bottom: 3px !important;
+}

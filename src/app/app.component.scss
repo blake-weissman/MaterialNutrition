@@ -1,0 +1,96 @@
+@import '~@angular/material/theming';
+@import '../styles';
+@include mat-core();
+
+mat-toolbar {
+  @include mat-elevation(6);
+  z-index: 2;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+}
+
+main {
+  padding-top: 64px;
+  height: 100vh;
+  @include mobile {
+    padding-top: $mat-toolbar-height;
+    padding-bottom: $mat-toolbar-height + $footer-height + $card-border-width;
+  }
+}
+
+#logo {
+  font-family: 'Roboto Condensed', sans-serif;
+  display: flex;
+  align-items: center;
+  mat-icon {
+    margin-right: 7px;
+  }
+}
+
+footer {
+  padding: 8px 20px;
+  width: 100%;
+  display: block;
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+}
+
+::ng-deep {
+  .dark-theme {
+    .mat-menu-panel {
+      color: #ffffff;
+    }
+  }
+  .light-theme {
+    .mat-menu-item .mat-icon-no-color, .light-theme {
+      color: #000000;
+    }
+  }
+  .mat-menu-panel {
+    @extend .mat-typography;
+    overflow: hidden !important;
+    max-width: initial !important;
+    .mat-menu-content {
+      $mat-icon-padding: 8px;
+      padding: 0 !important;
+      .mat-menu-item mat-icon {
+        margin-right: $mat-icon-padding;
+      } 
+      $padding: 16px;
+      div.row {
+        align-items: center;
+        padding: 10px $padding;
+        display: flex;
+        &:not(#profile) {
+          & > *:last-child {
+            margin-left: auto;
+            padding-left: $padding;
+          }
+          mat-icon {
+            margin-right: $mat-icon-padding;
+          }
+        }
+      }
+      #profile {
+        padding: $padding;
+        flex-direction: column;
+        span {
+          padding: 0 10px;
+        }
+        #warning {
+          white-space: initial;
+          max-width: 140px;
+          padding: 0;
+          margin-top: 4px;
+          text-align: center;
+          color: mat-color($warn);
+        }
+      }
+    }
+    span {
+      white-space: nowrap;
+    }
+  }
+}

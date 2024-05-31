@@ -1,0 +1,108 @@
+@import '../../../styles';
+@import '~@angular/material/theming';
+@include mat-core();
+
+$mat-fab-bottom: 20px;
+
+:host {
+  @extend .mat-typography;
+}
+
+mat-sidenav-container {
+  height: 100%;
+}
+
+mat-sidenav {
+  max-width: 312px;
+  width: 100%;
+  padding-bottom: 22px;
+}
+
+#info {
+  padding: 0 22px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+#menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+[mat-fab] {
+  position: fixed;
+  z-index: 1;
+  bottom: $mat-fab-bottom;
+  right: 16px;
+  @include mobile {
+    & {
+      bottom: $mat-fab-bottom + $footer-height + $mat-toolbar-height;
+    }
+  }
+}
+
+#no-log-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  @include mobile {
+    height: auto;
+    padding-top: 12px;
+  }
+  span {
+    color: rgba(0, 0, 0, 0.42);
+  }
+}
+
+#mobile-goals-display {
+  padding: 0 20px;
+  padding-top: 12px;
+}
+
+mat-divider {
+  padding-bottom: 12px;
+}
+
+mat-toolbar {
+  position: initial; 
+  bottom: 0;
+  z-index: 1;
+  border-top: solid 1px rgba(0, 0, 0, 0.12);
+}
+
+@media (min-width: $mobile-width) {
+  app-date-navigation { 
+    padding: 0 12px;
+    padding-top: 16px;
+    padding-bottom: 4px;
+  }
+}
+@include mobile {
+  app-log-items-table {
+    padding-bottom: 96px;
+  }
+}
+
+.dark-theme :host ::ng-deep  {
+  #no-log-items span {
+    color: rgba(255, 255, 255, 0.5) !important;
+  }
+  mat-toolbar {  
+    border-top: solid 1px rgba(255, 255, 255, 0.12);
+  }
+}
+
+:host ::ng-deep .mat-drawer-inner-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#mobile {
+  position: fixed; 
+  bottom: $footer-height + $card-border-width; 
+  width: 100%;
+}
