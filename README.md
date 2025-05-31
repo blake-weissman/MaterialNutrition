@@ -1,7 +1,9 @@
-# Material Nutrition
-A responsive web app for tracking daily food, calorie, and macronutrient intake across devices.
+# Material Nutrition Public-Facing Repo
+Public-facing repo for Material Nutrition, a responsive web app for tracking daily food, calorie, and macronutrient intake across devices.
 
 Built with Angular and Firebase.
+
+This repo does not contain Material Nutrition's entire internal/private commit history. All code present in this repo has simply been added with limited commits instead of publishing Material Nutrition's entire internal Git history.
 
 https://material-nutrition.web.app/
 
